@@ -137,7 +137,10 @@ img {
     margin: 5px;
     border-radius: 10px;
     color: #888;
+    flex-grow: 1;
 }
 
-
+#gradesBaseRow {
+    width: 100%
+}
   

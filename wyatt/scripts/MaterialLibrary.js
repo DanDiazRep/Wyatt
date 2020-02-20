@@ -273,8 +273,8 @@ var GradeV_Vinyl =
         },
         {
             "Id": 3,
-            "Name": null,
-            "Code": null,
+            "Name": "White",
+            "Code": "4003",
             "Active": false
         },
         {

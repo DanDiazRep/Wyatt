@@ -1,6 +1,6 @@
 ﻿
 //GET DATA
-var dataDB = getG6;
+var dataDB = getTether;
 console.log(dataDB);
 
 //Menu building variables
@@ -391,6 +391,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
         var Materials = listOfMaterials(collection);
         $("#imagesContainer").empty();
         $(".pagination").empty();
+        
         for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
             if (Materials.Content[nMaterials].Name) {
 
@@ -491,6 +492,7 @@ function collectionSet(collectionSelected) {
     var Materials = listOfMaterials(collection);
     $(".pagination").empty();
     $("#imagesContainer").empty();
+    console.log("MATERIAL LOADING", collection)
     for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
         if (Materials.Content[nMaterials].Name) {
             var $materialItem = $("<div>", {
