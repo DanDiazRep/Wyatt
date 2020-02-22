@@ -1,6 +1,6 @@
 ﻿
 //GET DATA
-var dataDB = getTether;
+var dataDB = getG6;
 console.log(dataDB);
 
 //Menu building variables
@@ -227,11 +227,11 @@ var $accordion = $("<div>", { "class": "accordion", "id": "wyattAccordion" });
 $("#optionsMenu").append($accordion);
 
 //Build accordions as many features are in the model
+console.log(dataDB)
 for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {  
 
     var $card = $("<div>", { "class": "card" });
     $accordion.append($card);
-
     var cardName = dataDB.Options[nOptions].Code;
     //var $divider = $("</br>");
     //$accordion.append($divider);
@@ -247,7 +247,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         "id": cardName + "Name"
     });
     $mb.append($cardButton);
-
+    
 
     var $accordionInfoContainer = $("<div>", {
         "id": cardName, "class": "collapse",
@@ -269,7 +269,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
         var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
         $rowDivider.append($listGroup);
-
+        
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
                 var selectedOption = dataDB.Options[nOptions].Values[nValues].Name;
@@ -279,7 +279,8 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
                     "text": selectedOption
                 });
-                $cardButton.text(selectedOption);
+                $cardButton.text(dataDB.Options[nOptions].Description);
+
             }
 
             else {
@@ -292,12 +293,12 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                 });
             }
 
-
+            
             $listGroup.append($featureOptions);
-
+            
         }
     }
-
+    
     if (cardName.includes("grade")) {
         var $baseRow = $("<div>", { "class": "row no-gutter", "id": "gradesBaseRow" });
         var $baseFilterRow = $("<div>", { "class": "row no-gutter", "id": "gradesFilterRow" })
@@ -348,12 +349,12 @@ function materialStructureBuilding(nOptions) {
 }
 
 function materialCollectionCardBuildingAndEdition(selection) {
+    console.log("MATERIAL COLLECTIONS", selection)
     var res = selection.split(",");
     var nOptions = res[0];
     var gradeSelection = res[1];
 
     if (document.getElementById("materialCollections") != null) { //    Edition       
-
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Name == gradeSelection) {
                 dataDB.Options[nOptions].Values[nValues].Active = true;
@@ -553,11 +554,9 @@ function optionChangedOnFeature(selection) {
 
     feature = res[0];
     option = res[1];
-    console.log(res);
 
 
     $("#" + feature.toLowerCase() + "Name").text(option);
-
     if (option.includes("Grade") || option.includes("Color"))
         materialCollectionCardBuildingAndEdition();
     else
@@ -570,19 +569,19 @@ function optionChangedOnFeature(selection) {
 
 function cardsResponseOnSelection() {
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+        
         if (dataDB.Options[nOptions].Name == feature) {
 
-
             for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+                
                 if (dataDB.Options[nOptions].Values[nValues].Name == option) {
-
 
                     dataDB.Options[nOptions].Values[nValues].Active = true;
                     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].Values[nValues].Layers.length; nLayers++) {
-
+                        
                         //Do the material change
                         var doMaterialChange = false;
-                        if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].hasOwnProperty("MaterialFile"))
+                        if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].hasOwnProperty("MaterialFile")) {
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile != null) {
                                 doMaterialChange = true;
 
@@ -591,6 +590,8 @@ function cardsResponseOnSelection() {
                                     " using " + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + " option selected " + feature);
 
                             }
+                        }
+                            
 
 
                         if (feature == "Back") {
@@ -606,12 +607,14 @@ function cardsResponseOnSelection() {
                                 loopOn = true;
                             }
                         }
-
+                        
                         for (var nMeshes = 0; nMeshes < currentMesh.length; nMeshes++) {
+                           
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes].name) {
-
+                                //change the material
                                 if (doMaterialChange) {
                                     var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
+                                    console.log("MATERIAL CHANGE", dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, path + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer + "_Base_Color" + ".png")
                                     currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
                                     currentMesh[nMeshes]._material._roughnessTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Roughness" + ".png", scene);
 

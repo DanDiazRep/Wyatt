@@ -3736,21 +3736,21 @@ var getLamia = {
   DefaultLayers: ["General", "Back", "Seat"],
   Options: [
     {
-      Code: "color",
+      Code: "colorSeat",
       Name: "Seat Color",
-      Description: "Pick Your Seat Color",
+      Description: "Pick Your Back Color",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
         {
           Name: "Black",
-          Active: true,
+          Active: false,
           PartNumber: "S01",
           Price: 0,
           Layers: [
             {
-              Layer: "Seat011_Retopo",
-              MaterialFile: null, //"/lamia/seat/Seat011_Retopo",
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
               Color: "#000",
               Visibility: true
             }
@@ -3763,8 +3763,8 @@ var getLamia = {
           Price: 0,
           Layers: [
             {
-              Layer: "Seat011_Retopo",
-              MaterialFile: null, //"/lamia/seat/Seat011_Retopo",
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
               Color: "#FFFFFF",
               Visibility: true
             }
@@ -3777,40 +3777,176 @@ var getLamia = {
           Price: 0,
           Layers: [
             {
-              Layer: "Seat011_Retopo",
-              MaterialFile: null, //"/lamia/seat/Seat011_Retopo",
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
               Color: "#101010",
               Visibility: true
             }
           ]
-        } //GREY
+        }, //GREY
+        {
+          Name: "Blue",
+          Active: false,
+          PartNumber: "S04",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //BLUE
+        {
+          Name: "Green",
+          Active: false,
+          PartNumber: "S05",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //GREEEN
+        {
+          Name: "Red",
+          Active: true,
+          PartNumber: "S06",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //RED
+        {
+          Name: "Sand",
+          Active: false,
+          PartNumber: "S07",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Back",
+              MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        } //SAND
       ]
     }, //SEAT COLOR
     {
-      Code: "color",
+      Code: "colorBack",
       Name: "Back Color",
-      Description: "Pick Your Back Color",
+      Description: "Pick Your Seat Color",
       Type: "G",
       RelatedLayers: ["Back"],
       Values: [
         {
-          Code: "backColor",
-          Name: "Back Color",
-          Active: true,
-          PartNumber: "1",
+          Name: "Black",
+          Active: false,
+          PartNumber: "S01",
           Price: 0,
-          Collections: [
-            {
-              Name: "Circus Boy Plastics",
-              Active: true
-            }
-          ],
           Layers: [
             {
-              Layer: "Back"
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#000",
+              Visibility: true
             }
           ]
-        }
+        }, // BLACK
+        {
+          Name: "White",
+          Active: false,
+          PartNumber: "S02",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#FFFFFF",
+              Visibility: true
+            }
+          ]
+        }, //WHITE
+        {
+          Name: "Grey",
+          Active: false,
+          PartNumber: "S03",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //GREY
+        {
+          Name: "Blue",
+          Active: false,
+          PartNumber: "S04",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //BLUE
+        {
+          Name: "Green",
+          Active: false,
+          PartNumber: "S05",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //GREEEN
+        {
+          Name: "Red",
+          Active: true,
+          PartNumber: "S06",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        }, //RED
+        {
+          Name: "Sand",
+          Active: false,
+          PartNumber: "S07",
+          Price: 0,
+          Layers: [
+            {
+              Layer: "Seat",
+              MaterialFile: "/lamia/seat/Seat", //"/lamia/seat/Seat011_Retopo",
+              Color: "#101010",
+              Visibility: true
+            }
+          ]
+        } //SAND
       ]
     } //BACK COLOR
   ]
