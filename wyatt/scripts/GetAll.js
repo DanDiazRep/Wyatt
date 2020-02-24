@@ -1866,12 +1866,16 @@ var getFreeride = {
           Price: 0,
           Collections: [
             {
-              Name: "Link",
-              Active: true
+                Name: "Link",
+                Active: true
             },
             {
-              Name: "I.O.U",
-              Active: false
+                Name: "I.O.U",
+                Active: false
+            },
+            {
+                Name: "Circus Boy Plastics",
+                Active: false
             }
           ],
           Layers: [
@@ -3970,7 +3974,7 @@ var getTether = {
       RelatedLayers: ["Seat"],
       Values: [
         {
-          Code: "grade1",
+          Code: "grade",
           Name: "Grade 1",
           Active: true,
           PartNumber: "1",

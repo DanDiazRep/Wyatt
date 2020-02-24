@@ -1,6 +1,6 @@
 ﻿
 //GET DATA
-var dataDB = getG6;
+var dataDB = getFreeride;
 console.log(dataDB);
 
 //Menu building variables
@@ -476,20 +476,27 @@ function collectionSet(collectionSelected) {
     var currentOption;
     var gradeSelection;
     collection = collectionSelected;
-    for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++)
-        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++)
-            if (dataDB.Options[nOptions].Values[nValues].Code.includes("grade"))
-                for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++)
-                    if (dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name == collectionSelected) {
-                        dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = true;
-                        $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name);
+    for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            if (dataDB.Options[nOptions].Values[nValues].Code) {
+                if (dataDB.Options[nOptions].Values[nValues].Code.includes("grade")) {
+                    for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++) {
+                        if (dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name == collectionSelected) {
+                            dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = true;
+                            $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name);
 
-                        gradeSelection = dataDB.Options[nOptions].Values[nValues].Name;
-                        currentOption = nOptions;
+                            gradeSelection = dataDB.Options[nOptions].Values[nValues].Name;
+                            currentOption = nOptions;
+                        }
+                        else
+                            dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = false;
                     }
-                    else
-                        dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = false;
-
+                }
+            }
+        }
+    }
+        
+ 
     var Materials = listOfMaterials(collection);
     $(".pagination").empty();
     $("#imagesContainer").empty();
