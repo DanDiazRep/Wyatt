@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Assets\invoice.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.0" />
   </ItemGroup>
 
@@ -13,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Assets\invoice.cshtml" />
     <None Include="wwwroot\front.png" />
     <None Include="wwwroot\logo.png" />
   </ItemGroup>

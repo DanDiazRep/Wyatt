@@ -25,6 +25,16 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
             services.AddControllers();
             services.AddWkhtmltopdf();
         }
@@ -41,6 +51,7 @@ namespace Api
 
             app.UseAuthorization();
             app.UseStaticFiles();
+            app.UseCors("AllowAllHeaders");
 
             app.UseEndpoints(endpoints =>
             {

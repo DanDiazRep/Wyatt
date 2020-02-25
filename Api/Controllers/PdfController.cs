@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Model;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Wkhtmltopdf.NetCore;
@@ -12,18 +15,22 @@ namespace Api.Controllers
     [Route("[controller]")]
     public class PdfController : ControllerBase
     {
+        private readonly IHostingEnvironment _env;
         readonly IGeneratePdf _generatePdf;
 
         private readonly ILogger<PdfController> _logger;
 
-        public PdfController(ILogger<PdfController> logger, IGeneratePdf generatePdf)
+        public PdfController(ILogger<PdfController> logger, IGeneratePdf generatePdf, IHostingEnvironment env)
         {
             _logger = logger;
             _generatePdf = generatePdf;
+            _env = env;
         }
 
-        [HttpGet]
-        public FileStreamResult Get()
+        
+        [HttpPost]
+        [EnableCors("AllowAllHeaders")]
+        public async Task<IActionResult> Get([FromBody] Configurator configurator)
         {
             var options = new ConvertOptions
             {
@@ -34,11 +41,16 @@ namespace Api.Controllers
                 }
             };
             _generatePdf.SetConvertOptions(options);
-            var pdf = _generatePdf.GetPDF(System.IO.File.ReadAllText("Assets/TestInvoice1.html"));
-            var pdfStream = new System.IO.MemoryStream();
-            pdfStream.Write(pdf, 0, pdf.Length);
-            pdfStream.Position = 0;
-            return new FileStreamResult(pdfStream, "application/pdf");
+            Configurator data = configurator;
+            string contentRootPath = _env.ContentRootPath;
+            string webRootPath = _env.WebRootPath;
+            //var pdf = await _generatePdf.GetByteArrayViewInHtml(System.IO.File.ReadAllText("Assets/invoice.html"), data);
+            //var pdfStream = new System.IO.MemoryStream();
+            //pdfStream.Write(pdf, 0, pdf.Length);
+            //pdfStream.Position = 0;
+            string path = Guid.NewGuid() + ".pdf";
+            System.IO.File.WriteAllBytes(webRootPath + "/" + path, await _generatePdf.GetByteArrayViewInHtml(System.IO.File.ReadAllText("Assets/invoice.cshtml"), data));
+            return Ok(path);
         }
     }
 }

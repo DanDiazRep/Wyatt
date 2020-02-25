@@ -199,24 +199,40 @@ var currentOptionPrice = Array(dataDB.Options.length);
 
 //PRICE CALCULATION
 var productPrice = document.getElementById("productPrice");
-
+var currentOptionsPDF = null;
 function priceCalculation() {
-
+    console.log("PRE TOTAL PRICE", dataDB)
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
                 currentOptionPrice[nOptions] = dataDB.Options[nOptions].Values[nValues].Price;
-
             }
         }
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions]
         }
+        currentOptionsPDF = currentOptionPrice[nOptions];
+        
         totalPrice += currentOptionPrice[nOptions];
         productPrice.textContent = "$ " + totalPrice + ".00";
+        console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice[nOptions])
     }
+    
 }
 priceCalculation();
+
+function makeMyPDF() {
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+    var theUrl = "http://localhost:62027/pdf";
+    xmlhttp.open("POST", theUrl);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            window.open("http://localhost:62027/" + xmlhttp.responseText, "_blank")
+        }
+    };
+    xmlhttp.send(JSON.stringify(dataDB));
+}
 
 
 //OPTIONS BUILDING
@@ -531,7 +547,6 @@ function changeMaterial(value) {
     var colorCode = res[4];
 
     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].RelatedLayers.length; nLayers++) {
-        console.log("optionName: " + dataDB.Options[nOptions].RelatedLayers[nLayers]);
         for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
             if (dataDB.Options[nOptions].RelatedLayers[nLayers] == currentMesh[nMeshes]._material.name) {
                 var path = "assets/materials/" + dataDB.Name.toLowerCase()

@@ -1,0 +1,285 @@
+﻿@model Api.Model.Configurator
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test invoice #101</title>
+
+    <style>
+        .invoice-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            font-size: 15px;
+            line-height: 20px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+            .invoice-container table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+                .invoice-container table td {
+                    padding: 2px;
+                    vertical-align: top;
+                }
+
+                .invoice-container table tr td:nth-child(2) {
+                    text-align: left;
+                }
+
+                .invoice-container table tr.top table td {
+                    padding-bottom: 20px;
+                }
+
+                    .invoice-container table tr.top table td.title {
+                        font-size: 45px;
+                        line-height: 45px;
+                        color: #333;
+                    }
+
+                .invoice-container table tr.heading td {
+                    background: #eee;
+                    border-bottom: 1px solid #ddd;
+                    font-weight: bold;
+                }
+
+                .invoice-container table tr.details td {
+                    padding-bottom: 20px;
+                }
+
+                .invoice-container table tr.item td {
+                    border-bottom: 1px solid #eee;
+                }
+
+                .invoice-container table tr.item.last td {
+                    border-bottom: none;
+                }
+
+                .invoice-container table tr.total td:nth-child(2) {
+                    border-top: 2px solid #eee;
+                    font-weight: bold;
+                }
+
+        .productImg {
+            width: 100%;
+        }
+
+        .detailed td {
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-container">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="http://localhost:62027/logo.png" width="50%" />
+                            </td>
+
+                            <td>
+                                Invoice #: 101<br>
+                                Created: January 1, 2017<br>
+                                Due: February 1, 2017
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td width="40%" style="vertical-align: middle;">
+                                <img class="productImg" src="http://localhost:62027/front.png" />
+                            </td>
+
+                            <td width="60%">
+                                <table>
+                                    <tr>
+                                        <td width="60%">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <strong>List Price:</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        $@Model.Price
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <strong>Valid as of:</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        LIST PRICE 09/02/2019
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <strong>Product Code:</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        1073 BK2 L/e3 AR9 FG1 CS5 CH1 B20 MB MC5 FC12 LA1 KD
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table class="detailed">
+                                                <tr>
+                                                    <td>
+                                                        BACK SIZE:
+                                                    </td>
+
+                                                    <td>
+                                                        @for(var o = 0; o < @Model.Options.Count; o++)
+                                                        {
+                                                            @if (@Model.Options[o].Code == "back"){
+                                                                @for(var v = 0; v < @Model.Options[o].Values.Count; v++)
+                                                                {
+                                                                    @if (@Model.Options[o].Values[v].Active == true){
+                                                                        @Model.Options[o].Values[v].Name
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        TEXTILE:
+                                                    </td>
+
+                                                    <td>
+                                                        @for(var o = 0; o < @Model.Options.Count; o++)
+                                                        {
+                                                            @if (@Model.Options[o].Code == "grade"){
+                                                                @for(var v = 0; v < @Model.Options[o].Values.Count; v++)
+                                                                {
+                                                                    @if (@Model.Options[o].Values[v].Active == true){
+                                                                        @Model.Options[o].Values[v].Name
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        MECHANISM:
+                                                    </td>
+
+                                                    <td>
+                                                        @for(var o = 0; o < @Model.Options.Count; o++)
+                                                        {
+                                                            @if (@Model.Options[o].Code == "mechanism"){
+                                                                @for(var v = 0; v < @Model.Options[o].Values.Count; v++)
+                                                                    {
+                                                                    @if (@Model.Options[o].Values[v].Active == true){
+                                                                        @Model.Options[o].Values[v].Name
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        ARMS:
+                                                    </td>
+
+                                                    <td>
+                                                        @for(var o = 0; o < @Model.Options.Count; o++)
+                                                        {
+                                                            @if (@Model.Options[o].Code == "arm"){
+                                                                @for(var v = 0; v < @Model.Options[o].Values.Count; v++)
+                                                                {
+                                                                    @if (@Model.Options[o].Values[v].Active == true){
+                                                                        @Model.Options[o].Values[v].Name
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        BASE COLOR:
+                                                    </td>
+
+                                                    <td>
+                                                        @for(var o = 0; o < @Model.Options.Count; o++)
+                                                        {
+                                                            @if (@Model.Options[o].Code == "base"){
+                                                                @for(var v = 0; v < @Model.Options[o].Values.Count; v++)
+                                                                {
+                                                                    @if (@Model.Options[o].Values[v].Active == true){
+                                                                        @Model.Options[o].Values[v].Name
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table class="detailed">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <strong>Contact Your Sales Representative</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <li>Ethosource</li>
+                                                            <li>Anjelica Capellupo</li>
+                                                            <li>acapellupo4@gmail.com</li>
+                                                            <li>484-336-3794</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
