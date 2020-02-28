@@ -16,5 +16,6 @@ namespace Api.Model
         public int Price { get; set; }
         public List<string> DefaultLayers { get; set; }
         public List<Option> Options { get; set; }
+        public string print { get; set; }
     }
 }

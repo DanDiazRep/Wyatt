@@ -222,10 +222,12 @@ var productPrice = document.getElementById("productPrice");
 var currentOptionsPDF = null;
 function priceCalculation() {
     console.log("PRE TOTAL PRICE", dataDB)
+    
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
                 currentOptionPrice[nOptions] = dataDB.Options[nOptions].Values[nValues].Price;
+                console.log("AT FIRST TIME", currentOptionPrice[nOptions], dataDB.Options[nOptions].Values[nValues].Price)
             }
         }
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
@@ -235,23 +237,40 @@ function priceCalculation() {
         
         totalPrice += currentOptionPrice[nOptions];
         productPrice.textContent = "$ " + totalPrice + ".00";
-        console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice[nOptions])
+        console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice)
     }
     
 }
 priceCalculation();
 
 function makeMyPDF() {
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    var theUrl = "http://localhost:62027/pdf";
-    xmlhttp.open("POST", theUrl);
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            window.open("http://localhost:62027/" + xmlhttp.responseText, "_blank")
-        }
-    };
-    xmlhttp.send(JSON.stringify(dataDB));
+    $.LoadingOverlay("show");
+    var cameraq = scene.activeCamera.clone();
+    cameraq.setPosition(new BABYLON.Vector3(52, 900, 1750));
+    scene.activeCamera = cameraq;
+
+    setTimeout(function () {
+        
+        BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
+            dataDB.print = data;
+            dataDB.totalPrice = totalPrice;
+            
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+            var theUrl = "http://localhost:62027/pdf";
+            xmlhttp.open("POST", theUrl);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    $.LoadingOverlay("hide");
+                    window.open("http://localhost:62027/" + xmlhttp.responseText, "_blank")
+                    window.location.reload();;
+                }
+            };
+            xmlhttp.send(JSON.stringify(dataDB));
+        })
+    }, 500)
+    
+   /**/
 }
 
 
