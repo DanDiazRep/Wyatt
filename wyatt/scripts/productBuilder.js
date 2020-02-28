@@ -1,7 +1,27 @@
 ﻿
 //GET DATA
-var dataDB = getFreeride;
-console.log(dataDB);
+
+var url = new URL(window.location.href);
+var model = url.searchParams.get("model");
+var dataDB;
+
+switch (model) {
+    case "Roswell":
+        dataDB = getRoswell;
+        break;
+    case "Tether":
+        dataDB = getTether;
+        break;
+    case "LAMIA":
+        dataDB = getLamia;
+        break;
+    case "G6":
+        dataDB = getG6;
+        break;
+    case "Freeride":
+        dataDB = getFreeride;
+        break;
+}
 
 //Menu building variables
 var canvas = document.getElementById('wyattCanvas');
