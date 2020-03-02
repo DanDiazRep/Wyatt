@@ -2552,13 +2552,13 @@ var getG6 = {
               Layer: "Config1",
               MaterialFile: null,
               Color: null,
-              Visibility: true
+              Visibility: false
             },
             {
               Layer: "Config2",
               MaterialFile: null,
               Color: null,
-              Visibility: false
+              Visibility: true
             }
           ]
         },
@@ -2572,13 +2572,13 @@ var getG6 = {
               Layer: "Config1",
               MaterialFile: null,
               Color: null,
-              Visibility: false
+              Visibility: true
             },
             {
               Layer: "Config2",
               MaterialFile: null,
               Color: null,
-              Visibility: true
+              Visibility: false
             }
           ]
         }
@@ -3016,6 +3016,12 @@ var getRoswell = {
               MaterialFile: null,
               Color: "#000",
               Visibility: true
+            },
+            {
+                Layer: "Headrest",
+                MaterialFile: null,
+                Color: "#101000",
+                Visibility: false
             }
           ]
         },
@@ -3036,6 +3042,12 @@ var getRoswell = {
               MaterialFile: null,
               Color: null,
               Visibility: true
+            },
+            {
+                Layer: "Headrest",
+                MaterialFile: null,
+                Color: "#101000",
+                Visibility: false
             }
           ]
         },
@@ -3056,6 +3068,12 @@ var getRoswell = {
               MaterialFile: null,
               Color: "#000",
               Visibility: true
+            },
+            {
+                Layer: "Headrest",
+                MaterialFile: null,
+                Color: "#101000",
+                Visibility: false
             }
           ]
         },
@@ -3077,6 +3095,12 @@ var getRoswell = {
               MaterialFile: null,
               Color: "#101000",
               Visibility: true
+            },
+            {
+                Layer: "Headrest",
+                MaterialFile: null,
+                Color: "#101000",
+                Visibility: true
             }
           ]
         },
@@ -3098,6 +3122,12 @@ var getRoswell = {
               MaterialFile: null,
               Color: "#1010FF",
               Visibility: true
+            },
+            {
+                Layer: "Headrest",
+                MaterialFile: null,
+                Color: "#101000",
+                Visibility: true
             }
           ]
         }

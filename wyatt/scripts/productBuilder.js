@@ -1,6 +1,6 @@
 ﻿
 //GET DATA
-var dataDB = getFreeride;
+var dataDB = getRoswell;
 console.log(dataDB);
 
 //Menu building variables
