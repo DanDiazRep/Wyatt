@@ -14,6 +14,7 @@ namespace Api.Model
         public string MedFile { get; set; }
         public string HighFile { get; set; }
         public int Price { get; set; }
+        public int TotalPrice { get; set; }
         public List<string> DefaultLayers { get; set; }
         public List<Option> Options { get; set; }
         public string print { get; set; }
