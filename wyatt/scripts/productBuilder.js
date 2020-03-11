@@ -1,8 +1,4 @@
 ﻿
-//GET DATA
-var dataDB = getRoswell;
-console.log(dataDB);
-
 //Menu building variables
 var canvas = document.getElementById('wyattCanvas');
 var container = document.getElementById('wyattContainer');
@@ -37,7 +33,7 @@ var createScene = function () {
     // Model loader
     BABYLON.GLTFFileLoader.IncrementalLoading = false;
     baseUrl = "/assets/models/";
-    lowFile = dataDB.HighFile;
+    lowFile = dataDB.LowFile;
     BABYLON.SceneLoader.ImportMesh("", baseUrl, lowFile, scene, function (syncMesh) {
 
 
@@ -93,7 +89,6 @@ var createScene = function () {
             }
             if (dataDB.HighFile) {
                 asyncDownload(dataDB.HighFile);
-                //console.log("high");
             }
         }
         //retrieveFromUser();
@@ -101,12 +96,18 @@ var createScene = function () {
         //On progress function
 
         if (evt.lengthComputable) {
-            console.log("Loading, please wait..." + (evt.loaded * 100 / evt.total).toFixed() + "%");
+            var percentage = (evt.loaded * 100 / evt.total).toFixed();
+                console.log("Loading, please wait..." + percentage + "%");
+                $(".progress-bar").css("width", percentage + "%");
+                $(".progress-bar").text(percentage + "%");
+    if (percentage == 100) 
+        $("#LoadingScreen").fadeOut(2000);
+    
         }
         else {
 
             dlCount = evt.loaded / (1024 * 1024);
-            console.log("Loading, please wait..." + Math.floor(dlCount * 100.0) / 100.0 + " MB already loaded.");
+            //console.log("Loading, please wait..." + Math.floor(dlCount * 100.0) / 100.0 + " MB already loaded.");
         }
 
 
@@ -156,9 +157,9 @@ function asyncDownload(lod) {
                 }, false));
 
                 //More & more bump
-                if (asyncResult[i].material && asyncResult[i].material.bumpTexture) {
-                    asyncResult[i].material.bumpTexture.level = 1.5;
-                }
+               // if (asyncResult[i].material && asyncResult[i].material.bumpTexture) {
+                //    asyncResult[i].material.bumpTexture.level = 1.5;
+                //}
             }
 
 
@@ -166,7 +167,8 @@ function asyncDownload(lod) {
         //select the options here
     ]).then(() => {
         for (var i = 1; i < currentMesh.length; i++) {
-            asyncMesh[i]._material = currentMesh[i]._material;
+            if (currentMesh[i].name == "Seat" || (currentMesh[i].name == "Base" && !dataDB.Name.includes("Stool")))
+                asyncMesh[i]._material = currentMesh[i]._material;
             asyncMesh[i].isVisible = currentMesh[i].isVisible;
             currentMesh[i].dispose();
         }
@@ -201,13 +203,13 @@ var currentOptionPrice = Array(dataDB.Options.length);
 var productPrice = document.getElementById("productPrice");
 var currentOptionsPDF = null;
 function priceCalculation() {
-    console.log("PRE TOTAL PRICE", dataDB)
+    //console.log("PRE TOTAL PRICE", dataDB)
     
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
                 currentOptionPrice[nOptions] = dataDB.Options[nOptions].Values[nValues].Price;
-                console.log("AT FIRST TIME", currentOptionPrice[nOptions], dataDB.Options[nOptions].Values[nValues].Price)
+                //console.log("AT FIRST TIME", currentOptionPrice[nOptions], dataDB.Options[nOptions].Values[nValues].Price)
             }
         }
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
@@ -217,40 +219,70 @@ function priceCalculation() {
         
         totalPrice += currentOptionPrice[nOptions];
         productPrice.textContent = "$ " + totalPrice + ".00";
-        console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice)
+        //console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice)
     }
     
 }
 priceCalculation();
 
 function makeMyPDF() {
-    $.LoadingOverlay("show");
+    //$.LoadingOverlay("show");
     var cameraq = scene.activeCamera.clone();
-    cameraq.setPosition(new BABYLON.Vector3(52, 900, 1750));
+    cameraq.setPosition(new BABYLON.Vector3(Math.PI / 3, 7 * Math.PI / 16, 2600));
+    var initialCamera = scene.activeCamera;
     scene.activeCamera = cameraq;
 
     setTimeout(function () {
-        
+
         BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
             dataDB.print = data;
             dataDB.totalPrice = totalPrice;
-            
-            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-            var theUrl = "http://localhost:62027/pdf";
-            xmlhttp.open("POST", theUrl);
-            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+            var theUrl = "http://wyattapi.servexusinc.com/pdf";
+            xmlhttp.open("POST", theUrl, true);
+            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");  
+            xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");    
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                     $.LoadingOverlay("hide");
-                    window.open("http://localhost:62027/" + xmlhttp.responseText, "_blank")
-                    window.location.reload();;
+                    window.open("http://wyattapi.servexusinc.com/pdf" + xmlhttp.responseText, "_blank")
+                    //window.location.reload();;
+                }
+                if (xmlhttp.readyState === 500) {
+                    $.LoadingOverlay("hide");                    
                 }
             };
             xmlhttp.send(JSON.stringify(dataDB));
+
         })
-    }, 500)
-    
+    }, 500);
+
+    scene.activeCamera = initialCamera;
    /**/
+}
+
+function takePhoto() {
+
+    //A portview resize is required to set a fixed image render. Despite the current viewport size.
+    vPortHeight = engine._gl.drawingBufferHeight;
+    vPortWidth = engine._gl.drawingBufferWidth;
+    engine.setSize(1000, 1600);
+
+    scene.render();
+    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: canvas.height, width: canvas.width }, function (data) {
+
+        //localStorage.setItem('cameraFrontImage', data);
+        var link = document.createElement('a');
+        link.download = dataDB.Name + '.png';
+        link.href = data;
+        link.click();
+
+    });
+
+    engine.setSize(vPortWidth, vPortHeight);
+
+
 }
 
 
@@ -262,26 +294,24 @@ var $accordion = $("<div>", { "class": "accordion", "id": "wyattAccordion" });
 $("#optionsMenu").append($accordion);
 
 //Build accordions as many features are in the model
-console.log(dataDB)
+//console.log(dataDB)
 for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {  
 
     var $card = $("<div>", { "class": "card" });
     $accordion.append($card);
     var cardName = dataDB.Options[nOptions].Code;
-    //var $divider = $("</br>");
-    //$accordion.append($divider);
+
     var $cardHeader = $("<div>", { "class": "class-header", "id": cardName + "Header" });
     $card.append($cardHeader);
-    var $mb = $("<h2>", { "class": "mb-0" });
-    $cardHeader.append($mb);
 
-    var $cardButton = $("<button>", {
+
+    var $cardButton = $("<div>", {
         "class": "btn btn-link", 'type': "button",
         "data-toggle": "collapse", "data-target": "#" + cardName,
         "aria-expanded": "true", "aria-controls": cardName, "text": cardName,
         "id": cardName + "Name"
     });
-    $mb.append($cardButton);
+    $cardHeader.append($cardButton);
     
 
     var $accordionInfoContainer = $("<div>", {
@@ -384,7 +414,7 @@ function materialStructureBuilding(nOptions) {
 }
 
 function materialCollectionCardBuildingAndEdition(selection) {
-    console.log("MATERIAL COLLECTIONS", selection)
+    //console.log("MATERIAL COLLECTIONS", selection)
     var res = selection.split(",");
     var nOptions = res[0];
     var gradeSelection = res[1];
@@ -535,7 +565,7 @@ function collectionSet(collectionSelected) {
     var Materials = listOfMaterials(collection);
     $(".pagination").empty();
     $("#imagesContainer").empty();
-    console.log("MATERIAL LOADING", collection)
+    //console.log("MATERIAL LOADING", collection)
     for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
         if (Materials.Content[nMaterials].Name) {
             var $materialItem = $("<div>", {
@@ -626,10 +656,6 @@ function cardsResponseOnSelection() {
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile != null) {
                                 doMaterialChange = true;
 
-                                console.log("Apply a material change to the layer" +
-                                    dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer +
-                                    " using " + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + " option selected " + feature);
-
                             }
                         }
                             
@@ -648,22 +674,40 @@ function cardsResponseOnSelection() {
                                 loopOn = true;
                             }
                         }
-                        
                         for (var nMeshes = 0; nMeshes < currentMesh.length; nMeshes++) {
                            
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes].name) {
                                 //change the material
                                 if (doMaterialChange) {
                                     var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
-                                    console.log("MATERIAL CHANGE", dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, path + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer + "_Base_Color" + ".png")
+                                    //console.log("MATERIAL CHANGE", dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, path + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer + "_Base_Color" + ".png")
                                     currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
-                                    currentMesh[nMeshes]._material._roughnessTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Roughness" + ".png", scene);
+                                    //currentMesh[nMeshes]._material._roughnessTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Roughness" + ".png", scene);
+
+
+
+                                    if (dataDB.Options[nOptions].Values[nValues].Name.includes("Nylon") && currentMesh[nMeshes].material.name == "Base") {
+                                        currentMesh[nMeshes]._material._metallicTexture = null;
+                                        currentMesh[nMeshes]._material.roughness = 1;
+                                        currentMesh[nMeshes]._material.metallic = 0;
+                                        currentMesh[nMeshes]._material._disableBumpMap = true;
+                                        //console.log("Nylon");
+                                    }
+                                    if (dataDB.Options[nOptions].Values[nValues].Name.includes("Aluminum") && currentMesh[nMeshes].material.name == "Base") {
+                                        currentMesh[nMeshes]._material._metallicTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Metallic" + ".png", scene);
+
+                                        currentMesh[nMeshes]._material.roughness = 0.1;
+                                        currentMesh[nMeshes]._material.metallic = 1;
+
+                                        currentMesh[nMeshes]._material._metallicTexture.vAng = -Math.PI;
+                                        currentMesh[nMeshes]._material._metallicTexture.wAng = -Math.PI;
+
+                                        currentMesh[nMeshes]._material._disableBumpMap = true;
+                                    }                                    
+
 
                                     currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
                                     currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
-
-                                    currentMesh[nMeshes]._material._roughnessTexture.vAng = -Math.PI;
-                                    currentMesh[nMeshes]._material._roughnessTexture.wAng = -Math.PI;
 
                                 }     
                                 currentMesh[nMeshes].isVisible = dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility;
@@ -673,14 +717,15 @@ function cardsResponseOnSelection() {
                                 if (loopOn) {
                                     if (highBackOn && (currentMesh[nMeshes].name.includes("BackHolder1") || currentMesh[nMeshes].name.includes("Arms4"))) {
                                         currentMesh[nMeshes].isVisible = false;
-                                        console.log(currentMesh[nMeshes].name);
                                     }
                                     if (!highBackOn && (currentMesh[nMeshes].name == "BackHolder2" || currentMesh[nMeshes].name == "Arms5")) {
                                         currentMesh[nMeshes].isVisible = false;
                                     }
+                                    if (!highBackOn && (currentMesh[nMeshes].name == "Arms4")) {
+                                        currentMesh[nMeshes].isVisible = true;
+                                    }
 
                                 }
-                                console.log("loopOn: " + loopOn + " highBackOn: " + highBackOn);
                                 
                             }
                         }

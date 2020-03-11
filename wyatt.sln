@@ -23,9 +23,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "wyatt", "wyatt\", "{821D5D6
 		VWDPort = "57199"
 		SlnRelativePath = "wyatt\"
 		DefaultWebSiteLanguage = "Visual C#"
+		StartServerOnDebug = "true"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{E734E898-9F71-448A-A5DB-56A101B96B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{E734E898-9F71-448A-A5DB-56A101B96B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +40,8 @@ Global
 		{821D5D6F-6A2C-4BEE-ABDC-48AA827DD859}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{E734E898-9F71-448A-A5DB-56A101B96B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E734E898-9F71-448A-A5DB-56A101B96B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

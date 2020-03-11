@@ -122,8 +122,6 @@ var Grade1_IOU =
 
         ]
     };
-
-
 var Grade1_Circus_Boy_Plastics =
     {
         "Name": "Circus Boy Plastics",
@@ -202,7 +200,6 @@ var Grade1_Circus_Boy_Plastics =
             } 
         ]
 };
-
 var Grade1_Circus =
 {
     "Name": "Circus Boy Plastics",
@@ -251,8 +248,6 @@ var Grade1_Circus =
         }
     ]
 }
-
-
 
 
 var GradeV_Vinyl =
@@ -376,8 +371,6 @@ var Grade2_Foundation_10 =
             } 
         ]
     };
-
-
 var Grade2_Key_Largo =
     {
         "Name": "Key Largo",
@@ -454,7 +447,6 @@ var Grade2_Key_Largo =
             }
         ]
 };
-
 var Grade2_Patio =
 {
     "Name": "Patio",
@@ -538,6 +530,7 @@ var Grade2_Patio =
     ]
 };
 
+
 var Grade3_Habersash =
 {
     "Name": "Habersash",
@@ -617,7 +610,6 @@ var Grade3_Habersash =
 
     ]
 };
-
 var Grade3_Echo =
 {
     "Name": "Habersash",
@@ -697,7 +689,6 @@ var Grade3_Echo =
 
     ]
 };
-
 var Grade3_Cosmopolitan =
 {
     "Name": "Cosmopolitan",
@@ -778,6 +769,20 @@ var Grade3_Cosmopolitan =
     ]
 };
 
+var Empty_Grade =
+{
+    "Name": "TBD",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "TBD",
+            "Code": "0000",
+            "Active": true
+        }
+
+    ]
+};
+
 function listOfMaterials(collection) {
     var objCollection;
     switch (collection) {
@@ -815,7 +820,10 @@ function listOfMaterials(collection) {
         case "Cosmopolitan":
             objCollection = Grade3_Cosmopolitan;
             break;
-
+        //GRADE 4-5
+        case "TBD":
+            objCollection = Empty_Grade;
+            break;
 
 
         default:
