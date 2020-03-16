@@ -97,1267 +97,7 @@ var allModels = [
     DefaultLayers: null
   }
 ];
-var getG6 = {
-  Id: 1,
-  Code: "g6",
-  Name: "G6",
-  PartNumber: "711BMG",
-  LowFile: "g6-low.glb",
-  MedFile: null,
-  HighFile: "g6-high.glb",
-  Price: 449,
-  ImgSrc: "assets/layout/g6.png",
-  DefaultLayers: [
-    "Back1",
-    "Casters1",
-    "Seat1",
-    "Config1",
-    "Arms1",
-    "Seat1Holder"
-  ],
-  Layers: [
-    {
-      Id: 11,
-      Layer: "Arms1",
-      Default: false
-    },
-    {
-      Id: 12,
-      Layer: "Arms2",
-      Default: false
-    },
-    {
-      Id: 13,
-      Layer: "Back1",
-      Default: true
-    },
-    {
-      Id: 14,
-      Layer: "Back2",
-      Default: false
-    },
-    {
-      Id: 15,
-      Layer: "Casters1",
-      Default: true
-    },
-    {
-      Id: 16,
-      Layer: "Config1",
-      Default: true
-    },
-    {
-      Id: 17,
-      Layer: "Config2",
-      Default: false
-    },
-    {
-      Id: 18,
-      Layer: "Seat1",
-      Default: true
-    },
-    {
-      Id: 19,
-      Layer: "Seat2",
-      Default: false
-    },
-    {
-      Id: 20,
-      Layer: "Arms005",
-      Default: false
-    },
-    {
-      Id: 21,
-      Layer: "Arms",
-      Default: false
-    },
-    {
-      Id: 22,
-      Layer: "Circle",
-      Default: false
-    },
-    {
-      Id: 23,
-      Layer: "Seat1Holder",
-      Default: false
-    },
-    {
-      Id: 24,
-      Layer: "Seat2Holder",
-      Default: false
-    }
-  ],
-  Options: [
-    {
-      Id: 7,
-      Code: "base",
-      Name: "Base",
-      Description: "Pick your Base",
-      Type: "M",
-      RelatedLayers: [
-        {
-          Id: 1,
-          Layer: "Arms1"
-        },
-        {
-          Id: 2,
-          Layer: "Arms2"
-        },
-        {
-          Id: 3,
-          Layer: "Back1"
-        },
-        {
-          Id: 4,
-          Layer: "Back2"
-        },
-        {
-          Id: 5,
-          Layer: "Casters1"
-        },
-        {
-          Id: 6,
-          Layer: "Config1"
-        },
-        {
-          Id: 7,
-          Layer: "Config2"
-        },
-        {
-          Id: 8,
-          Layer: "Seat1"
-        },
-        {
-          Id: 9,
-          Layer: "Seat2"
-        },
-        {
-          Id: 10,
-          Layer: "Arms"
-        },
-        {
-          Id: 11,
-          Layer: "Arms005"
-        },
-        {
-          Id: 12,
-          Layer: "Circle"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 5,
-          Code: 1,
-          Name: "Nylon Base",
-          Description: null,
-          Active: true,
-          PartNumber: "BN",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Config1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 23,
-              Layer: "Casters1",
-              MaterialFile: "/g6/base/Casters1",
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Back1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Seat1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 6,
-          Code: 2,
-          Name: "Aluminum Base",
-          Description: null,
-          Active: false,
-          PartNumber: "BA",
-          Price: 60,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Config1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 23,
-              Layer: "Casters1",
-              MaterialFile: "/g6/base/Casters1",
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Back1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Seat1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 6,
-          Code: 2,
-          Name: "Stool Kit",
-          Description: null,
-          Active: false,
-          PartNumber: "SK",
-          Price: 200,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0.18,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Config2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 23,
-              Layer: "Casters1",
-              MaterialFile: "/g6/base/Casters1",
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 1,
-              Layer: "Circle",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Arms005",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              isArm: true
-            },
-            {
-              Id: 24,
-              Layer: "Back2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 24,
-              Layer: "Seat2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, // BASE AND STOOL
-    {
-      Id: 6,
-      Code: "mechanism",
-      Name: "Mechanism",
-      Description: "Pick your Mechanism",
-      Type: "F",
-      RelatedLayers: [{}],
-      Moves: null,
-      Values: [
-        {
-          Id: 5,
-          Code: 1,
-          Name: "3 Position Tilting Locking Synchro Mechanism with Seat Slider",
-          Description: null,
-          Active: true,
-          PartNumber: "M3",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        },
-        {
-          Id: 6,
-          Code: 2,
-          Name: "5 Position Tilting Locking Synchro Mechanism with Seat Slider",
-          Description: null,
-          Active: false,
-          PartNumber: "M5",
-          Price: 55,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        },
-        {
-          Id: 6,
-          Code: 2,
-          Name: "Stool Kit Mechanism",
-          Description: null,
-          Active: false,
-          PartNumber: "SK",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        }
-      ]
-    }, //MECHANISM
-    {
-      Id: 5,
-      Code: "arm",
-      Name: "Arm",
-      Description: "Pick Your Arm Style",
-      Type: "F",
-      RelatedLayers: [
-        {
-          Id: 5,
-          Layer: "Arms1"
-        },
-        {
-          Id: 5,
-          Layer: "Arms005"
-        },
-        {
-          Id: 5,
-          Layer: "Arms"
-        },
-        {
-          Id: 5,
-          Layer: "Arms2"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 11,
-          Code: 1,
-          Name: "Armless option",
-          Description: null,
-          Active: false,
-          PartNumber: "A000",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        },
-        {
-          Id: 12,
-          Code: 2,
-          Name: "Height adjustable arms",
-          Description: null,
-          Active: true,
-          PartNumber: "A1DB",
-          Price: 25,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              usedWithStool: false
-            },
-            {
-              Id: 13,
-              Layer: "Arms005",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              usedWithStool: true
-            }
-          ]
-        },
-        {
-          Id: 13,
-          Code: 3,
-          Name: "3D adjsutable arms (black)",
-          Description: null,
-          Active: false,
-          PartNumber: "51A",
-          Price: 71,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              usedWithStool: false
-            },
-            {
-              Id: 13,
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true,
-              usedWithStool: true
-            }
-          ]
-        }
-      ]
-    }, //ARMS
-    {
-      Id: 4,
-      Code: "grade",
-      Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
-      Type: "G",
-      RelatedLayers: [
-        {
-          Id: 8,
-          Layer: "Seat1"
-        },
-        {
-          Id: 8,
-          Layer: "Seat2"
-        },
-        {
-          Id: 8,
-          Layer: "Seat1Holder"
-        },
-        {
-          Id: 8,
-          Layer: "Seat2Holder"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 17,
-          Code: "grade",
-          Name: "Grade 1",
-          Description: null,
-          Active: true,
-          PartNumber: "1",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Link",
-              Active: true
-            },
-            {
-              Name: "I.O.U",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat1"
-            }
-          ]
-        },
-        {
-          Id: 18,
-          Code: "grade",
-          Name: "Grade V",
-          Description: null,
-          Active: false,
-          PartNumber: "V",
-          Price: 41,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Vinyl",
-              Active: true
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat1"
-            }
-          ]
-        },
-        {
-          Id: 19,
-          Code: "grade",
-          Name: "Grade 2",
-          Description: null,
-          Active: false,
-          PartNumber: "2",
-          Price: 66,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Foundation 10",
-              Active: true
-            },
-            {
-              Name: "Key Largo",
-              Active: false
-            },
-            {
-              Name: "Patio",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat1"
-            }
-          ]
-        },
-        {
-          Id: 20,
-          Code: "grade",
-          Name: "Grade 3",
-          Description: null,
-          Active: false,
-          PartNumber: "3",
-          Price: 109,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Habersash",
-              Active: true
-            },
-            {
-              Name: "Echo",
-              Active: false
-            },
-            {
-              Name: "Cosmopolitan",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat1"
-            },
-            {
-              Id: 8,
-              Layer: "Seat2"
-            },
-            {
-              Id: 8,
-              Layer: "Seat1Holder"
-            },
-            {
-              Id: 8,
-              Layer: "Seat2Holder"
-            }
-          ]
-        }
-      ],
-      Layers: [
-        {
-          Id: 510,
-          Layer: "Seat1"
-        },
-        {
-          Id: 446,
-          Layer: "Seat2"
-        },
-        {
-          Id: 422,
-          Layer: "Back1"
-        },
-        {
-          Id: 518,
-          Layer: "Back2"
-        },
-        {
-          Id: 8,
-          Layer: "Seat1Holder"
-        },
-        {
-          Id: 8,
-          Layer: "Seat2Holder"
-        }
-      ]
-    } //GRADES AND FABRICS
-  ]
-};
 
-var getLamia = {
-  Id: 1,
-  Code: "lamia",
-  Name: "La Mia",
-  PartNumber: "LM",
-  LowFile: "lamia-low.glb",
-  MedFile: null,
-  HighFile: "lamia-high.glb",
-  Price: 225,
-  ImgSrc: "assets/layout/lamia.png",
-  DefaultLayers: ["Accesories001", "Back001", "Seat011_Retopo"],
-  Options: [
-    {
-      Id: 1,
-      Code: "grade",
-      Name: "Seat Color",
-      Description: "Pick Your Seat Color",
-      Type: "G",
-      RelatedLayers: [
-        {
-          Id: 8,
-          Layer: "Seat011_Retopo"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 17,
-          Code: "grade",
-          Name: "Grade 1",
-          Description: null,
-          Active: true,
-          PartNumber: "1",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Circus Boy Plastics",
-              Active: true
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat011_Retopo"
-            }
-          ]
-        }
-      ],
-      Layers: [
-        {
-          Id: 510,
-          Layer: "Seat011_Retopo"
-        }
-      ]
-    }, //Seat Color
-    {
-      Id: 1,
-      Code: "grade",
-      Name: "Back Color",
-      Description: "Pick Your Back Color",
-      Type: "G",
-      RelatedLayers: [
-        {
-          Id: 8,
-          Layer: "Back001"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 17,
-          Code: "grade",
-          Name: "Grade 1",
-          Description: null,
-          Active: true,
-          PartNumber: null,
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Circus Boy Plastics",
-              Active: true
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Back001"
-            }
-          ]
-        }
-      ],
-      Layers: [
-        {
-          Id: 510,
-          Layer: "Back001"
-        }
-      ]
-    } // Back Color
-  ]
-};
-
-var getRoswell = {
-  Id: 1,
-  Code: "g6",
-  Name: "Roswell",
-  PartNumber: "711BMG",
-  LowFile: "roswell-low.glb",
-  MedFile: null,
-  HighFile: "roswell-high.glb",
-  Price: 577,
-  ImgSrc: "assets/layout/g6.png",
-  DefaultLayers: [
-    "Arms",
-    "Back",
-    "Backholder1",
-    "BackHolder2",
-    "Base",
-    "BaseBars",
-    "Casters",
-    "Config",
-    "Seat",
-    "Seat_bottom_plastic002"
-  ],
-  Options: [
-    {
-      Id: 7,
-      Code: "back",
-      Name: "Back",
-      Description: "Pick your Back",
-      Type: "M",
-      RelatedLayers: [
-        {
-          Id: 1,
-          Layer: "Back"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 5,
-          Code: 1,
-          Name: "Black Back with Grey Outer Frame and Grey Mesh",
-          Description: null,
-          Active: true,
-          PartNumber: "BGG",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Back",
-              MaterialFile: "assests/materials/g6/Config1",
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 5,
-          Code: 1,
-          Name: "Black Back with Grey Outer Frame and Grey Mesh",
-          Description: null,
-          Active: false,
-          PartNumber: "WGG",
-          Price: 25,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Back",
-              MaterialFile: "assests/materials/g6/Config1",
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 5,
-          Code: 1,
-          Name: "Black Back with Black Outer Frame and Grey Fabric",
-          Description: null,
-          Active: false,
-          PartNumber: "BBGF",
-          Price: 50,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Back",
-              MaterialFile: "assests/materials/g6/Config1",
-              Color: null,
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, // BACK
-    {
-      Id: 7,
-      Code: "base",
-      Name: "Base",
-      Description: "Pick your Base",
-      Type: "F",
-      RelatedLayers: [
-        {
-          Id: 1,
-          Layer: "Arms1"
-        },
-        {
-          Id: 2,
-          Layer: "Arms2"
-        },
-        {
-          Id: 3,
-          Layer: "Back1"
-        },
-        {
-          Id: 4,
-          Layer: "Back2"
-        },
-        {
-          Id: 5,
-          Layer: "Casters1"
-        },
-        {
-          Id: 6,
-          Layer: "Config1"
-        },
-        {
-          Id: 7,
-          Layer: "Config2"
-        },
-        {
-          Id: 8,
-          Layer: "Seat1"
-        },
-        {
-          Id: 9,
-          Layer: "Seat2"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 5,
-          Code: 1,
-          Name: "Nylon Base",
-          Description: null,
-          Active: true,
-          PartNumber: "BN",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Base",
-              MaterialFile: "assests/materials/g6/Config1",
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 23,
-              Layer: "BaseBars",
-              MaterialFile: "assests/materials/g6/Casters1",
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 6,
-          Code: 2,
-          Name: "Aluminum Base",
-          Description: null,
-          Active: false,
-          PartNumber: "BA",
-          Price: 60,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: true,
-          YDistance: 0,
-          Layers: [
-            {
-              Id: 1,
-              Layer: "Base",
-              MaterialFile: "assests/materials/g6/Config1",
-              Color: null,
-              Visibility: true
-            },
-            {
-              Id: 23,
-              Layer: "BaseBars",
-              MaterialFile: "assests/materials/g6/Casters1",
-              Color: null,
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, // BASE
-    {
-      Id: 6,
-      Code: "mechanism",
-      Name: "Mechanism",
-      Description: "Pick your Mechanism",
-      Type: "F",
-      RelatedLayers: [{}],
-      Moves: null,
-      Values: [
-        {
-          Id: 5,
-          Code: 1,
-          Name: "4 Position Tilting Locking Synchro Mechanism with Seat Slider",
-          Description: null,
-          Active: true,
-          PartNumber: "M3",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        }
-      ]
-    }, //MECHANISM
-    {
-      Id: 5,
-      Code: "arm",
-      Name: "Arm",
-      Description: "Pick Your Arm Style",
-      Type: "F",
-      RelatedLayers: [
-        {
-          Id: 5,
-          Layer: "Arms"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 11,
-          Code: 1,
-          Name: "Armless option",
-          Description: null,
-          Active: false,
-          PartNumber: "A000",
-          Price: -71,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: []
-        },
-        {
-          Id: 12,
-          Code: 2,
-          Name: "Height Adjustable Arm (Black)",
-          Description: null,
-          Active: false,
-          PartNumber: "A1DB",
-          Price: -46,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 12,
-          Code: 2,
-          Name: "3D Adjustable Arms (Black)",
-          Description: null,
-          Active: true,
-          PartNumber: "A3DB",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 12,
-          Code: 2,
-          Name: "Height adjustable Arm (White)",
-          Description: null,
-          Active: false,
-          PartNumber: "A1DW",
-          Price: 30,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Id: 12,
-          Code: 2,
-          Name: "3D Adjustable Arms (White)",
-          Description: null,
-          Active: false,
-          PartNumber: "A3DW",
-          Price: 76,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Layers: [
-            {
-              Id: 13,
-              Layer: "Arms",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, //ARMS
-    {
-      Id: 4,
-      Code: "grade",
-      Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
-      Type: "G",
-      RelatedLayers: [
-        {
-          Id: 8,
-          Layer: "Seat"
-        }
-      ],
-      Moves: null,
-      Values: [
-        {
-          Id: 17,
-          Code: "grade",
-          Name: "Grade 1",
-          Description: null,
-          Active: true,
-          PartNumber: "1",
-          Price: 0,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Link",
-              Active: true
-            },
-            {
-              Name: "I.O.U",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat"
-            }
-          ]
-        },
-        {
-          Id: 18,
-          Code: "grade",
-          Name: "Grade V",
-          Description: null,
-          Active: false,
-          PartNumber: "V",
-          Price: 41,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Vinyl",
-              Active: true
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat"
-            }
-          ]
-        },
-        {
-          Id: 19,
-          Code: "grade",
-          Name: "Grade 2",
-          Description: null,
-          Active: false,
-          PartNumber: "2",
-          Price: 66,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Foundation 10",
-              Active: true
-            },
-            {
-              Name: "Key Largo",
-              Active: false
-            },
-            {
-              Name: "Patio",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat"
-            }
-          ]
-        },
-        {
-          Id: 20,
-          Code: "grade",
-          Name: "Grade 3",
-          Description: null,
-          Active: false,
-          PartNumber: "3",
-          Price: 109,
-          ImgSrc: null,
-          ImgDescription: null,
-          Move: false,
-          Collections: [
-            {
-              Name: "Habersash",
-              Active: true
-            },
-            {
-              Name: "Echo",
-              Active: false
-            },
-            {
-              Name: "Cosmopolitan",
-              Active: false
-            }
-          ],
-          Layers: [
-            {
-              Id: 8,
-              Layer: "Seat"
-            }
-          ]
-        }
-      ],
-      Layers: []
-    } //GRADES AND FABRICS
-  ]
-};
 
 var getFreeride = {
   Code: "freeride",
@@ -1382,9 +122,9 @@ var getFreeride = {
     {
       Code: "back",
       Name: "Back",
-      Description: "Pick your Back",
+      Description: "Back",
       Type: "F",
-      RelatedLayers: ["BackHolder1", "BackHolder2", "Back1", "Back2", "Back3"],
+      RelatedLayers: ["BackHolder1", "BackHolder2", "Back1", "Back2", "Back3","Back4"],
       Values: [
         {
           Name: "Mid-Back Grey Mesh",
@@ -1421,7 +161,25 @@ var getFreeride = {
               MaterialFile: null,
               Color: null,
               Visibility: false
-            }
+              },
+              {
+                  Layer: "Back4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              },
+              {
+                  Layer: "Arms4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: true
+              },
+              {
+                  Layer: "Arms5",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              }
           ]
         },
         {
@@ -1459,7 +217,25 @@ var getFreeride = {
               MaterialFile: null,
               Color: null,
               Visibility: false
-            }
+              },
+              {
+                  Layer: "Back4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: true
+              },
+              {
+                  Layer: "Arms4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: true
+              },
+              {
+                  Layer: "Arms5",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              }
           ]
         },
         {
@@ -1484,7 +260,7 @@ var getFreeride = {
               Layer: "Back1",
               MaterialFile: null,
               Color: null,
-              Visibility: true
+              Visibility: false
             },
             {
               Layer: "Back2",
@@ -1497,7 +273,25 @@ var getFreeride = {
               MaterialFile: null,
               Color: null,
               Visibility: false
-            }
+              },
+              {
+                  Layer: "Back4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: true
+              },
+              {
+                  Layer: "Arms4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: true
+              },
+              {
+                  Layer: "Arms5",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              }
           ]
         },
         {
@@ -1517,7 +311,13 @@ var getFreeride = {
               MaterialFile: null,
               Color: null,
               Visibility: false
-            },
+              },
+              {
+                  Layer: "Back4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              },
             {
               Layer: "Back3",
               MaterialFile: null,
@@ -1555,7 +355,7 @@ var getFreeride = {
     {
       Code: "base",
       Name: "Base",
-      Description: "Pick your Base",
+      Description: "Base",
       Type: "M",
       RelatedLayers: ["Base"],
       Values: [
@@ -1594,7 +394,7 @@ var getFreeride = {
     {
       Code: "mechanism",
       Name: "Mechanism",
-      Description: "Pick your Mechanism",
+      Description: "Mechanism",
       Type: "F",
       RelatedLayers: ["Config1", "Config2"],
       Values: [
@@ -1643,7 +443,7 @@ var getFreeride = {
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms1", "Arms2", "Arms3", "Arms4", "Arms5"],
       Values: [
@@ -1854,7 +654,7 @@ var getFreeride = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -1867,15 +667,11 @@ var getFreeride = {
           Collections: [
             {
                 Name: "Link",
-                Active: true
+                Active: false
             },
             {
                 Name: "I.O.U",
-                Active: false
-            },
-            {
-                Name: "Circus Boy Plastics",
-                Active: false
+                Active: true
             }
           ],
           Layers: [
@@ -1953,7 +749,43 @@ var getFreeride = {
               Layer: "Seat"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -1974,23 +806,24 @@ var getFreerideStool = {
   ImgSrc: "assets/layout/freerideStool.png",
   DefaultLayers: [
     "Back1",
-    "Casters",
-    "Config2",
+    "Casters1",
+    "Config1",
     "Arms2",
     "Seat",
-    "SeatHolder",
+    "SeatHolder001",
     "Base",
     "BackHolder1",
     "Casters",
-    "Stool"
+      "Stool",
+    "Ring"
   ],
   Options: [
     {
       Code: "back",
       Name: "Back",
-      Description: "Pick your Back",
+      Description: "Back",
       Type: "F",
-      RelatedLayers: ["BackHolder1", "BackHolder2", "Back1", "Back2", "Back3"],
+      RelatedLayers: ["BackHolder1", "BackHolder2", "Back1", "Back2", "Back3", "Back4"],
       Values: [
         {
           Name: "Mid-Back Grey Mesh",
@@ -2090,7 +923,7 @@ var getFreerideStool = {
               Layer: "Back1",
               MaterialFile: null,
               Color: null,
-              Visibility: true
+              Visibility: false
             },
             {
               Layer: "Back2",
@@ -2099,11 +932,17 @@ var getFreerideStool = {
               Visibility: false
             },
             {
-              Layer: "Back3",
+              Layer: "Back4",
               MaterialFile: null,
               Color: null,
-              Visibility: false
-            }
+              Visibility: true
+              },
+              {
+                  Layer: "Back3",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              }
           ]
         },
         {
@@ -2123,7 +962,13 @@ var getFreerideStool = {
               MaterialFile: null,
               Color: null,
               Visibility: false
-            },
+              },
+              {
+                  Layer: "Back4",
+                  MaterialFile: null,
+                  Color: null,
+                  Visibility: false
+              },
             {
               Layer: "Back3",
               MaterialFile: null,
@@ -2161,7 +1006,7 @@ var getFreerideStool = {
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms1", "Arms2", "Arms3", "Arms4", "Arms5"],
       Values: [
@@ -2372,7 +1217,7 @@ var getFreerideStool = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -2385,11 +1230,11 @@ var getFreerideStool = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             }
           ],
           Layers: [
@@ -2467,7 +1312,43 @@ var getFreerideStool = {
               Layer: "Seat"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -2501,7 +1382,7 @@ var getG6 = {
     {
       Code: "base",
       Name: "Base",
-      Description: "Pick your Base",
+      Description: "Base",
       Type: "M",
       RelatedLayers: ["Base"],
       Values: [
@@ -2512,8 +1393,8 @@ var getG6 = {
           Price: 0,
           Layers: [
             {
-              Layer: "Casters",
-              MaterialFile: "/g6/base/Casers1",
+              Layer: "Base",
+              MaterialFile: "/g6/base/base",
               Color: null,
               Visibility: true
             }
@@ -2526,8 +1407,8 @@ var getG6 = {
           Price: 60,
           Layers: [
             {
-              Layer: "Casters",
-              MaterialFile: "/g6/base/Casters1",
+              Layer: "Base",
+              MaterialFile: "/g6/base/base",
               Color: null,
               Visibility: true
             }
@@ -2538,7 +1419,7 @@ var getG6 = {
     {
       Code: "mechanism",
       Name: "Mechanism",
-      Description: "Pick your Mechanism",
+      Description: "Mechanism",
       Type: "F",
       RelatedLayers: ["Config1", "Config2"],
       Values: [
@@ -2549,13 +1430,13 @@ var getG6 = {
           Price: 0,
           Layers: [
             {
-              Layer: "Config1",
+              Layer: "Config2",
               MaterialFile: null,
               Color: null,
               Visibility: false
             },
             {
-              Layer: "Config2",
+              Layer: "Config1",
               MaterialFile: null,
               Color: null,
               Visibility: true
@@ -2569,13 +1450,13 @@ var getG6 = {
           Price: 55,
           Layers: [
             {
-              Layer: "Config1",
+              Layer: "Config2",
               MaterialFile: null,
               Color: null,
               Visibility: true
             },
             {
-              Layer: "Config2",
+              Layer: "Config1",
               MaterialFile: null,
               Color: null,
               Visibility: false
@@ -2587,7 +1468,7 @@ var getG6 = {
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms", "Arms1"],
       isHighBack: false,
@@ -2657,7 +1538,7 @@ var getG6 = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -2670,11 +1551,11 @@ var getG6 = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             }
           ],
           Layers: [
@@ -2755,7 +1636,43 @@ var getG6 = {
               Layer: "SeatHolder"
             }
           ]
-        }
+          },
+          {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+          {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -2782,17 +1699,17 @@ var getG6Stool = {
     "Casters",
     "Config1",
     "Back",
-    "BackHolder",
-    ,
+    "BackHolder",    
     "Base",
     "SeatHolder",
-    "Seat"
+    "Seat",
+    "Stool"
   ],
   Options: [
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms1", "Arms2"],
       Values: [
@@ -2861,7 +1778,7 @@ var getG6Stool = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -2874,11 +1791,11 @@ var getG6Stool = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             }
           ],
           Layers: [
@@ -2959,7 +1876,43 @@ var getG6Stool = {
               Layer: "SeatHolder"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -2976,9 +1929,9 @@ var getRoswell = {
   Code: "roswell",
   Name: "Roswell",
   PartNumber: "817",
-  LowFile: "roswell-low.glb",
+  LowFile: "roswell-high.glb",
   MedFile: null,
-  HighFile: "roswell-high.glb",
+  HighFile: null,
   Price: 577,
   ImgSrc: "assets/layout/roswell.png",
   DefaultLayers: [
@@ -2995,7 +1948,7 @@ var getRoswell = {
     {
       Code: "back",
       Name: "Back",
-      Description: "Pick your Back",
+      Description: "Back",
       Type: "F",
       RelatedLayers: ["BackHolder", "Back"],
       Values: [
@@ -3136,7 +2089,7 @@ var getRoswell = {
     {
       Code: "base",
       Name: "Base",
-      Description: "Pick your Base",
+      Description: "Base",
       Type: "M",
       RelatedLayers: ["Base"],
       Values: [
@@ -3173,7 +2126,7 @@ var getRoswell = {
     {
       Code: "mechanism",
       Name: "Mechanism",
-      Description: "Pick your Mechanism",
+      Description: "Mechanism",
       Type: "F",
       RelatedLayers: ["Config"],
       Values: [
@@ -3196,7 +2149,7 @@ var getRoswell = {
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms1", "Arms2"],
       Values: [
@@ -3305,7 +2258,7 @@ var getRoswell = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -3318,11 +2271,11 @@ var getRoswell = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             }
           ],
           Layers: [
@@ -3400,7 +2353,43 @@ var getRoswell = {
               Layer: "Seat"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -3414,9 +2403,9 @@ var getRoswellStool = {
   Code: "roswellStool",
   Name: "Roswell Stool",
   PartNumber: "817",
-  LowFile: "roswellStool-low.glb",
+  LowFile: "roswellStool-high.glb",
   MedFile: null,
-  HighFile: "roswellStool-high.glb",
+  HighFile: null,
   Price: 777,
   ImgSrc: "assets/layout/roswellStool.png",
   DefaultLayers: [
@@ -3433,7 +2422,7 @@ var getRoswellStool = {
     {
       Code: "back",
       Name: "Back",
-      Description: "Pick your Back",
+      Description: "Back",
       Type: "F",
       RelatedLayers: ["BackHolder", "Back"],
       Values: [
@@ -3544,7 +2533,7 @@ var getRoswellStool = {
     {
       Code: "arm",
       Name: "Arm",
-      Description: "Pick Your Arm Style",
+      Description: "Arm Style",
       Type: "F",
       RelatedLayers: ["Arms1", "Arms2"],
       Values: [
@@ -3653,7 +2642,7 @@ var getRoswellStool = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -3666,11 +2655,11 @@ var getRoswellStool = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             }
           ],
           Layers: [
@@ -3748,7 +2737,43 @@ var getRoswellStool = {
               Layer: "Seat"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {
@@ -3762,9 +2787,9 @@ var getLamia = {
   Code: "lamia",
   Name: "La Mia",
   PartNumber: "LM-MS",
-  LowFile: "lamia-low.glb",
+  LowFile: "lamia-high.glb",
   MedFile: null,
-  HighFile: "lamia-high.glb",
+  HighFile: null,
   Price: 225,
   ImgSrc: "assets/layout/lamia.png",
   DefaultLayers: ["General", "Back", "Seat"],
@@ -3772,7 +2797,7 @@ var getLamia = {
     {
       Code: "colorSeat",
       Name: "Seat Color",
-      Description: "Pick Your Back Color",
+      Description: "Back Color",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -3879,7 +2904,7 @@ var getLamia = {
     {
       Code: "colorBack",
       Name: "Back Color",
-      Description: "Pick Your Seat Color",
+      Description: "Seat Color",
       Type: "G",
       RelatedLayers: ["Back"],
       Values: [
@@ -3985,13 +3010,183 @@ var getLamia = {
     } //BACK COLOR
   ]
 };
+var getExtra = {
+    Code: "extra",
+    Name: "Extra",
+    PartNumber: "52-MS-FA-",
+    LowFile: "extra-high.glb",
+    MedFile: null,
+    HighFile: null,
+    Price: 339,
+    ImgSrc: "assets/layout/extra.png",
+    DefaultLayers: ["Back", "Seat", "Plastic"],
+    Options: [
+        {
+            Code: "grade",
+            Name: "Seat Fabric Grade",
+            Description: "Seat Fabric Grade",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 41,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 66,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 109,
+                    Collections: [
+                        {
+                            Name: "Habersash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 109,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 109,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat1"
+                },
+                {
+                    Layer: "Seat2"
+                },
+                {
+                    Layer: "Back1"
+                },
+                {
+                    Layer: "Back2"
+                },
+                {
+                    Layer: "Seat1Holder"
+                },
+                {
+                    Layer: "Seat2Holder"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ]
+};
 var getTether = {
   Code: "tether",
   Name: "Tether Stool",
   PartNumber: "R05",
-  LowFile: "tether-low.glb",
+  LowFile: "tether-high.glb",
   MedFile: null,
-  HighFile: "tether-high.glb",
+  HighFile: null,
   Price: 350,
   ImgSrc: "assets/layout/tether.png",
   DefaultLayers: ["Base", "Seat"],
@@ -3999,7 +3194,7 @@ var getTether = {
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
-      Description: "Pick Your Seat Fabric Grade",
+      Description: "Seat Fabric Grade",
       Type: "G",
       RelatedLayers: ["Seat"],
       Values: [
@@ -4012,11 +3207,11 @@ var getTether = {
           Collections: [
             {
               Name: "Link",
-              Active: true
+              Active: false
             },
             {
               Name: "I.O.U",
-              Active: false
+              Active: true
             },
             {
               Name: "Circus Boy Plastics",
@@ -4098,7 +3293,43 @@ var getTether = {
               Layer: "Seat"
             }
           ]
-        }
+          },
+        {
+              Code: "grade4",
+              Name: "Grade 4",
+              Active: false,
+              PartNumber: "4",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          },
+        {
+              Code: "grade5",
+              Name: "Grade 5",
+              Active: false,
+              PartNumber: "5",
+              Price: 109,
+              Collections: [
+                  {
+                      Name: "TBD",
+                      Active: true
+                  }
+              ],
+              Layers: [
+                  {
+                      Layer: "Seat"
+                  }
+              ]
+          }
       ],
       Layers: [
         {

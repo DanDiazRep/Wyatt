@@ -32,7 +32,7 @@ namespace Api
                       {
                           builder.AllowAnyOrigin()
                                  .AllowAnyHeader()
-                                 .AllowAnyMethod();
+                                 .AllowAnyMethod();                                 
                       });
             });
             services.AddControllers();
@@ -53,10 +53,11 @@ namespace Api
             app.UseStaticFiles();
             app.UseCors("AllowAllHeaders");
 
-            app.UseEndpoints(endpoints =>
+
+            /*app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });*/
         }
     }
 }
