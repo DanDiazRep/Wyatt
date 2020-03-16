@@ -27,10 +27,17 @@ namespace Api.Controllers
             _env = env;
         }
 
-        
+        [HttpGet]
+        [EnableCors("AllowAllHeaders")]
+        public IActionResult Get()
+        {
+            return Ok("ITS WORKING WITH CORS");
+        }
+
+
         [HttpPost]
         [EnableCors("AllowAllHeaders")]
-        public async Task<IActionResult> Get([FromBody] Configurator configurator)
+        public async Task<IActionResult> Post([FromBody] Configurator configurator)
         {
             var options = new ConvertOptions
             {
