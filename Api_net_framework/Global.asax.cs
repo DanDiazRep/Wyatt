@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Api.DependencyInjection;
+using SimpleInjector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +20,13 @@ namespace Api
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //var container = new Container();
+            //container.Register<IPdfInjection, PdfInjection>();
+            //container.Verify();
+
+            //DependencyResolver.SetResolver(new DependencyInjector(container));
+            //GlobalConfiguration.Configuration.DependencyResolver = new DependencyInjector(container);
         }
     }
 }

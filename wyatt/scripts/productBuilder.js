@@ -239,15 +239,14 @@ function makeMyPDF() {
             dataDB.totalPrice = totalPrice;
 
             var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-            var theUrl = "http://wyattapi.servexusinc.com/pdf";
+            var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
             xmlhttp.open("POST", theUrl, true);
-            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");  
-            xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");    
+            //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                     $.LoadingOverlay("hide");
-                    window.open("http://wyattapi.servexusinc.com/pdf" + xmlhttp.responseText, "_blank")
-                    //window.location.reload();;
+                    window.open("http://wyattapi.servexusinc.com/wwwroot/" + xmlhttp.responseText, "_blank")
+                    //window.location.reload();
                 }
                 if (xmlhttp.readyState === 500) {
                     $.LoadingOverlay("hide");                    
