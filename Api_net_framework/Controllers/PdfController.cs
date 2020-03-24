@@ -15,6 +15,9 @@ using Api.DependencyInjection;
 using System.Web;
 using System.Web.Http.Cors;
 using RazorLight;
+using RouteAttribute = System.Web.Http.RouteAttribute;
+using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Api.Controllers
 {
@@ -49,6 +52,24 @@ namespace Api.Controllers
         public string Get()
         {
             return @"WORKING WITH CORS";
+        }
+
+        [Route("api/image")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage UploadImage()
+        {
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            var httpRequest = HttpContext.Current.Request;
+            var postedFile = httpRequest["image"];
+            byte[] bytes = Convert.FromBase64String(postedFile);
+
+            string filename = Guid.NewGuid() + ".png";
+            //var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
+            string filePath = "C:\\Users\\Juan\\Desktop\\"+ filename;
+            File.WriteAllBytes(filePath, bytes);
+
+            string message = "Image Upload Successfully.";
+            return Request.CreateErrorResponse(HttpStatusCode.Created, message);
         }
     }
 }
