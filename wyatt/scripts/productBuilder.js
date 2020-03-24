@@ -225,6 +225,23 @@ function priceCalculation() {
 }
 priceCalculation();
 
+function sendImg(imgToSend, callback) {
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    var theUrl = "http://wyattapi.servexusinc.com/api/image";
+    xmlhttp.open("POST", theUrl, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            console.log("FINISH TRUE CALLING")
+            callback(false, JSON.parse(xmlhttp.responseText).Message)
+        }
+        if (xmlhttp.readyState === 500) {
+            callback(true, null)
+        }
+    };
+    xmlhttp.send(JSON.stringify({data: imgToSend}));
+}
+
 function makeMyPDF() {
     //$.LoadingOverlay("show");
     var cameraq = scene.activeCamera.clone();
@@ -235,25 +252,26 @@ function makeMyPDF() {
     setTimeout(function () {
 
         BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
-            dataDB.print = data;
-            dataDB.totalPrice = totalPrice;
-
-            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-            var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
-            xmlhttp.open("POST", theUrl, true);
-            //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    $.LoadingOverlay("hide");
-                    window.open("http://wyattapi.servexusinc.com/wwwroot/" + xmlhttp.responseText, "_blank")
-                    //window.location.reload();
-                }
-                if (xmlhttp.readyState === 500) {
-                    $.LoadingOverlay("hide");                    
-                }
-            };
-            xmlhttp.send(JSON.stringify(dataDB));
-
+            sendImg(data, function (error, image) {
+                console.log("CALLING PDF")
+                dataDB.print = image;
+                dataDB.totalPrice = totalPrice;
+                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+                var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
+                xmlhttp.open("POST", theUrl, true);
+                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        $.LoadingOverlay("hide");
+                        window.open("http://wyattapi.servexusinc.com/wwwroot/" + xmlhttp.responseText, "_blank")
+                        //window.location.reload();
+                    }
+                    if (xmlhttp.readyState === 500) {
+                        $.LoadingOverlay("hide");
+                    }
+                };
+                xmlhttp.send(JSON.stringify(dataDB));
+            });
         })
     }, 500);
 

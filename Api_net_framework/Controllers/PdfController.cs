@@ -1,32 +1,24 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Hosting;
 using Api.Models;
 using Pechkin;
-using Pechkin.Synchronized;
-using Microsoft.AspNetCore.Hosting;
-using System.Web.Mvc;
-using Api.DependencyInjection;
 using System.Web;
-using System.Web.Http.Cors;
-using RazorLight;
 using RouteAttribute = System.Web.Http.RouteAttribute;
-using System.Threading.Tasks;
-using System.Drawing;
 
 namespace Api.Controllers
 {
-    
+
     public class PdfController : ApiController
     {
 
         // api/pdf
-        public string Post(Configurator configurator)
+        [Route("api/pdf")]
+        [HttpPost]
+        public string CreatePdf(Configurator configurator)
         {
             GlobalConfig options = new GlobalConfig();
 
@@ -55,21 +47,19 @@ namespace Api.Controllers
         }
 
         [Route("api/image")]
-        [System.Web.Http.HttpPost]
-        public HttpResponseMessage UploadImage()
+        [HttpPost]
+        public HttpResponseMessage UploadImage(Image postedFile)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
-            var httpRequest = HttpContext.Current.Request;
-            var postedFile = httpRequest["image"];
-            byte[] bytes = Convert.FromBase64String(postedFile);
+            
+            byte[] bytes = Convert.FromBase64String(postedFile.data.Replace("data:image/png;base64,", ""));
 
             string filename = Guid.NewGuid() + ".png";
-            //var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
-            string filePath = "C:\\Users\\Juan\\Desktop\\"+ filename;
+            var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
+            //string filePath = "C:\\Users\\Juan\\Desktop\\"+ filename;
             File.WriteAllBytes(filePath, bytes);
 
-            string message = "Image Upload Successfully.";
-            return Request.CreateErrorResponse(HttpStatusCode.Created, message);
+            return Request.CreateErrorResponse(HttpStatusCode.OK, filename);
         }
     }
 }
