@@ -7,10 +7,10 @@ using System.Web.Http;
 using Api.Models;
 using System.Web;
 using RouteAttribute = System.Web.Http.RouteAttribute;
-using System.Drawing;
 using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using PdfSharp;
+using System.Diagnostics;
 
 namespace Api.Controllers
 {
@@ -26,9 +26,21 @@ namespace Api.Controllers
             PdfDocument pdfDocument = new PdfDocument();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Scripts\test");
             string html = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/Home/test.cshtml"));
+            var back = configurator.Options.Find(x => x.Code == "back").Values.Find(x => x.Active == true);
+            var base_var = configurator.Options.Find(x => x.Code == "base").Values.Find(x => x.Active == true);
+            var mechanism = configurator.Options.Find(x => x.Code == "mechanism").Values.Find(x => x.Active == true);
+            var arm_style = configurator.Options.Find(x => x.Code == "arm").Values.Find(x => x.Active == true);
+            var grade = configurator.Options.Find(x => x.Code == "grade").Values.Find(x => x.Active == true);
             html.Replace("{name}", @"TEST");
             html = html.Replace("{print}", Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + configurator.print));
-            var cssData = PdfGenerator.ParseStyleSheet(@".invoice-container { max-width: 800px; margin: auto; padding: 20px; font-size: 15px; line-height: 20px; font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #555; } .invoice-container table { width: 100%; line-height: inherit; text-align: left; } .invoice-container table td { padding: 2px; vertical-align: middle; } .invoice-container table tr td:nth-child(2) { text-align: left; } .invoice-container table tr.top table td { padding-bottom: 20px; } .invoice-container table tr.top table td.title { font-size: 45px; line-height: 45px; color: #333; } .invoice-container table tr.heading td { background: #eee; border-bottom: 1px solid #ddd; font-weight: bold; } .invoice-container table tr.details td { padding-bottom: 20px; } .invoice-container table tr.item td { border-bottom: 1px solid #eee; } .invoice-container table tr.item.last td { border-bottom: none; } .invoice-container table tr.total td:nth-child(2) { border-top: 2px solid #eee; font-weight: bold; } .productImg { margin: 0px 0px 0px -300px; width: 1000px; } .detailed td { border-bottom: 1px solid #eee; text-align: left; } ul { margin: 0; list-style: none; padding: 0; } .logo-image { width: 50%; }", false);
+            html = html.Replace("{TotalPrice}", configurator.TotalPrice.ToString());
+            html = html.Replace("{code}", configurator.Code);
+            html = html.Replace("{back}", back.Name);
+            html = html.Replace("{arm}", arm_style.Name);
+            html = html.Replace("{mechanism}", mechanism.Name);
+            html = html.Replace("{base}", base_var.Name);
+            html = html.Replace("{grade}", grade.Name);
+            var cssData = PdfGenerator.ParseStyleSheet(@".invoice-container{margin:auto;padding:20px;font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:100px;} .logo-image {width: 30%;} .productImg {width: 100px;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:50%} .col-40{width:40%} .productImg {margin: 0px 0px 0px -140px;width: 400px;} .image{vertical-align: middle;overflow: hidden;width:200px !important;display: block;} .content{width:400px!important;max-width:400px;}", true);
             PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4, 60, cssData);
             string filename = Guid.NewGuid() + ".pdf";
             pdf.Save(Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename));
