@@ -1,0 +1,281 @@
+﻿@Model Api.Model.Configurator
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Wyatt Seating - @Model.Name</title>
+
+    <style>
+        .invoice-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            font-size: 15px;
+            line-height: 20px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+            .invoice-container table {
+                width: 100%;
+                line-height: inherit;
+                text-align: left;
+            }
+
+                .invoice-container table td {
+                    padding: 2px;
+                    vertical-align: middle;
+                }
+
+                .invoice-container table tr td:nth-child(2) {
+                    text-align: left;
+                }
+
+                .invoice-container table tr.top table td {
+                    padding-bottom: 20px;
+                }
+
+                    .invoice-container table tr.top table td.title {
+                        font-size: 45px;
+                        line-height: 45px;
+                        color: #333;
+                    }
+
+                .invoice-container table tr.heading td {
+                    background: #eee;
+                    border-bottom: 1px solid #ddd;
+                    font-weight: bold;
+                }
+
+                .invoice-container table tr.details td {
+                    padding-bottom: 20px;
+                }
+
+                .invoice-container table tr.item td {
+                    border-bottom: 1px solid #eee;
+                }
+
+                .invoice-container table tr.item.last td {
+                    border-bottom: none;
+                }
+
+                .invoice-container table tr.total td:nth-child(2) {
+                    border-top: 2px solid #eee;
+                    font-weight: bold;
+                }
+
+        .productImg {
+            margin: 0px 0px 0px -300px;
+            width: 1000px;
+        }
+
+        .detailed td {
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        ul {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .logo-image {
+            width: 50%;
+        }
+    </style>
+</head>
+@{ int pricebase = Model.Price; }
+@{ string code = Model.PartNumber; }
+@{ string back = ""; }
+@{ string grade = ""; }
+@{ string mechanism = ""; }
+@{ string arm = ""; }
+
+@for (var o = 0; o < Model.Options.Count; o++)
+{
+
+    for (var v = 0; v < Model.Options[o].Values.Count; v++)
+    {
+        if (Model.Options[o].Values[v].Active == true)
+        {
+            if (Model.Options[o].Code == "back")
+            {
+                { pricebase = pricebase + Model.Options[o].Values[v].Price; }
+
+                { back = Model.Options[o].Values[v].Name; }
+
+                { code = code + " " + Model.Options[o].Values[v].PartNumber; }
+            }
+            else if (Model.Options[o].Code == "grade")
+            {
+                { pricebase = pricebase + Model.Options[o].Values[v].Price; }
+
+                { grade = Model.Options[o].Values[v].Name; }
+
+                { code = code + " " + Model.Options[o].Values[v].PartNumber; }
+            }
+            else if (Model.Options[o].Code == "mechanism")
+            {
+                { pricebase = pricebase + Model.Options[o].Values[v].Price; }
+
+                { mechanism = Model.Options[o].Values[v].Name; }
+
+                { code = code + " " + Model.Options[o].Values[v].PartNumber; }
+            }
+            else if (Model.Options[o].Code == "arm")
+            {
+                { pricebase = pricebase + Model.Options[o].Values[v].Price; }
+
+                { arm = Model.Options[o].Values[v].Name; }
+
+                { code = code + " " + Model.Options[o].Values[v].PartNumber; }
+            }
+            else if (Model.Options[o].Code == "grade")
+            {
+                { pricebase = pricebase + Model.Options[o].Values[v].Price; }
+
+                { grade = Model.Options[o].Values[v].Name; }
+
+                { code = code + " " + Model.Options[o].Values[v].PartNumber; }
+            }
+
+        }
+    }
+}
+<body>
+    <div class="invoice-container">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td>
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="http://localhost:62027/logo.png" class="logo-image" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td width="50%" style="vertical-align: middle;overflow: hidden;width: 400px;display: block;">
+                                <img class="productImg" src="@Model.print" />
+                            </td>
+
+                            <td width="50%">
+                                <table>
+                                    <tr>
+                                        <td width="60%">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <strong>List Price:</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        $@Model.TotalPrice
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        <strong>Product Code:</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        @code
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table class="detailed">
+                                                <tr>
+                                                    <td>
+                                                        BACK SIZE:
+                                                    </td>
+
+                                                    <td>
+                                                        @back
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        TEXTILE:
+                                                    </td>
+
+                                                    <td>
+                                                        @grade
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        MECHANISM:
+                                                    </td>
+
+                                                    <td>
+                                                        @mechanism
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        ARMS:
+                                                    </td>
+
+                                                    <td>
+                                                        @arm
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>
+                                                        BASE COLOR:
+                                                    </td>
+
+                                                    <td>
+                                                        @grade
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table class="detailed">
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <strong>Contact Your Sales Representative</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <ul>
+                                                            <li>Ethosource</li>
+                                                            <li>Anjelica Capellupo</li>
+                                                            <li>acapellupo4@gmail.com</li>
+                                                            <li>484-336-3794</li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
