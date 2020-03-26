@@ -251,7 +251,7 @@ function makeMyPDF() {
 
     setTimeout(function () {
 
-        BABYLON.Tools.CreateScreenshot(engine, cameraq, { width: 10, height: 20 }, function (data) {
+        BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
             sendImg(data, function (error, image) {
                 console.log("CALLING PDF")
                 dataDB.print = image;

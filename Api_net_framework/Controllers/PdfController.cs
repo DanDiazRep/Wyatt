@@ -40,7 +40,7 @@ namespace Api.Controllers
             html = html.Replace("{mechanism}", mechanism.Name);
             html = html.Replace("{base}", base_var.Name);
             html = html.Replace("{grade}", grade.Name);
-            var cssData = PdfGenerator.ParseStyleSheet(@".invoice-container{margin:auto;padding:20px;font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:100px;} .logo-image {width: 30%;} .productImg {width: 100px;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:50%} .col-40{width:40%} .productImg {margin: 0px 0px 0px -140px;width: 400px;} .image{vertical-align: middle;overflow: hidden;width:200px !important;display: block;} .content{width:400px!important;max-width:400px;}", true);
+            var cssData = PdfGenerator.ParseStyleSheet(@"*{padding:0;margin:0;}.invoice-container{font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:100px;} .logo-image {width: 30%;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:30%} .col-40{width:40%} .productImg {margin: 0px 0px 0px 0px;width: 200px;padding:0;} .content{width:400px !important;}", true);
             PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4, 60, cssData);
             string filename = Guid.NewGuid() + ".pdf";
             pdf.Save(Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename));
