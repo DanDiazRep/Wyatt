@@ -21,7 +21,7 @@ namespace Api.Controllers
         // api/pdf
         [Route("api/pdf")]
         [HttpPost]
-        public string CreatePdf(Configurator configurator)
+        public HttpResponseMessage CreatePdf(Configurator configurator)
         {
             PdfDocument pdfDocument = new PdfDocument();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Scripts\test");
@@ -44,8 +44,7 @@ namespace Api.Controllers
             PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4, 60, cssData);
             string filename = Guid.NewGuid() + ".pdf";
             pdf.Save(Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename));
-
-            return filename;
+            return Request.CreateErrorResponse(HttpStatusCode.OK, filename);
 
             /* GlobalConfig options = new GlobalConfig();
 
