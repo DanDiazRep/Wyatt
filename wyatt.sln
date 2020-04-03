@@ -25,7 +25,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "wyatt", "wyatt\", "{821D5D6
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api_net_framework", "Api_net_framework\Api_net_framework.csproj", "{B4F03AC7-4D68-4EC5-945D-94BD83536571}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{B4F03AC7-4D68-4EC5-945D-94BD83536571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
