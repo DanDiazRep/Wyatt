@@ -622,6 +622,7 @@
     <Content Include="Views\Home\test.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="libman.json" />
     <None Include="Properties\PublishProfiles\wyattapi.servexusinc.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

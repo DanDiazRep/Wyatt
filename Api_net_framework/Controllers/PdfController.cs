@@ -34,7 +34,7 @@ namespace Api.Controllers
             html.Replace("{name}", @"TEST");
             html = html.Replace("{print}", Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + configurator.print));
             html = html.Replace("{TotalPrice}", configurator.TotalPrice.ToString());
-            html = html.Replace("{code}", configurator.Code);
+            html = html.Replace("{code}", configurator.PartNumber + " " +  back.PartNumber + " " + grade.PartNumber + " " + mechanism.PartNumber + " " + arm_style.PartNumber);
             html = html.Replace("{back}", back.Name);
             html = html.Replace("{arm}", arm_style.Name);
             html = html.Replace("{mechanism}", mechanism.Name);

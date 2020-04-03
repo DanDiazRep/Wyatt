@@ -25,10 +25,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "wyatt", "wyatt\", "{821D5D6
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{E734E898-9F71-448A-A5DB-56A101B96B20}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api2", "Api2\Api2.csproj", "{5B056879-A2FB-4E4B-8037-ED6755BC7E57}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api_net_framework", "Api_net_framework\Api_net_framework.csproj", "{B4F03AC7-4D68-4EC5-945D-94BD83536571}"
 EndProject
 Global
@@ -41,14 +37,6 @@ Global
 		{821D5D6F-6A2C-4BEE-ABDC-48AA827DD859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{821D5D6F-6A2C-4BEE-ABDC-48AA827DD859}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{821D5D6F-6A2C-4BEE-ABDC-48AA827DD859}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E734E898-9F71-448A-A5DB-56A101B96B20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B056879-A2FB-4E4B-8037-ED6755BC7E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B056879-A2FB-4E4B-8037-ED6755BC7E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B056879-A2FB-4E4B-8037-ED6755BC7E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B056879-A2FB-4E4B-8037-ED6755BC7E57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B4F03AC7-4D68-4EC5-945D-94BD83536571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B4F03AC7-4D68-4EC5-945D-94BD83536571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4F03AC7-4D68-4EC5-945D-94BD83536571}.Release|Any CPU.ActiveCfg = Release|Any CPU

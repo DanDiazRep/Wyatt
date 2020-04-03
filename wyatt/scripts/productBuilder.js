@@ -2,6 +2,8 @@
 //Menu building variables
 var canvas = document.getElementById('wyattCanvas');
 var container = document.getElementById('wyattContainer');
+//for api calling prpourses
+var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
 
 
 var loopOn = false;
@@ -226,7 +228,7 @@ function priceCalculation() {
 priceCalculation();
 
 function sendImg(imgToSend, callback) {
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.abort();
     var theUrl = "http://wyattapi.servexusinc.com/api/image";
     xmlhttp.open("POST", theUrl, true);
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
@@ -242,6 +244,8 @@ function sendImg(imgToSend, callback) {
     xmlhttp.send(JSON.stringify({data: imgToSend}));
 }
 
+
+
 function makeMyPDF() {
     //$.LoadingOverlay("show");
     var cameraq = scene.activeCamera.clone();
@@ -253,17 +257,19 @@ function makeMyPDF() {
 
         BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
             sendImg(data, function (error, image) {
+                xmlhttp.abort();
                 console.log("CALLING PDF")
                 dataDB.print = image;
                 dataDB.totalPrice = totalPrice;
-                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+                
                 var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
                 xmlhttp.open("POST", theUrl, true);
                 //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         $.LoadingOverlay("hide");
-                        window.open("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                        //window.open("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                        window.location.replace("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message);
                         //window.location.reload();
                     }
                     if (xmlhttp.readyState === 500) {
