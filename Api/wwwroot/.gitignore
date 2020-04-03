@@ -1,0 +1,5 @@
+*.pdf
+*.png
+!logo.png
+!front.png
+!example.png
