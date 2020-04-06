@@ -73,5 +73,5 @@ switch (selectedChair) {
         break;
 
     default:
-        var dataDB = getFreeride;
+        var dataDB = getG6;
 }

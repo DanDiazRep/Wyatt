@@ -26,20 +26,68 @@ namespace Api.Controllers
             PdfDocument pdfDocument = new PdfDocument();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Scripts\test");
             string html = File.ReadAllText(HttpContext.Current.Server.MapPath("~/Views/Home/test.cshtml"));
-            var back = configurator.Options.Find(x => x.Code == "back").Values.Find(x => x.Active == true);
-            var base_var = configurator.Options.Find(x => x.Code == "base").Values.Find(x => x.Active == true);
-            var mechanism = configurator.Options.Find(x => x.Code == "mechanism").Values.Find(x => x.Active == true);
-            var arm_style = configurator.Options.Find(x => x.Code == "arm").Values.Find(x => x.Active == true);
-            var grade = configurator.Options.Find(x => x.Code == "grade").Values.Find(x => x.Active == true);
-            html.Replace("{name}", @"TEST");
+            string PartCode = configurator.PartNumber;
+            Value myPart = null;
+            Option hasBack = configurator.Options.Find(x => x.Code == "back");
+            Option hasBase = configurator.Options.Find(x => x.Code == "base");
+            Option hasMecha = configurator.Options.Find(x => x.Code == "mechanism");
+            Option hasArm = configurator.Options.Find(x => x.Code == "arm");
+            Option hasGrade = configurator.Options.Find(x => x.Code == "grade");
+
+            if (hasBack != null)
+            {
+                myPart = hasBack.Values.Find(x => x.Active == true);
+                PartCode += myPart.PartNumber;
+                html = html.Replace("{back}", myPart.Name);
+            }
+            else {
+                html = html.Replace("{back}", "N/A");
+            }
+
+            if (hasBase != null) {
+                myPart = hasBase.Values.Find(x => x.Active == true);
+                PartCode += " B" + myPart.PartNumber;
+                html = html.Replace("{base}", myPart.Name);
+            }else
+            {
+                html = html.Replace("{base}", "N/A");
+            }
+
+            if (hasMecha != null)
+            {
+                myPart = hasMecha.Values.Find(x => x.Active == true);
+                PartCode += " M" + myPart.PartNumber;
+                html = html.Replace("{mechanism}", myPart.Name);
+            }else
+            {
+                html = html.Replace("{mechanism}", "N/A");
+            }
+
+            if (hasArm != null)
+            {
+                myPart = hasArm.Values.Find(x => x.Active == true);
+                PartCode += " A" + myPart.PartNumber;
+                html = html.Replace("{arm}", myPart.Name);
+            }else
+            {
+                html = html.Replace("{arm}", "N/A");
+            }
+
+            if (hasGrade != null)
+            {
+                myPart = hasGrade.Values.Find(x => x.Active == true);
+                PartCode += " " + myPart.PartNumber;
+                html = html.Replace("{grade}", myPart.Name);
+            }else
+            {
+                html = html.Replace("{grade}", "N/A");
+            }
+
+            html = html.Replace("{name}", configurator.Name);
             html = html.Replace("{print}", Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + configurator.print));
             html = html.Replace("{TotalPrice}", configurator.TotalPrice.ToString());
-            html = html.Replace("{code}", configurator.PartNumber + " " +  back.PartNumber + " B" + base_var.PartNumber + " M" + mechanism.PartNumber + " A" + arm_style.PartNumber + " " + grade.PartNumber);
-            html = html.Replace("{back}", back.Name);
-            html = html.Replace("{arm}", arm_style.Name);
-            html = html.Replace("{mechanism}", mechanism.Name);
-            html = html.Replace("{base}", base_var.Name);
-            html = html.Replace("{grade}", grade.Name);
+            html = html.Replace("{code}", PartCode);
+
             var cssData = PdfGenerator.ParseStyleSheet(@"*{padding:0;margin:0;}.invoice-container{font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:100px;} .logo-image {width: 30%;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:30%} .col-40{width:40%} .productImg {margin: 0px 0px 0px 0px;width: 200px;padding:0;} .content{width:400px !important;}", true);
             PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4, 60, cssData);
             string filename = Guid.NewGuid() + ".pdf";
