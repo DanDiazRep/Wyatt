@@ -1,5 +1,4 @@
-﻿
-//Menu building variables
+﻿//Menu building variables
 var canvas = document.getElementById('wyattCanvas');
 var container = document.getElementById('wyattContainer');
 
@@ -9,7 +8,7 @@ var highBackOn = false;
 var feature = "";
 var option = "";
 var collection = "";
-var materialSet = ""
+var materialSet = "";
 var modelNumberOfOptions = dataDB.Options.length;
 ////**************************************************************************
 //********************* BABYLON ENGINE INITIALIZATION *****************
@@ -20,7 +19,6 @@ var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(
 var photoCamera;  // Front Camera
 var photoCameraB;  //Back camera
 camera.setTarget(BABYLON.Vector3.Zero());
-//var skyboxPath = "public/scene/roomEnvHDR.dds";
 var baseUrl;
 var asyncMesh;
 var currentMesh;
@@ -54,7 +52,7 @@ var createScene = function () {
         //Lightning
         scene.lights[0].dispose();
         var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
-        light.intensity = 0.5;
+        light.intensity = 0.1;
 
 
         for (var i = 1; i < syncMesh.length; i++) {
@@ -97,17 +95,16 @@ var createScene = function () {
 
         if (evt.lengthComputable) {
             var percentage = (evt.loaded * 100 / evt.total).toFixed();
-                console.log("Loading, please wait..." + percentage + "%");
-                $(".progress-bar").css("width", percentage + "%");
-                $(".progress-bar").text(percentage + "%");
-    if (percentage == 100) 
-        $("#LoadingScreen").fadeOut(2000);
-    
+            console.log("Loading, please wait..." + percentage + "%");
+            $(".progress-bar").css("width", percentage + "%");
+            $(".progress-bar").text(percentage + "%");
+            if (percentage == 100)
+                $("#LoadingScreen").fadeOut(2000);
+
         }
         else {
 
             dlCount = evt.loaded / (1024 * 1024);
-            //console.log("Loading, please wait..." + Math.floor(dlCount * 100.0) / 100.0 + " MB already loaded.");
         }
 
 
@@ -156,10 +153,6 @@ function asyncDownload(lod) {
 
                 }, false));
 
-                //More & more bump
-               // if (asyncResult[i].material && asyncResult[i].material.bumpTexture) {
-                //    asyncResult[i].material.bumpTexture.level = 1.5;
-                //}
             }
 
 
@@ -204,7 +197,7 @@ var productPrice = document.getElementById("productPrice");
 var currentOptionsPDF = null;
 function priceCalculation() {
     //console.log("PRE TOTAL PRICE", dataDB)
-    
+
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
@@ -216,14 +209,31 @@ function priceCalculation() {
             dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions]
         }
         currentOptionsPDF = currentOptionPrice[nOptions];
-        
+
         totalPrice += currentOptionPrice[nOptions];
         productPrice.textContent = "$ " + totalPrice + ".00";
         //console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice)
     }
-    
+
 }
 priceCalculation();
+
+function sendImg(imgToSend, callback) {
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    var theUrl = "http://wyattapi.servexusinc.com/api/image";
+    xmlhttp.open("POST", theUrl, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            console.log("FINISH TRUE CALLING")
+            callback(false, JSON.parse(xmlhttp.responseText).Message)
+        }
+        if (xmlhttp.readyState === 500) {
+            callback(true, null)
+        }
+    };
+    xmlhttp.send(JSON.stringify({ data: imgToSend }));
+}
 
 function makeMyPDF() {
     //$.LoadingOverlay("show");
@@ -235,31 +245,31 @@ function makeMyPDF() {
     setTimeout(function () {
 
         BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
-            dataDB.print = data;
-            dataDB.totalPrice = totalPrice;
-
-            var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-            var theUrl = "http://wyattapi.servexusinc.com/pdf";
-            xmlhttp.open("POST", theUrl, true);
-            xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");  
-            xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");    
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    $.LoadingOverlay("hide");
-                    window.open("http://wyattapi.servexusinc.com/pdf" + xmlhttp.responseText, "_blank")
-                    //window.location.reload();;
-                }
-                if (xmlhttp.readyState === 500) {
-                    $.LoadingOverlay("hide");                    
-                }
-            };
-            xmlhttp.send(JSON.stringify(dataDB));
-
+            sendImg(data, function (error, image) {
+                console.log("CALLING PDF")
+                dataDB.print = image;
+                dataDB.totalPrice = totalPrice;
+                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+                var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
+                xmlhttp.open("POST", theUrl, true);
+                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        $.LoadingOverlay("hide");
+                        window.open("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                        //window.location.reload();
+                    }
+                    if (xmlhttp.readyState === 500) {
+                        $.LoadingOverlay("hide");
+                    }
+                };
+                xmlhttp.send(JSON.stringify(dataDB));
+            });
         })
     }, 500);
 
     scene.activeCamera = initialCamera;
-   /**/
+    /**/
 }
 
 function takePhoto() {
@@ -267,7 +277,7 @@ function takePhoto() {
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
-    engine.setSize(1000, 1600);
+    engine.setSize(1600, 2000);
 
     scene.render();
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: canvas.height, width: canvas.width }, function (data) {
@@ -294,8 +304,7 @@ var $accordion = $("<div>", { "class": "accordion", "id": "wyattAccordion" });
 $("#optionsMenu").append($accordion);
 
 //Build accordions as many features are in the model
-//console.log(dataDB)
-for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {  
+for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
     var $card = $("<div>", { "class": "card" });
     $accordion.append($card);
@@ -312,7 +321,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         "id": cardName + "Name"
     });
     $cardHeader.append($cardButton);
-    
+
 
     var $accordionInfoContainer = $("<div>", {
         "id": cardName, "class": "collapse",
@@ -334,7 +343,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
         var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
         $rowDivider.append($listGroup);
-        
+
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
                 var selectedOption = dataDB.Options[nOptions].Values[nValues].Name;
@@ -358,12 +367,14 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                 });
             }
 
-            
+
             $listGroup.append($featureOptions);
-            
+
         }
+        
     }
-    
+
+
     if (cardName.includes("grade")) {
         var $baseRow = $("<div>", { "class": "row no-gutter", "id": "gradesBaseRow" });
         var $baseFilterRow = $("<div>", { "class": "row no-gutter", "id": "gradesFilterRow" })
@@ -377,7 +388,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         $baseRow.append($imagesContainer);
 
         materialStructureBuilding(nOptions);
-
+        $cardButton.text(dataDB.Options[nOptions].Description);
     }
 
 }
@@ -389,9 +400,8 @@ function materialStructureBuilding(nOptions) {
     var $dropdownGrades = $("<div>", { "class": "dropdown" });
     $("#dropdownColGrades").append($dropdownGrades);
     var $dropdownButton = $("<div>", {
-        "class": "btn btn-info btn-sm m-0 mr-3 p-2 dropdown-toggle", "type": "button", "id": "materialGrades",
+        "class": "btn btn-info btn-sm dropdown-toggle", "type": "button", "id": "materialGrades",
         "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"
-        //"onClick": "materialCollectionCardBuildingAndEdition(\""+ nOptions + "\")"
     });
 
     $dropdownGrades.append($dropdownButton);
@@ -406,7 +416,7 @@ function materialStructureBuilding(nOptions) {
         });
         $dropdownContent.append($dropdownItem);
         if (dataDB.Options[nOptions].Values[nValues].Active) {
-            $dropdownButton.text(dataDB.Options[nOptions].Values[nValues].Name);
+           $dropdownButton.text(dataDB.Options[nOptions].Values[nValues].Name);
         }
     }
     materialCollectionCardBuildingAndEdition(nOptions + ",");
@@ -457,12 +467,12 @@ function materialCollectionCardBuildingAndEdition(selection) {
         var Materials = listOfMaterials(collection);
         $("#imagesContainer").empty();
         $(".pagination").empty();
-        
+
         for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
             if (Materials.Content[nMaterials].Name) {
 
                 var $materialItem = $("<div>", {
-                    "class": "material-item", //"text": Materials.Content[nMaterials].Name,
+                    "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + nOptions
                         + "," + Materials.Content[nMaterials].ColorCode + "\")"
@@ -517,7 +527,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
             if (Materials.Content[nMaterials].Name) {
 
                 var $materialItem = $("<div>", {
-                    "class": "material-item", //"text": Materials.Content[nMaterials].Name,
+                    "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + dataDB.Options[nOptions].Values[0].Name + "," + nOptions
                         + "," + Materials.Content[nMaterials].ColorCode + "\")"
@@ -560,16 +570,15 @@ function collectionSet(collectionSelected) {
             }
         }
     }
-        
- 
+
+
     var Materials = listOfMaterials(collection);
     $(".pagination").empty();
     $("#imagesContainer").empty();
-    //console.log("MATERIAL LOADING", collection)
     for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
         if (Materials.Content[nMaterials].Name) {
             var $materialItem = $("<div>", {
-                "class": "material-item", //"text": Materials.Content[nMaterials].Name,
+                "class": "material-item", 
                 "id": Materials.Content[nMaterials].Name + "-material",
                 "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + currentOption
                     + "," + Materials.Content[nMaterials].ColorCode + "\")"
@@ -608,7 +617,6 @@ function changeMaterial(value) {
                     currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
                     currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
                 }
-                //currentMesh[nMeshes]._material._normalTexture = new BABYLON.Texture(path + "_Normal.png", scene);
 
                 if (!(colorCode == "null" || colorCode == "undefined")) {
                     currentMesh[nMeshes]._material._albedoColor = new BABYLON.Color3.FromHexString(colorCode);
@@ -640,16 +648,16 @@ function optionChangedOnFeature(selection) {
 
 function cardsResponseOnSelection() {
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
-        
+
         if (dataDB.Options[nOptions].Name == feature) {
 
             for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
-                
+
                 if (dataDB.Options[nOptions].Values[nValues].Name == option) {
 
                     dataDB.Options[nOptions].Values[nValues].Active = true;
                     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].Values[nValues].Layers.length; nLayers++) {
-                        
+
                         //Do the material change
                         var doMaterialChange = false;
                         if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].hasOwnProperty("MaterialFile")) {
@@ -658,7 +666,7 @@ function cardsResponseOnSelection() {
 
                             }
                         }
-                            
+
 
 
                         if (feature == "Back") {
@@ -675,14 +683,12 @@ function cardsResponseOnSelection() {
                             }
                         }
                         for (var nMeshes = 0; nMeshes < currentMesh.length; nMeshes++) {
-                           
+
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes].name) {
                                 //change the material
                                 if (doMaterialChange) {
                                     var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
-                                    //console.log("MATERIAL CHANGE", dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, path + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer + "_Base_Color" + ".png")
                                     currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
-                                    //currentMesh[nMeshes]._material._roughnessTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Roughness" + ".png", scene);
 
 
 
@@ -691,7 +697,6 @@ function cardsResponseOnSelection() {
                                         currentMesh[nMeshes]._material.roughness = 1;
                                         currentMesh[nMeshes]._material.metallic = 0;
                                         currentMesh[nMeshes]._material._disableBumpMap = true;
-                                        //console.log("Nylon");
                                     }
                                     if (dataDB.Options[nOptions].Values[nValues].Name.includes("Aluminum") && currentMesh[nMeshes].material.name == "Base") {
                                         currentMesh[nMeshes]._material._metallicTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Metallic" + ".png", scene);
@@ -703,13 +708,13 @@ function cardsResponseOnSelection() {
                                         currentMesh[nMeshes]._material._metallicTexture.wAng = -Math.PI;
 
                                         currentMesh[nMeshes]._material._disableBumpMap = true;
-                                    }                                    
+                                    }
 
 
                                     currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
                                     currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
 
-                                }     
+                                }
                                 currentMesh[nMeshes].isVisible = dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility;
                                 if (!loopOn && (currentMesh[nMeshes].name == "Arms4" || currentMesh[nMeshes].name == "Arms5")) {
                                     currentMesh[nMeshes].isVisible = false;
@@ -726,7 +731,7 @@ function cardsResponseOnSelection() {
                                     }
 
                                 }
-                                
+
                             }
                         }
 

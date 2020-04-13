@@ -1929,15 +1929,15 @@ var getRoswell = {
   Code: "roswell",
   Name: "Roswell",
   PartNumber: "817",
-  LowFile: "roswell-high.glb",
+  LowFile: "roswell-low.glb",
   MedFile: null,
-  HighFile: null,
+  HighFile: "roswell-high.glb",
   Price: 577,
   ImgSrc: "assets/layout/roswell.png",
   DefaultLayers: [
     "Arms2",
-    "Back",
-    "BackHolder",
+    "Back1",
+    "BackHolder1",
     "Base",
     "Casters",
     "Config",
@@ -1945,147 +1945,208 @@ var getRoswell = {
     "SeatHolder"
   ],
   Options: [
-    {
-      Code: "back",
-      Name: "Back",
-      Description: "Back",
-      Type: "F",
-      RelatedLayers: ["BackHolder", "Back"],
-      Values: [
-        {
-          Name: "Black Back with Grey Outer Frame and Grey Mesh",
-          Active: true,
-          PartNumber: "BGG",
-          Price: 0,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#000",
-              Visibility: true
-            },
-            {
-                Layer: "Headrest",
-                MaterialFile: null,
-                Color: "#101000",
-                Visibility: false
-            }
+      {
+          Code: "back",
+          Name: "Back",
+          Description: "Back",
+          Type: "F",
+          RelatedLayers: ["BackHolder", "Back"],
+          Values: [
+              {
+                  Name: "Black Back with Grey Outer Frame and Grey Mesh",
+                  Active: true,
+                  PartNumber: "BGG",
+                  Price: 0,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+
+                  ]
+              },
+              {
+                  Name: "White Back with Grey Outer Frame and Grey Mesh",
+                  Active: false,
+                  PartNumber: "WGG",
+                  Price: 25,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name: "Black Back with Black Outer Frame and Grey Fabric",
+                  Active: false,
+                  PartNumber: "BBGF",
+                  Price: 50,
+                  Layers: [
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name:
+                      "Black Back with Grey Outer Frame Grey Mesh with Black Frame and Headrest",
+                  Active: false,
+                  PartNumber: "BGHR",
+                  Price: 62,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              },
+              {
+                  Name:
+                      "White Back with Grey Outer Frame Grey Mesh with Black Frame and Headrest",
+                  Active: false,
+                  PartNumber: "WBHR",
+                  Price: 86,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          Name: "White Back with Grey Outer Frame and Grey Mesh",
-          Active: false,
-          PartNumber: "WGG",
-          Price: 25,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-                Layer: "Headrest",
-                MaterialFile: null,
-                Color: "#101000",
-                Visibility: false
-            }
-          ]
-        },
-        {
-          Name: "Black Back with Black Outer Frame and Grey Fabric",
-          Active: false,
-          PartNumber: "BBGF",
-          Price: 50,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back1",
-              MaterialFile: null,
-              Color: "#000",
-              Visibility: true
-            },
-            {
-                Layer: "Headrest",
-                MaterialFile: null,
-                Color: "#101000",
-                Visibility: false
-            }
-          ]
-        },
-        {
-          Name:
-            "Black Back with Grey Outer Frame; Grey Mesh with Black Frame and Headrest",
-          Active: false,
-          PartNumber: "BGHR",
-          Price: 62,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#101000",
-              Visibility: true
-            },
-            {
-                Layer: "Headrest",
-                MaterialFile: null,
-                Color: "#101000",
-                Visibility: true
-            }
-          ]
-        },
-        {
-          Name:
-            "White Back with Grey Outer Frame; Grey Mesh with Black Frame and Headrest",
-          Active: false,
-          PartNumber: "WBHR",
-          Price: 86,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#1010FF",
-              Visibility: true
-            },
-            {
-                Layer: "Headrest",
-                MaterialFile: null,
-                Color: "#101000",
-                Visibility: true
-            }
-          ]
-        }
-      ]
-    }, // BACK
+      }, // BACK
     {
       Code: "base",
       Name: "Base",
@@ -2181,7 +2242,7 @@ var getRoswell = {
           Layers: [
             {
               Layer: "Arms1",
-              MaterialFile: null,
+              MaterialFile: "/roswell/arms/arms1",
               Color: null,
               Visibility: true
             },
@@ -2207,21 +2268,21 @@ var getRoswell = {
             },
             {
               Layer: "Arms2",
-              MaterialFile: null,
+              MaterialFile: "/roswell/arms/arms2",
               Color: null,
               Visibility: true
             }
           ]
         },
         {
-          Name: "Height adjustable arm (white)",
+          Name: "Height adjustable arms (white)",
           Active: false,
           PartNumber: "A1DW",
           Price: 30,
           Layers: [
             {
               Layer: "Arms1",
-              MaterialFile: null,
+              MaterialFile: "/roswell/arms/arms1",
               Color: null,
               Visibility: true
             },
@@ -2247,7 +2308,7 @@ var getRoswell = {
             },
             {
               Layer: "Arms2",
-              MaterialFile: null,
+              MaterialFile: "/roswell/arms/arms2",
               Color: null,
               Visibility: true
             }
@@ -2403,15 +2464,15 @@ var getRoswellStool = {
   Code: "roswellStool",
   Name: "Roswell Stool",
   PartNumber: "817",
-  LowFile: "roswellStool-high.glb",
+  LowFile: "roswellStool-low.glb",
   MedFile: null,
-  HighFile: null,
+    HighFile: "roswellStool-high.glb",
   Price: 777,
   ImgSrc: "assets/layout/roswellStool.png",
   DefaultLayers: [
     "Arms2",
-    "Back",
-    "BackHolder",
+    "Back1",
+    "BackHolder1",
     "Base",
     "Casters",
     "Config",
@@ -2419,226 +2480,317 @@ var getRoswellStool = {
     "SeatHolder"
   ],
   Options: [
-    {
-      Code: "back",
-      Name: "Back",
-      Description: "Back",
-      Type: "F",
-      RelatedLayers: ["BackHolder", "Back"],
-      Values: [
-        {
-          Name: "Black Back with Grey Outer Frame and Grey Mesh",
-          Active: true,
-          PartNumber: "BGG",
-          Price: 0,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#000",
-              Visibility: true
-            }
+      {
+          Code: "back",
+          Name: "Back",
+          Description: "Back",
+          Type: "F",
+          RelatedLayers: ["BackHolder", "Back"],
+          Values: [
+              {
+                  Name: "Black Back with Grey Outer Frame and Grey Mesh",
+                  Active: true,
+                  PartNumber: "BGG",
+                  Price: 0,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+
+                  ]
+              },
+              {
+                  Name: "White Back with Grey Outer Frame and Grey Mesh",
+                  Active: false,
+                  PartNumber: "WGG",
+                  Price: 25,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name: "Black Back with Black Outer Frame and Grey Fabric",
+                  Active: false,
+                  PartNumber: "BBGF",
+                  Price: 50,
+                  Layers: [
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name:
+                      "Black Back with Grey Outer Frame Grey Mesh with Black Frame and Headrest",
+                  Active: false,
+                  PartNumber: "BGHR",
+                  Price: 62,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              },
+              {
+                  Name:
+                      "White Back with Grey Outer Frame Grey Mesh with Black Frame and Headrest",
+                  Active: false,
+                  PartNumber: "WBHR",
+                  Price: 86,
+                  Layers: [
+                      {
+                          Layer: "BackHolder1",
+                          MaterialFile: "/roswell/backholder/backholder1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "BackHolder2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Back1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Headrest",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          Name: "White Back with Grey Outer Frame and Grey Mesh",
-          Active: false,
-          PartNumber: "WGG",
-          Price: 25,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
+      }, // BACK
+      {
+          Code: "arm",
+          Name: "Arm",
+          Description: "Arm Style",
+          Type: "F",
+          RelatedLayers: ["Arms1", "Arms2"],
+          Values: [
+              {
+                  Name: "Armless option",
+                  Active: false,
+                  PartNumber: "A000",
+                  Price: -71,
+                  Layers: [
+                      {
+                          Layer: "Arms1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Arms2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name: "Height adjustable arms (black)",
+                  Active: false,
+                  PartNumber: "A1DB",
+                  Price: -46,
+                  Layers: [
+                      {
+                          Layer: "Arms1",
+                          MaterialFile: "/roswell/arms/arms1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Arms2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name: "3D adjustable arms (black)",
+                  Active: true,
+                  PartNumber: "A3DB",
+                  Price: 0,
+                  Layers: [
+                      {
+                          Layer: "Arms1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Arms2",
+                          MaterialFile: "/roswell/arms/arms2",
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              },
+              {
+                  Name: "Height adjustable arms (white)",
+                  Active: false,
+                  PartNumber: "A1DW",
+                  Price: 30,
+                  Layers: [
+                      {
+                          Layer: "Arms1",
+                          MaterialFile: "/roswell/arms/arms1",
+                          Color: null,
+                          Visibility: true
+                      },
+                      {
+                          Layer: "Arms2",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      }
+                  ]
+              },
+              {
+                  Name: "3D adjustable arms (white)",
+                  Active: false,
+                  PartNumber: "A3DW",
+                  Price: 76,
+                  Layers: [
+                      {
+                          Layer: "Arms1",
+                          MaterialFile: null,
+                          Color: null,
+                          Visibility: false
+                      },
+                      {
+                          Layer: "Arms2",
+                          MaterialFile: "/roswell/arms/arms2",
+                          Color: null,
+                          Visibility: true
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          Name: "Black Back with Black Outer Frame and Grey Fabric",
-          Active: false,
-          PartNumber: "BBGF",
-          Price: 50,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back1",
-              MaterialFile: null,
-              Color: "#000",
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Name:
-            "Black Back with Grey Outer Frame; Grey Mesh with Black Frame and Headrest",
-          Active: false,
-          PartNumber: "BGHR",
-          Price: 62,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#101000",
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Name:
-            "White Back with Grey Outer Frame; Grey Mesh with Black Frame and Headrest",
-          Active: false,
-          PartNumber: "WBHR",
-          Price: 86,
-          Layers: [
-            {
-              Layer: "BackHolder",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Back",
-              MaterialFile: null,
-              Color: "#1010FF",
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, // BACK
-    {
-      Code: "arm",
-      Name: "Arm",
-      Description: "Arm Style",
-      Type: "F",
-      RelatedLayers: ["Arms1", "Arms2"],
-      Values: [
-        {
-          Name: "Armless option",
-          Active: false,
-          PartNumber: "A000",
-          Price: -71,
-          Layers: [
-            {
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            },
-            {
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            }
-          ]
-        },
-        {
-          Name: "Height adjustable arms (black)",
-          Active: false,
-          PartNumber: "A1DB",
-          Price: -46,
-          Layers: [
-            {
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            }
-          ]
-        },
-        {
-          Name: "3D adjustable arms (black)",
-          Active: true,
-          PartNumber: "A3DB",
-          Price: 0,
-          Layers: [
-            {
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            },
-            {
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        },
-        {
-          Name: "Height adjustable arm (white)",
-          Active: false,
-          PartNumber: "A1DW",
-          Price: 30,
-          Layers: [
-            {
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            },
-            {
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            }
-          ]
-        },
-        {
-          Name: "3D adjustable arms (white)",
-          Active: false,
-          PartNumber: "A3DW",
-          Price: 76,
-          Layers: [
-            {
-              Layer: "Arms1",
-              MaterialFile: null,
-              Color: null,
-              Visibility: false
-            },
-            {
-              Layer: "Arms2",
-              MaterialFile: null,
-              Color: null,
-              Visibility: true
-            }
-          ]
-        }
-      ]
-    }, //ARMS
+      }, //ARMS
     {
       Code: "grade",
       Name: "Seat Fabric Grade",
@@ -2802,7 +2954,7 @@ var getLamia = {
       RelatedLayers: ["Seat"],
       Values: [
         {
-          Name: "Black",
+              Name: "Cow Tipping",
           Active: false,
           PartNumber: "S01",
           Price: 0,
@@ -2816,7 +2968,7 @@ var getLamia = {
           ]
         }, // BLACK
         {
-          Name: "White",
+          Name: "Sugar Packet",
           Active: false,
           PartNumber: "S02",
           Price: 0,
@@ -2830,7 +2982,7 @@ var getLamia = {
           ]
         }, //WHITE
         {
-          Name: "Grey",
+          Name: "Rhino",
           Active: false,
           PartNumber: "S03",
           Price: 0,
@@ -2844,7 +2996,7 @@ var getLamia = {
           ]
         }, //GREY
         {
-          Name: "Blue",
+          Name: "Dinghy",
           Active: false,
           PartNumber: "S04",
           Price: 0,
@@ -2858,7 +3010,7 @@ var getLamia = {
           ]
         }, //BLUE
         {
-          Name: "Green",
+          Name: "Pine Tree",
           Active: false,
           PartNumber: "S05",
           Price: 0,
@@ -2872,7 +3024,7 @@ var getLamia = {
           ]
         }, //GREEEN
         {
-          Name: "Red",
+          Name: "Ketchup Popsicle",
           Active: true,
           PartNumber: "S06",
           Price: 0,
@@ -2886,7 +3038,7 @@ var getLamia = {
           ]
         }, //RED
         {
-          Name: "Sand",
+          Name: "Bear Claw",
           Active: false,
           PartNumber: "S07",
           Price: 0,
@@ -2909,7 +3061,7 @@ var getLamia = {
       RelatedLayers: ["Back"],
       Values: [
         {
-          Name: "Black",
+          Name: "Cow Tipping",
           Active: false,
           PartNumber: "S01",
           Price: 0,
@@ -2923,7 +3075,7 @@ var getLamia = {
           ]
         }, // BLACK
         {
-          Name: "White",
+          Name: "Sugar Packet",
           Active: false,
           PartNumber: "S02",
           Price: 0,
@@ -2937,7 +3089,7 @@ var getLamia = {
           ]
         }, //WHITE
         {
-          Name: "Grey",
+          Name: "Rhino",
           Active: false,
           PartNumber: "S03",
           Price: 0,
@@ -2951,7 +3103,7 @@ var getLamia = {
           ]
         }, //GREY
         {
-          Name: "Blue",
+          Name: "Dinghy",
           Active: false,
           PartNumber: "S04",
           Price: 0,
@@ -2965,7 +3117,7 @@ var getLamia = {
           ]
         }, //BLUE
         {
-          Name: "Green",
+          Name: "Pine Tree",
           Active: false,
           PartNumber: "S05",
           Price: 0,
@@ -2979,7 +3131,7 @@ var getLamia = {
           ]
         }, //GREEEN
         {
-          Name: "Red",
+          Name: "Ketchup Popsicle",
           Active: true,
           PartNumber: "S06",
           Price: 0,
@@ -2993,7 +3145,7 @@ var getLamia = {
           ]
         }, //RED
         {
-          Name: "Sand",
+          Name: "Bear Claw",
           Active: false,
           PartNumber: "S07",
           Price: 0,
@@ -3182,7 +3334,7 @@ var getExtra = {
 };
 var getTether = {
   Code: "tether",
-  Name: "Tether Stool",
+  Name: "Tether",
   PartNumber: "R05",
   LowFile: "tether-high.glb",
   MedFile: null,
