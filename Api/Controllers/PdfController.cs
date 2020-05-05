@@ -33,11 +33,13 @@ namespace Api.Controllers
             Option hasMecha = configurator.Options.Find(x => x.Code == "mechanism");
             Option hasArm = configurator.Options.Find(x => x.Code == "arm");
             Option hasGrade = configurator.Options.Find(x => x.Code == "grade");
+            Option hasColorSeat = configurator.Options.Find(x => x.Code == "colorSeat");
+            Option hasColorBack = configurator.Options.Find(x => x.Code == "colorBack");
 
             if (hasBack != null)
             {
                 myPart = hasBack.Values.Find(x => x.Active == true);
-                PartCode += myPart.PartNumber;
+                //PartCode += myPart.PartNumber;
                 html = html.Replace("{back}", myPart.Name);
             }
             else {
@@ -46,7 +48,7 @@ namespace Api.Controllers
 
             if (hasBase != null) {
                 myPart = hasBase.Values.Find(x => x.Active == true);
-                PartCode += " B" + myPart.PartNumber;
+                PartCode += "-" + myPart.PartNumber;
                 html = html.Replace("{base}", myPart.Name);
             }else
             {
@@ -56,7 +58,7 @@ namespace Api.Controllers
             if (hasMecha != null)
             {
                 myPart = hasMecha.Values.Find(x => x.Active == true);
-                PartCode += " M" + myPart.PartNumber;
+                PartCode += "-" + myPart.PartNumber;
                 html = html.Replace("{mechanism}", myPart.Name);
             }else
             {
@@ -66,7 +68,7 @@ namespace Api.Controllers
             if (hasArm != null)
             {
                 myPart = hasArm.Values.Find(x => x.Active == true);
-                PartCode += " A" + myPart.PartNumber;
+                PartCode += "-" + myPart.PartNumber;
                 html = html.Replace("{arm}", myPart.Name);
             }else
             {
@@ -76,40 +78,36 @@ namespace Api.Controllers
             if (hasGrade != null)
             {
                 myPart = hasGrade.Values.Find(x => x.Active == true);
-                PartCode += " " + myPart.PartNumber;
+                PartCode += "-" + myPart.PartNumber;
                 html = html.Replace("{grade}", myPart.Name);
             }else
             {
                 html = html.Replace("{grade}", "N/A");
             }
+            if (hasColorSeat != null)
+            {
+                myPart = hasGrade.Values.Find(x => x.Active == true);
+                PartCode += myPart.PartNumber;                
+            }
+            if (hasColorBack != null)
+            {
+                myPart = hasGrade.Values.Find(x => x.Active == true);
+                PartCode += "-" + myPart.PartNumber;
+            }
 
-            html = html.Replace("{name}", configurator.Name);
+
+
+            html = html.Replace("{name}", configurator.Name.ToUpper());
             html = html.Replace("{print}", Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + configurator.print));
             html = html.Replace("{TotalPrice}", configurator.TotalPrice.ToString());
             html = html.Replace("{code}", PartCode);
-
-            var cssData = PdfGenerator.ParseStyleSheet(@"*{padding:0;margin:0;}.invoice-container{font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:100px;} .logo-image {width: 30%;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:30%} .col-40{width:40%} .productImg {margin: 0px 0px 0px 0px;width: 200px;padding:0;} .content{width:400px !important;}", true);
+            html = html.Replace("{date}", DateTime.Now.ToString("d"));
+            var cssData = PdfGenerator.ParseStyleSheet(@"*{padding:0;margin:0;}.invoice-container{font-size:12px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .head{margin-bottom:0px;} .logo-image {width: 30%;} ul {margin: 0;list-style: none;padding: 0;} .underline td {border-bottom: 1px solid #eee;} .main{width:600px!important;} .col-50{width:30%} .col-40{width:40%} .image {width: 200px}.productImg {margin: 0px 0px 0px -50px;width: 250px;padding:0;} .content{width:400px !important;} .titleName{font-size: 30px;} #namerow{margin-bottom:40px;} #footerRow{position: absolute;bottom: 0px;width: 470px; height: 10px; margin-top: 200px; border:0;border-top: solid black 1px; font-size:15px;line-height:20px;font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;color:#555;} .leftcol{width: 50%, text-aling:left;} .rightcol{width: 50%, text-align: right}", true);
             PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4, 60, cssData);
             string filename = Guid.NewGuid() + ".pdf";
             pdf.Save(Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename));
             return Request.CreateErrorResponse(HttpStatusCode.OK, filename);
 
-            /* GlobalConfig options = new GlobalConfig();
-
-             options.SetMargins(0, 0, 0, 0)
-                 .SetDocumentTitle("ahun no se we")
-                 .SetPaperSize(System.Drawing.Printing.PaperKind.Letter);
-
-             //string path = @"~/Views/Home/test.cshtml";
-             //return html;
-             byte[] pdfContent = new SimplePechkin(options).Convert(html);
-
-             //string directory = "C:\\Users\\Juan\\Desktop\\";
-             // Name of the PDF
-
-             string filename = Guid.NewGuid() + ".pdf";
-             File.WriteAllBytes(Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename), pdfContent);
-             return filename;*/
         }
 
         public string Get()
@@ -127,7 +125,6 @@ namespace Api.Controllers
 
             string filename = Guid.NewGuid() + ".png";
             var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
-            //string filePath = "C:\\Users\\Juan\\Desktop\\"+ filename;
             File.WriteAllBytes(filePath, bytes);
 
             return Request.CreateErrorResponse(HttpStatusCode.OK, filename);

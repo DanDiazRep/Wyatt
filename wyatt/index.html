@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Wyatt</title>
+    <title>Configurator - Wyatt Seating</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="wyattLogo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
@@ -31,7 +31,7 @@
             </div>
             <div class="row" id="canvasContainer">
 
-                <canvas id="wyattCanvas"  touch-action="none"></canvas>
+                <canvas id="wyattCanvas" touch-action="none"></canvas>
 
             </div>
 
@@ -63,7 +63,7 @@
                 <div id="infoContainer"></div>
             </div>
             <div class="row">
-                <h4 id="productPrice">SKU</h4>
+                <h2 id="productPrice">SKU</h2>
             </div>
 
             <div class="row" id="utilitiesRow">
@@ -81,7 +81,7 @@
         </div>
 
 
-        <div class="col-md-4 no-gutters" id="infoCol">
+        <div class="col-md-4 no-gutters" id="optionsCol">
             <div class="row" id="optionsMenu"></div>
 
         </div>
@@ -98,13 +98,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="scripts/watermark.js"></script>
     <script src="babylon/dist/babylon.js"></script>
     <script src="babylon/dist/loaders/babylonjs.loaders.min.js"></script>
-    <script src="scripts/MaterialLibrary.js"></script>
-    <script src="scripts/GetAll.js"></script>
-    <script src="scripts/productSelector.js"></script>
+    <script src="scripts/MaterialLibrary.min.js"></script>
+    <script src="scripts/GetAll.min.js"></script>
+    <script src="scripts/productSelector.min.js"></script>
     <script src="scripts/productBuilder.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
-
 </body>
 </html>

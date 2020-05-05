@@ -4,49 +4,49 @@ var Grade1_Link =
     "Name": "Link",
         "Content": [
 
-    {
-        "Id": 1,
-        "Name": "Eclipse",
-        "Code": "1001",
-        "Active": true,
+        {
+            "Id": 1,
+            "Name": "Eclipse",
+            "Code": "1001",
+            "Active": true,
 
-    },
-    {
-        "Id": 2,
-        "Name": "Shadow",
-        "Code": "1002",
-        "Active": false
-    },
-    {
-        "Id": 3,
-        "Name": "Coast",
-        "Code": "1003",
-        "Active": false
-    },
-    {
-        "Id": 4,
-        "Name": "Kiwi",
-        "Code": "1004",
-        "Active": false,
-    },
-    {
-        "Id": 5,
-        "Name": "Harvest",
-        "Code": "1005",
-        "Active": false
-    },
-    {
-        "Id": 6,
-        "Name": "Poppy",
-        "Code": "1006",
-        "Active": false,
-    }
-]
-    };
+        },
+        {
+            "Id": 2,
+            "Name": "Shadow",
+            "Code": "1002",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Coast",
+            "Code": "1003",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Kiwi",
+            "Code": "1004",
+            "Active": false,
+        },
+        {
+            "Id": 5,
+            "Name": "Harvest",
+            "Code": "1005",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Poppy",
+            "Code": "1006",
+            "Active": false,
+        }
+    ]
+};
 var Grade1_IOU =
-    {
+{
     "Name": "I.O.U.",
-        "Content": [    
+    "Content": [    
         {
             "Id": 1,
             "Name": "Billy 4C",
@@ -101,105 +101,9 @@ var Grade1_IOU =
             "Code": "1309",
             "Active": false
             },
-            {
-                "Id": 10,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 11,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 12,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            }
 
         ]
     };
-var Grade1_Circus_Boy_Plastics =
-    {
-        "Name": "Circus Boy Plastics",
-        "Content": [
-            {
-                "Id": 1,
-                "Name": "Cowtipping",
-                "Code": "01",
-                "Active": false
-            },
-            {
-                "Id": 2,
-                "Name": "Sugar Packet",
-                "Code": "02",
-                "Active": false
-            },
-            {
-                "Id": 3,
-                "Name": "Rhino",
-                "Code": "03",
-                "Active": false
-            },
-            {
-                "Id": 4,
-                "Name": "Dinghy",
-                "Code": "04",
-                "Active": false
-            },
-            {
-                "Id": 5,
-                "Name": "Pine Tree",
-                "Code": "05",
-                "Active": false
-            },
-            {
-                "Id": 6,
-                "Name": "Ketchup Popsicle",
-                "Code": "06",
-                "Active": false
-            },
-            {
-                "Id": 7,
-                "Name": "Bear Claw",
-                "Code": "07",
-                "Active": false
-            },
-            {
-                "Id": 8,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 9,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 10,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 11,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 12,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            } 
-        ]
-};
 var Grade1_Circus =
 {
     "Name": "Circus Boy Plastics",
@@ -272,24 +176,7 @@ var GradeV_Vinyl =
             "Code": "4003",
             "Active": false
         },
-        {
-            "Id": 4,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 5,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 6,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        } 
+
     ]
 }
 
@@ -357,18 +244,6 @@ var Grade2_Foundation_10 =
                 "Code": "2019",
                 "Active": false
             },
-            {
-                "Id": 11,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            },
-            {
-                "Id": 12,
-                "Name": null,
-                "Code": null,
-                "Active": false
-            } 
         ]
     };
 var Grade2_Key_Largo =
@@ -380,70 +255,60 @@ var Grade2_Key_Largo =
                 "Name": "Aegean",
                 "Code": "2114",
                 "Active": false,
-                "ColorCode": "#334549"
             },
             {
                 "Id": 2,
                 "Name": "Crimson",
                 "Code": "2101",
                 "Active": false,
-                "ColorCode": "#992d31"
             },
             {
                 "Id": 3,
                 "Name": "Ebony",
                 "Code": "2116",
                 "Active": false,
-                "ColorCode": "#2a2a2a"
             },
             {
                 "Id": 4,
                 "Name": "Graphite",
                 "Code": "2106",
                 "Active": false,
-                "ColorCode": "#3f3f3a"
             },
             {
                 "Id": 5,
                 "Name": "Jungle",
                 "Code": "2103",
                 "Active": false,
-                "ColorCode": "#4f6040"
             },
             {
                 "Id": 6,
                 "Name": "Pear",
                 "Code": "2133",
                 "Active": false,
-                "ColorCode": "#918a3c"
             },
             {
                 "Id": 7,
                 "Name": "Quarry",
                 "Code": "2126",
                 "Active": false,
-                "ColorCode": "#69665f"
             },
             {
                 "Id": 8,
                 "Name": "Sandstone",
                 "Code": "2120",
                 "Active": false,
-                "ColorCode": "#807362"
             },
             {
                 "Id": 9,
                 "Name": "Tangerine",
                 "Code": "2109",
                 "Active": false,
-                "ColorCode": "#e76345"
             },
             {
                 "Id": 10,
                 "Name": "Ultramarine",
                 "Code": "2104",
                 "Active": false,
-                "ColorCode": "#324252"
             }
         ]
 };
@@ -495,37 +360,7 @@ var Grade2_Patio =
             "Name": "Vellum",
             "Code": "2207",
             "Active": false,
-        },
-        {
-            "Id": 8,
-            "Name": null,
-            "Code": null,
-            "Active": false,
-        },
-        {
-            "Id": 9,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 10,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 11,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 12,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        } 
+        }
 
     ]
 };
@@ -595,18 +430,6 @@ var Grade3_Habersash =
             "Code": "3014",
             "Active": false
         },
-        {
-            "Id": 11,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 12,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        }
 
     ]
 };
@@ -656,36 +479,7 @@ var Grade3_Echo =
             "Code": "3101",
             "Active": false
         },
-        {
-            "Id": 8,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 9,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 10,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 11,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 12,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        }
+
 
     ]
 };
@@ -753,18 +547,7 @@ var Grade3_Cosmopolitan =
             "Code": "3209",
             "Active": false
         },
-        {
-            "Id": 11,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        },
-        {
-            "Id": 12,
-            "Name": null,
-            "Code": null,
-            "Active": false
-        }
+
 
     ]
 };

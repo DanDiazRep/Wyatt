@@ -2,13 +2,18 @@
 var canvas = document.getElementById('wyattCanvas');
 var container = document.getElementById('wyattContainer');
 
-
 var loopOn = false;
 var highBackOn = false;
 var feature = "";
 var option = "";
 var collection = "";
 var materialSet = "";
+var backPartNumber = [" "];
+if (dataDB.Name.includes("Freeride"))
+    backPartNumber = ["B", "M", "G"];
+if (dataDB.Name.includes("Rowsell"))
+    backPartNumber = ["B", "G", "M",""];
+
 var modelNumberOfOptions = dataDB.Options.length;
 ////**************************************************************************
 //********************* BABYLON ENGINE INITIALIZATION *****************
@@ -23,7 +28,8 @@ var baseUrl;
 var asyncMesh;
 var currentMesh;
 scene.clearColor = new BABYLON.Color3(1, 1, 1); //Background color
-
+var maxSize = new BABYLON.Vector3(0, 0, 0);
+var meshCenter = new BABYLON.Vector3(0, 0, 0);
 
 var createScene = function () {
 
@@ -38,12 +44,9 @@ var createScene = function () {
 
         // Camera 
         scene.createDefaultCameraOrLight(true, true, true);
-        scene.activeCamera.lowerRadiusLimit = 800;
-        scene.activeCamera.upperRadiusLimit = 3000;
+
         scene.activeCamera.panningSensibility = 10;
         scene.activeCamera.wheelPrecision = 0.25;
-        scene.activeCamera.alpha = Math.PI / 3;
-        scene.activeCamera.beta = 7 * Math.PI / 16;
         photoCamera = scene.activeCamera.clone();
         photoCameraB = photoCamera.clone();
         photoCameraB.alpha = Math.PI / 3 + Math.PI;
@@ -52,32 +55,73 @@ var createScene = function () {
         //Lightning
         scene.lights[0].dispose();
         var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
-        light.intensity = 0.1;
+        light.intensity = 0.6;
+        console.log(light);
+        
 
+        //Shadow Casting
+        /*var ground = BABYLON.Mesh.CreateGround("ground1", 6000, 6000, 1, scene);
+        var groundMaterial = new BABYLON.StandardMaterial(scene);       
+        groundMaterial.emissiveColor = new BABYLON.Color3(0.6, 0.6, 0.6);
+        //groundMaterial.ambientColor = new BABYLON.Color3(0.23, 0.98, 0.53);
+        ground.material = groundMaterial;
+        console.log(ground);
+        ground.receiveShadows = true;*/
 
         for (var i = 1; i < syncMesh.length; i++) {
 
             syncMesh[i].actionManager = new BABYLON.ActionManager(scene); // Pointer behavior on model hover                       
-            syncMesh[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
+            syncMesh[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (env) {
             }, false));
 
             //More & more bump
             if (syncMesh[i].material && syncMesh[i].material.bumpTexture) {
                 syncMesh[i].material.bumpTexture.level = 1.5;
             }
+            syncMesh[i].position = new BABYLON.Vector3(0, 0, 0);
+            var size = syncMesh[i].getBoundingInfo().boundingBox.maximumWorld;
+            if ((size.x) > maxSize.x)
+                maxSize.x = size.x;
+
+            if ((size.y) > maxSize.y)
+                maxSize.y = size.y;
+
+            if ((size.z) > maxSize.z)
+                maxSize.z = size.z;
+
+
+            meshCenter.x += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.x;
+            meshCenter.y += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.y;
+            meshCenter.z += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.z;
 
             //Show me the default
             syncMesh[i].isVisible = dataDB.DefaultLayers.includes(syncMesh[i].name);
 
         }
 
+  
+
+        meshCenter.x = meshCenter.x / syncMesh.length*0;
+        meshCenter.y = meshCenter.y / syncMesh.length;
+        meshCenter.z = meshCenter.z / syncMesh.length;
+
+        //maxSize.y = maxSize.y / 7;
+
+        scene.activeCamera.setTarget(meshCenter);
+        var ratio = engine.getAspectRatio(camera);
+        var h = ((maxSize.y + maxSize.x + maxSize.z)/3);
+        scene.activeCamera.lowerRadiusLimit = h;
+        scene.activeCamera.upperRadiusLimit = h * 4;
+        scene.activeCamera.alpha = Math.PI / 2.4;
+        scene.activeCamera.beta = 7 * Math.PI / 16;
+        photoCamera = scene.activeCamera.clone();
+
+
         //Env texture
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/tokyo.dds", scene);
-        hdrTexture.gammaStapce = true;
+        hdrTexture.gammaSpace = true;
         scene.environmentTexture = hdrTexture;
 
-
-        //engine.hideLoadingUI();
         currentMesh = syncMesh;
 
 
@@ -95,7 +139,7 @@ var createScene = function () {
 
         if (evt.lengthComputable) {
             var percentage = (evt.loaded * 100 / evt.total).toFixed();
-            console.log("Loading, please wait..." + percentage + "%");
+           // console.log("Loading, please wait..." + percentage + "%");
             $(".progress-bar").css("width", percentage + "%");
             $(".progress-bar").text(percentage + "%");
             if (percentage == 100)
@@ -196,23 +240,20 @@ var currentOptionPrice = Array(dataDB.Options.length);
 var productPrice = document.getElementById("productPrice");
 var currentOptionsPDF = null;
 function priceCalculation() {
-    //console.log("PRE TOTAL PRICE", dataDB)
 
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
                 currentOptionPrice[nOptions] = dataDB.Options[nOptions].Values[nValues].Price;
-                //console.log("AT FIRST TIME", currentOptionPrice[nOptions], dataDB.Options[nOptions].Values[nValues].Price)
             }
         }
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
-            dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions]
+            dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions];
         }
         currentOptionsPDF = currentOptionPrice[nOptions];
 
         totalPrice += currentOptionPrice[nOptions];
         productPrice.textContent = "$ " + totalPrice + ".00";
-        //console.log("CURRENT OPTIONS PDF", totalPrice, currentOptionPrice)
     }
 
 }
@@ -225,7 +266,6 @@ function sendImg(imgToSend, callback) {
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            console.log("FINISH TRUE CALLING")
             callback(false, JSON.parse(xmlhttp.responseText).Message)
         }
         if (xmlhttp.readyState === 500) {
@@ -237,57 +277,63 @@ function sendImg(imgToSend, callback) {
 
 function makeMyPDF() {
     //$.LoadingOverlay("show");
-    var cameraq = scene.activeCamera.clone();
-    cameraq.setPosition(new BABYLON.Vector3(Math.PI / 3, 7 * Math.PI / 16, 2600));
-    var initialCamera = scene.activeCamera;
-    scene.activeCamera = cameraq;
+    vPortHeight = engine._gl.drawingBufferHeight;
+    vPortWidth = engine._gl.drawingBufferWidth;
+    var pn = dataDB.PartNumber;
+    setTimeout(function () {        
+        engine.setSize(1200, 1920);
+        scene.render();
+        BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: 960, width: 600 }, function (data) {
 
-    setTimeout(function () {
-
-        BABYLON.Tools.CreateScreenshot(engine, cameraq, 1200, function (data) {
             sendImg(data, function (error, image) {
-                console.log("CALLING PDF")
                 dataDB.print = image;
                 dataDB.totalPrice = totalPrice;
+                if (dataDB.BackSize)
+                    dataDB.PartNumber = dataDB.PartNumber +"-"+ backPartNumber.join("");
                 var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
                 var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
                 xmlhttp.open("POST", theUrl, true);
-                //xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");     
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         $.LoadingOverlay("hide");
                         window.open("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
-                        //window.location.reload();
                     }
                     if (xmlhttp.readyState === 500) {
                         $.LoadingOverlay("hide");
                     }
                 };
                 xmlhttp.send(JSON.stringify(dataDB));
+                dataDB.PartNumber = pn;
             });
-        })
+        });
+        engine.setSize(vPortWidth, vPortHeight);
     }, 500);
 
-    scene.activeCamera = initialCamera;
-    /**/
 }
 
 function takePhoto() {
-
+    var watermarkImg = new Image;
+    
+    watermarkImg.src = '/assets/layout/icons/Wyatt-Seating-Logo.png';
+    console.log(watermarkImg);
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
-    engine.setSize(1600, 2000);
+    engine.setSize(540, 1920/2);
 
     scene.render();
-    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: canvas.height, width: canvas.width }, function (data) {
+    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.activeCamera, { heigth: 1920, width: 1080, precision: 2 }, function (data) {
+        watermark([data, watermarkImg])
+            .image(watermark.image.lowerRight(0.5))
+            .then(function (img) {
+                var link = document.createElement('a');
+                link.download = dataDB.Name + '.png';
+                link.href = img.src;
+                link.click();
+            });
 
-        //localStorage.setItem('cameraFrontImage', data);
-        var link = document.createElement('a');
-        link.download = dataDB.Name + '.png';
-        link.href = data;
-        link.click();
 
+        
     });
 
     engine.setSize(vPortWidth, vPortHeight);
@@ -310,36 +356,155 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
     $accordion.append($card);
     var cardName = dataDB.Options[nOptions].Code;
 
+
     var $cardHeader = $("<div>", { "class": "class-header", "id": cardName + "Header" });
     $card.append($cardHeader);
+
+    var $dropdownarrow = $("<span class=dropdown-menu-arrow></span>");    
+    $cardHeader.append($dropdownarrow);
 
 
     var $cardButton = $("<div>", {
         "class": "btn btn-link", 'type': "button",
         "data-toggle": "collapse", "data-target": "#" + cardName,
-        "aria-expanded": "true", "aria-controls": cardName, "text": cardName,
-        "id": cardName + "Name"
-    });
+            "aria-expanded": "true", "aria-controls": cardName, "text": cardName,
+            "id": cardName + "Name"
+        });    
     $cardHeader.append($cardButton);
+   
 
 
-    var $accordionInfoContainer = $("<div>", {
-        "id": cardName, "class": "collapse",
-        "aria-labelledby": cardName + "Header", "data-parent": "#wyattAccordion",
-        "heightStyle": "content"
-    });
-    $card.append($accordionInfoContainer);
+        var $accordionInfoContainer = $("<div>", {
+            "id": cardName, "class": "collapse",
+            "aria-labelledby": cardName + "Header", "data-parent": "#wyattAccordion",
+            "heightStyle": "content"
+        });
+        $card.append($accordionInfoContainer);
 
-    var $accordionInfo = $("<div>", { "class": "card-body" });
-    $accordionInfoContainer.append($accordionInfo);
+        var $accordionInfo = $("<div>", { "class": "card-body" });
+        $accordionInfoContainer.append($accordionInfo);
 
-    //ADD CARD INFO TO $accordionInfo
-    var $rowDivider = $("<div>", { "class": "row no-gutter", "id": cardName + "-row" });
-    $accordionInfo.append($rowDivider);
+        //ADD CARD INFO TO $accordionInfo
+        var $rowDivider = $("<div>", { "class": "row no-gutter", "id": cardName + "-row" });
+        $accordionInfo.append($rowDivider);
+    
+
+    if (cardName === "back") {
+        var $backWrapper = $("<div>", { "id": "backWrapper", style: "width:100%,"});
+        $rowDivider.append($backWrapper);
+    }
+
+    if (cardName.includes("back")) {
+        $cardButton.text(dataDB.Options[nOptions].Name);
+        
+        if (!cardName.includes("color")) {
+            if (dataDB.Options[nOptions].Code == "back-headrest") {
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; margin: 0 1%; width: 96%" });
+                $backWrapper.append($backFeature);
+
+            }
+            else {
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; margin: 0 1%; width:" + (100 - (2 * dataDB.BackSize)) / dataDB.BackSize + "%" });
+                $backWrapper.append($backFeature);
+            }
+
+            var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0; font-weight: bold;" });
+            $backFeature.append($backFeatureTitle);
+
+            var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
+            $backFeature.append($listGroup);
+
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+                if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
+                    var selectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                    var $featureOptions = $("<a>", {
+                        "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
+                        "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
+                        "text": selectedOption,
+                    });
+                    if (selectedOption.includes("Backk")) {
+                        $featureOptions.text(selectedOption.replace("Backk", ""));
+                    }
+                    if (selectedOption.includes("Frame")) {
+                        $featureOptions.text(selectedOption.replace("Frame", ""));
+                    }
+                    if (selectedOption.includes("V2")) {
+                        $featureOptions.text(selectedOption.replace("V2", ""));
+                    }
+                }
+                
+                else {
+                    var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                    var $featureOptions = $("<a>", {
+                        "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
+                        "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
+                        "text": nonSelectedOption
+                    });
+                    if (!dataDB.Options[nOptions].Values[nValues].Show)
+                        $featureOptions.hide();                   
+                    if (nonSelectedOption.includes("Backk")) {
+                        $featureOptions.text(nonSelectedOption.replace("Backk", ""));
+                    }
+                    if (nonSelectedOption.includes("Frame")) {
+                        $featureOptions.text(nonSelectedOption.replace("Frame", ""));
+                    }
+                    if (nonSelectedOption.includes("V2")) {
+                        $featureOptions.text(nonSelectedOption.replace("V2", ""));
+                    }
+                }
+
+                if (selectedOption == "HighbackVin" || nonSelectedOption == "HighbackVin") {
+                    $featureOptions.text("Vinyl");
+                }
+                
+                
+
+                $listGroup.append($featureOptions);
+                if (nValues > 0)
+                    if ($.inArray(dataDB.Options[nOptions].Values[nValues - 1].Name, dataDB.Options[nOptions].Values[nValues].Uses)) {
+                    }
+
+            }
+        }
+
+        else {
+            var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "margin: 0 1%; width: 100%; display: flow-root" });
+            $backWrapper.append($backFeature);
+
+            var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0;font-weight: bold;" });
+            $backFeature.append($backFeatureTitle);
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+                var $materialItem = $("<div>", {
+                    "class": "material-item", 
+                    "id": dataDB.Options[nOptions].Values[nValues].Code + "-back-material",
+                    "onClick": "changeMaterial(\"" + "back" + "," + dataDB.Options[nOptions].Values[nValues].Code + "," + "none" + "," + nOptions
+                        + "," + "null" + "," + dataDB.Options[nOptions].Values[nValues].PartNumber + "\")",
+                    "style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
+                });
+               
+                $backFeature.append($materialItem);
+                var $materialImage = $("<img>", {
+                    "src": "assets/layout/material thumbnails/" + dataDB.Name + "/" + dataDB.Options[nOptions].Name + "/" +
+                        dataDB.Options[nOptions].Values[nValues].Code + ".jpg",
+                    "style": "width: 90%"
+                });
+                $materialItem.append($materialImage);
+                if (!dataDB.Options[nOptions].Values[nValues].Show)
+                    $materialItem.hide();
+            }
+
+            
+
+        }
+    }
+    if (cardName.includes("back-")) {
+        $("#" + cardName + "Header").parent().remove();
+    }
 
 
-
-    if (!cardName.includes("grade")) {
+    else if (!cardName.includes("grade") && !cardName.includes("back")) {
 
         var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
         $rowDivider.append($listGroup);
@@ -353,7 +518,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
                     "text": selectedOption
                 });
-                $cardButton.text(dataDB.Options[nOptions].Description);
+                $cardButton.text(dataDB.Options[nOptions].Name);
 
             }
 
@@ -365,6 +530,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
                     "text": nonSelectedOption
                 });
+                $cardButton.text(dataDB.Options[nOptions].Name);
             }
 
 
@@ -375,7 +541,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
     }
 
 
-    if (cardName.includes("grade")) {
+    else if (cardName.includes("grade")) {
         var $baseRow = $("<div>", { "class": "row no-gutter", "id": "gradesBaseRow" });
         var $baseFilterRow = $("<div>", { "class": "row no-gutter", "id": "gradesFilterRow" })
         var $dropdownColGrades = $("<div>", { "class": "col", "id": "dropdownColGrades" });
@@ -388,7 +554,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         $baseRow.append($imagesContainer);
 
         materialStructureBuilding(nOptions);
-        $cardButton.text(dataDB.Options[nOptions].Description);
+        $cardButton.text(dataDB.Options[nOptions].Name);
     }
 
 }
@@ -424,7 +590,6 @@ function materialStructureBuilding(nOptions) {
 }
 
 function materialCollectionCardBuildingAndEdition(selection) {
-    //console.log("MATERIAL COLLECTIONS", selection)
     var res = selection.split(",");
     var nOptions = res[0];
     var gradeSelection = res[1];
@@ -435,7 +600,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                 dataDB.Options[nOptions].Values[nValues].Active = true;
                 $("#materialGrades").text(dataDB.Options[nOptions].Values[nValues].Name); //Change Grades Button
                 $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[0].Name); //Change Collection button
-                $("#gradeName").text(dataDB.Options[nOptions].Values[nValues].Name); //Change title
+                //$("#gradeName").text(dataDB.Options[nOptions].Values[nValues].Name); //Change title
                 var $dropdownContentCollections = $("#collectionDropdown");
                 $dropdownContentCollections.empty();
                 for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++) {
@@ -475,7 +640,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "\")"
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/" + gradeSelection + "/" +
@@ -530,7 +695,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + dataDB.Options[nOptions].Values[0].Name + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "\")"
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/Grade 1/" + collection + "/" +
@@ -581,7 +746,7 @@ function collectionSet(collectionSelected) {
                 "class": "material-item", 
                 "id": Materials.Content[nMaterials].Name + "-material",
                 "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + currentOption
-                    + "," + Materials.Content[nMaterials].ColorCode + "\")"
+                    + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
             });
             var $materialImage = $("<img>", {
                 "src": "assets/layout/material thumbnails/" + gradeSelection + "/" + collection + "/" +
@@ -603,6 +768,7 @@ function changeMaterial(value) {
     var grade = res[2];
     var nOptions = parseInt(res[3]);
     var colorCode = res[4];
+    var partNumber = res[5];
 
     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].RelatedLayers.length; nLayers++) {
         for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
@@ -610,21 +776,41 @@ function changeMaterial(value) {
                 var path = "assets/materials/" + dataDB.Name.toLowerCase()
                     + "/fabrics/" + grade.toLowerCase() + "/" + collectionName.toLowerCase() + "/" +
                     materialName + "_" + dataDB.Options[nOptions].RelatedLayers[nLayers];
-
+                if (grade == "none") {
+                    var path = "assets/materials/" + dataDB.Name.toLowerCase()
+                        + "/fabrics/" + grade.toLowerCase() + "/" + collectionName.toLowerCase() + "/" +
+                        materialName + "_Back";
+                }
 
                 if (path) {
                     currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + "_Base_Color.png", scene);
+                    if (materialName.includes("Mesh")) {
+                        currentMesh[nMeshes]._material._alpha = 0.74;
+                    }
+                    else
+                        currentMesh[nMeshes]._material._alpha = 1;
                     currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
                     currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
                 }
 
                 if (!(colorCode == "null" || colorCode == "undefined")) {
                     currentMesh[nMeshes]._material._albedoColor = new BABYLON.Color3.FromHexString(colorCode);
-                }
+                }                
             }
 
         }
 
+    }
+    for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+        if (dataDB.Options[nOptions].Values[nValues].Code == materialName) {
+            dataDB.Options[nOptions].Values[nValues].Active = true;
+            backPartNumber[dataDB.Options[nOptions].Depth - 1] = dataDB.Options[nOptions].Values[nValues].PartNumber;
+        }
+        else if (!dataDB.Options[nOptions].Values[nValues].Code.includes( "grade"))
+            dataDB.Options[nOptions].Values[nValues].Active = false;
+
+        if (dataDB.Options[nOptions].Values[nValues].Name == grade)
+            dataDB.Options[nOptions].Values[nValues].PartNumber = dataDB.Options[nOptions].Values[nValues].Name.replace("Grade ", "") + "-" + partNumber;
     }
 }
 
@@ -632,10 +818,12 @@ function optionChangedOnFeature(selection) {
     var res = selection.split(",");
 
     feature = res[0];
-    option = res[1];
+    option = res[1]; 
 
 
-    $("#" + feature.toLowerCase() + "Name").text(option);
+
+
+    //$("#" + feature.toLowerCase() + "Name").text(option);
     if (option.includes("Grade") || option.includes("Color"))
         materialCollectionCardBuildingAndEdition();
     else
@@ -651,14 +839,64 @@ function cardsResponseOnSelection() {
 
         if (dataDB.Options[nOptions].Name == feature) {
 
-            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
-
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {                
+                var nValuesAux = nValues;
                 if (dataDB.Options[nOptions].Values[nValues].Name == option) {
 
-                    dataDB.Options[nOptions].Values[nValues].Active = true;
+                    dataDB.Options[nOptions].Values[nValues].Active = true;  
+
+                    if (dataDB.Options[nOptions].Code.includes("back")) {                                              
+                        
+                        if (dataDB.Options[nOptions].Depth < dataDB.BackSize + 1) {
+                            for (var dependant = 0; dependant < (dataDB.BackSize + 1) - dataDB.Options[nOptions].Depth; dependant++) {
+                                var check = true;                                
+                                if (dependant >= 0)
+                                    for (var nValuesC = 0; nValuesC < dataDB.Options[nOptions + dependant].Values.length; nValuesC++) {
+                                        if (dataDB.Options[nOptions + dependant].Values[nValuesC].Active) {
+                                            nValues = nValuesC;
+                                            break;
+                                        }
+                                    }
+                                for (var nValuesBeta = 0; nValuesBeta < dataDB.Options[nOptions + dependant + 1].Values.length; nValuesBeta++) {
+
+                                    if ($.inArray(dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code, dataDB.Options[nOptions + dependant].Values[nValues].Uses) >= 0) {
+                                        if (check) {
+                                            dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = true;
+                                            check = false;
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").click();
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").click();
+                                        }
+                                        else {
+                                            dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = false;
+                                        }
+                                        if (dataDB.Options[nOptions + dependant + 1].Name.includes("Color")) {
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").show();
+                                        }
+                                        else {
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").show();
+                                        }
+                                    }
+                                    else {
+                                        dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = false;
+                                        if (dataDB.Options[nOptions + dependant + 1].Name.includes("Color")) {
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").hide();
+
+                                        }
+                                        else {
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").hide();
+                                        }
+                                    }
+                                }  
+                            }
+
+                        }
+
+                    }
+                    nValues = nValuesAux;
+
                     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].Values[nValues].Layers.length; nLayers++) {
 
-                        //Do the material change
+                        //change material
                         var doMaterialChange = false;
                         if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].hasOwnProperty("MaterialFile")) {
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile != null) {
@@ -667,11 +905,11 @@ function cardsResponseOnSelection() {
                             }
                         }
 
+                        
 
-
-                        if (feature == "Back") {
+                       /* if (feature == "Back") {
                             highBackOn = false;
-                            if (dataDB.Options[nOptions].Values[nValues].Name.includes("High-Back") && feature == "Back") {
+                            if (dataDB.Options[nOptions].Values[nValues].Name==("High-Back") && feature == "Back") {
                                 highBackOn = true;
                             }
                         }
@@ -681,9 +919,11 @@ function cardsResponseOnSelection() {
                             if (dataDB.Options[nOptions].Values[nValues].Name.includes("loop arms") && feature == "Arm") {
                                 loopOn = true;
                             }
-                        }
+                    }*/
+                   // console.log(dataDB.Options[nOptions].Values[nValues].Name);
+                    
                         for (var nMeshes = 0; nMeshes < currentMesh.length; nMeshes++) {
-
+                           // console.log(dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, currentMesh[nMeshes.name]);
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes].name) {
                                 //change the material
                                 if (doMaterialChange) {
@@ -716,7 +956,8 @@ function cardsResponseOnSelection() {
 
                                 }
                                 currentMesh[nMeshes].isVisible = dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility;
-                                if (!loopOn && (currentMesh[nMeshes].name == "Arms4" || currentMesh[nMeshes].name == "Arms5")) {
+                                //console.log(currentMesh[nMeshes],dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility);
+                               /* if (!loopOn && (currentMesh[nMeshes].name == "Arms4" || currentMesh[nMeshes].name == "Arms5")) {
                                     currentMesh[nMeshes].isVisible = false;
                                 }
                                 if (loopOn) {
@@ -730,7 +971,7 @@ function cardsResponseOnSelection() {
                                         currentMesh[nMeshes].isVisible = true;
                                     }
 
-                                }
+                                }*/
 
                             }
                         }
@@ -742,6 +983,14 @@ function cardsResponseOnSelection() {
                 }
             }
         }
+
+        if (dataDB.Options[nOptions].Name.includes("Back")) {            
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++)
+                if (dataDB.Options[nOptions].Values[nValues].Active) {
+                    backPartNumber[dataDB.Options[nOptions].Depth - 1] = dataDB.Options[nOptions].Values[nValues].PartNumber;
+                }
+        }
+
     }
 
 }
@@ -866,3 +1115,4 @@ function cardsResponseOnSelection() {
 })(jQuery);
 
 $("#imagesContainer").pagify(6, ".material-item");
+

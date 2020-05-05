@@ -1,0 +1,34 @@
+[
+  {
+    "outputFileName": "scripts/GetAll.min.js",
+    "inputFiles": [
+      "scripts/GetAll.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/productSelector.min.js",
+    "inputFiles": [
+      "scripts/productSelector.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/productBuilder.min.js",
+    "inputFiles": [
+      "scripts/productBuilder.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/MaterialLibrary.min.js",
+    "inputFiles": [
+      "scripts/MaterialLibrary.js"
+    ]
+  },
+  {
+    "outputFileName": "scripts/bundle.js",
+    "inputFiles": [
+      "scripts/MaterialLibrary.min.js",
+      "scripts/productBuilder.min.js",
+      "scripts/productSelector.min.js"
+    ]
+  }
+]

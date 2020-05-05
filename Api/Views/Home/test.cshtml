@@ -1,6 +1,11 @@
 ﻿<!doctype html>
 <html>
+<head>
 
+    <style>
+    </style>
+
+</head>
 
 <body>
     <div class="invoice-container">
@@ -15,22 +20,30 @@
                     </td>
                     <td class="content">
                         <table>
+                            <tr class="titleName">
+                                <td id="namerow">{name}</td>
+                            </tr>
+                            <tr class="titleName">
+                                <td id="namerow">__</td>
+                            </tr>
+                        </table>
+                        <table>
                             <tr>
-                                <td class="col-50"><strong>List Price:</strong></td>
-                                <td class="col-50">$ {TotalPrice}</td>
+                                <td class="col-50">List Price:</td>
+                                <td class="col-50">$ {TotalPrice}.00</td>
                             </tr>
                             <tr>
-                                <td><strong>Product Code:</strong></td>
+                                <td>SKU:</td>
                                 <td>{code}</td>
                             </tr>
                         </table>
                         <table>
                             <tr class="underline">
-                                <td class="col-50">BACK SIZE:</td>
+                                <td class="col-50">BACK:</td>
                                 <td class="col-50">{back}</td>
                             </tr>
                             <tr class="underline">
-                                <td>TEXTILE:</td>
+                                <td>BASE:</td>
                                 <td>{base}</td>
                             </tr>
                             <tr class="underline">
@@ -42,7 +55,7 @@
                                 <td>{arm}</td>
                             </tr>
                             <tr class="underline">
-                                <td>BASE COLOR:</td>
+                                <td>SEAT MATERIAL GRADE:</td>
                                 <td>{grade}</td>
                             </tr>
                         </table>
@@ -53,10 +66,10 @@
                             <tr class="underline">
                                 <td>
                                     <ul>
-                                        <li>Ethosource</li>
-                                        <li>Anjelica Capellupo</li>
-                                        <li>acapellupo4@gmail.com</li>
-                                        <li>484-336-3794</li>
+                                        <li>Wyatt Seating</li>
+                                        <li>Pat Zerbe</li>
+                                        <li>patz@wyattseating.com</li>
+                                        <li>484-789-7200</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -65,6 +78,16 @@
                 </tr>
             </table>
         </div>
+        <table id="footerRow">
+            <tr>
+                <td id="leftcol">{date}</td>
+                <td id="rightcol" align="right">wyattseating.com</td>
+            </tr>
+            
+        </table>
+
     </div>
+
+        
 </body>
 </html>
