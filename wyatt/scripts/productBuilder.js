@@ -7,14 +7,13 @@ var highBackOn = false;
 var feature = "";
 var option = "";
 var collection = "";
-var materialSet = "";
 var backPartNumber = [" "];
 if (dataDB.Name.includes("Freeride"))
     backPartNumber = ["B", "M", "G"];
-if (dataDB.Name.includes("Rowsell"))
+if (dataDB.Name.includes("Roswell"))
     backPartNumber = ["B", "G", "M",""];
-
 var modelNumberOfOptions = dataDB.Options.length;
+var seatPadPrice = 0;
 ////**************************************************************************
 //********************* BABYLON ENGINE INITIALIZATION *****************
 ////**************************************************************************
@@ -56,17 +55,6 @@ var createScene = function () {
         scene.lights[0].dispose();
         var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
         light.intensity = 0.6;
-        console.log(light);
-        
-
-        //Shadow Casting
-        /*var ground = BABYLON.Mesh.CreateGround("ground1", 6000, 6000, 1, scene);
-        var groundMaterial = new BABYLON.StandardMaterial(scene);       
-        groundMaterial.emissiveColor = new BABYLON.Color3(0.6, 0.6, 0.6);
-        //groundMaterial.ambientColor = new BABYLON.Color3(0.23, 0.98, 0.53);
-        ground.material = groundMaterial;
-        console.log(ground);
-        ground.receiveShadows = true;*/
 
         for (var i = 1; i < syncMesh.length; i++) {
 
@@ -118,10 +106,10 @@ var createScene = function () {
 
 
         //Env texture
-        var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/tokyo.dds", scene);
+        var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/royal" + "EnvHDR.dds", scene);
+        //var hdrTexture = new BABYLON.HDRCubeTexture("assets/environment/lebombo.hdr", scene);
         hdrTexture.gammaSpace = true;
         scene.environmentTexture = hdrTexture;
-
         currentMesh = syncMesh;
 
 
@@ -230,7 +218,6 @@ function detectmob() {
 
 
 //MENU BUILDING
-
 var productName = document.getElementById("productName");
 productName.textContent = dataDB.Name;
 var totalPrice = dataDB.Price;
@@ -240,7 +227,7 @@ var currentOptionPrice = Array(dataDB.Options.length);
 var productPrice = document.getElementById("productPrice");
 var currentOptionsPDF = null;
 function priceCalculation() {
-
+   
     for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active == true) {
@@ -251,11 +238,9 @@ function priceCalculation() {
             dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions];
         }
         currentOptionsPDF = currentOptionPrice[nOptions];
-
-        totalPrice += currentOptionPrice[nOptions];
-        productPrice.textContent = "$ " + totalPrice + ".00";
-    }
-
+        totalPrice += currentOptionPrice[nOptions];         
+    }   
+   productPrice.textContent = "$ " + totalPrice + ".00";
 }
 priceCalculation();
 
@@ -279,7 +264,7 @@ function makeMyPDF() {
     //$.LoadingOverlay("show");
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
-    var pn = dataDB.PartNumber;
+    var pn = dataDB.PartNumber;       
     setTimeout(function () {        
         engine.setSize(1200, 1920);
         scene.render();
@@ -315,7 +300,6 @@ function takePhoto() {
     var watermarkImg = new Image;
     
     watermarkImg.src = '/assets/layout/icons/Wyatt-Seating-Logo.png';
-    console.log(watermarkImg);
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
@@ -330,10 +314,7 @@ function takePhoto() {
                 link.download = dataDB.Name + '.png';
                 link.href = img.src;
                 link.click();
-            });
-
-
-        
+            });        
     });
 
     engine.setSize(vPortWidth, vPortHeight);
@@ -416,14 +397,14 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
             for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
                 if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
-                    var selectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                    var selectedOption = dataDB.Options[nOptions].Values[nValues].Code;
                     var $featureOptions = $("<a>", {
                         "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
                         "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
                         "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
-                        "text": selectedOption,
+                        "text": dataDB.Options[nOptions].Values[nValues].Name,
                     });
-                    if (selectedOption.includes("Backk")) {
+                    /*if (selectedOption.includes("Backk")) {
                         $featureOptions.text(selectedOption.replace("Backk", ""));
                     }
                     if (selectedOption.includes("Frame")) {
@@ -431,20 +412,20 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     }
                     if (selectedOption.includes("V2")) {
                         $featureOptions.text(selectedOption.replace("V2", ""));
-                    }
+                    }*/
                 }
                 
                 else {
-                    var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                    var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Code;
                     var $featureOptions = $("<a>", {
                         "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
                         "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
                         "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
-                        "text": nonSelectedOption
+                        "text": dataDB.Options[nOptions].Values[nValues].Name
                     });
                     if (!dataDB.Options[nOptions].Values[nValues].Show)
                         $featureOptions.hide();                   
-                    if (nonSelectedOption.includes("Backk")) {
+                    /*if (nonSelectedOption.includes("Backk")) {
                         $featureOptions.text(nonSelectedOption.replace("Backk", ""));
                     }
                     if (nonSelectedOption.includes("Frame")) {
@@ -452,7 +433,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     }
                     if (nonSelectedOption.includes("V2")) {
                         $featureOptions.text(nonSelectedOption.replace("V2", ""));
-                    }
+                    }*/
                 }
 
                 if (selectedOption == "HighbackVin" || nonSelectedOption == "HighbackVin") {
@@ -511,24 +492,24 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
-                var selectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                var selectedOption = dataDB.Options[nOptions].Values[nValues].Code;
                 var $featureOptions = $("<a>", {
                     "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
                     "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
                     "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
-                    "text": selectedOption
+                    "text": dataDB.Options[nOptions].Values[nValues].Name
                 });
                 $cardButton.text(dataDB.Options[nOptions].Name);
 
             }
 
             else {
-                var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Name;
+                var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Code;
                 var $featureOptions = $("<a>", {
                     "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
                     "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
                     "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
-                    "text": nonSelectedOption
+                    "text": dataDB.Options[nOptions].Values[nValues].Name
                 });
                 $cardButton.text(dataDB.Options[nOptions].Name);
             }
@@ -547,15 +528,56 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         var $dropdownColGrades = $("<div>", { "class": "col", "id": "dropdownColGrades" });
         var $dropdownColMats = $("<div>", { "class": "col", "id": "dropdownColMats" });
         var $imagesContainer = $("<div>", { "class": "row no-gutter", "id": "imagesContainer" });
+        var $SeatCoverRow = $("<div>", { "class": "row no-gutter", "id": "seatCoverRow", "style": "height: 0vh;" });        
+        var $SeatCoverCheckbox = $("<input>", {
+            "class": "form-check-input", "type": "checkbox", "value": "", "id": "coverCheck", 
+            "onclick": "seatCover()"
+            });
+        var $SeatCoverLabel = $("<label>", { "class": "form-check-label", "for": "coverCheck", "text": "Removable Seat Cover:" });
         $rowDivider.append($baseFilterRow);
         $rowDivider.append($baseRow);
         $baseFilterRow.append($dropdownColGrades);
         $baseFilterRow.append($dropdownColMats);
+        $baseRow.append($SeatCoverRow);
+        $SeatCoverRow.append($SeatCoverCheckbox);
+        $SeatCoverRow.append($SeatCoverLabel);
+
         $baseRow.append($imagesContainer);
 
         materialStructureBuilding(nOptions);
         $cardButton.text(dataDB.Options[nOptions].Name);
+        $("#seatCoverRow")[0].hidden = true;
     }
+
+}
+
+//Seat Cover Function
+function seatCover() {  
+    seatPadPrice = 0; 
+    if ($("#seatCoverRow")[0].hidden) {
+        $("#coverCheck")[0].checked = false;
+        $("#seatCoverRow").css("height", "1.6vh");
+    }
+    else
+        $("#seatCoverRow").css("height", "auto");
+    var auxPrice = totalPrice;
+
+    dataDB.SeatPad = false;
+    seatPadPrice = 0;
+    if ($("#coverCheck")[0].checked && !$("#seatCoverRow")[0].hidden) {
+        seatPadPrice = 90;
+        auxPrice += seatPadPrice;
+        dataDB.SeatPad = true;
+    }
+    if (!$("#coverCheck")[0].checked && !$("#seatCoverRow")[0].hidden) {
+        seatPadPrice = 0;
+        auxPrice += seatPadPrice;
+        dataDB.SeatPad = false;
+    }
+    
+    productPrice.textContent = "$ " + auxPrice + ".00";
+    
+    
 
 }
 
@@ -597,6 +619,10 @@ function materialCollectionCardBuildingAndEdition(selection) {
     if (document.getElementById("materialCollections") != null) { //    Edition       
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Name == gradeSelection) {
+                $("#seatCoverRow")[0].hidden = !(parseInt(gradeSelection[gradeSelection.length - 1]) > 1);
+                $("#coverCheck")[0].checked = false;
+                seatCover();
+                
                 dataDB.Options[nOptions].Values[nValues].Active = true;
                 $("#materialGrades").text(dataDB.Options[nOptions].Values[nValues].Name); //Change Grades Button
                 $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[0].Name); //Change Collection button
@@ -640,7 +666,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/" + gradeSelection + "/" +
@@ -695,7 +721,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + dataDB.Options[nOptions].Values[0].Name + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/Grade 1/" + collection + "/" +
@@ -746,7 +772,7 @@ function collectionSet(collectionSelected) {
                 "class": "material-item", 
                 "id": Materials.Content[nMaterials].Name + "-material",
                 "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + currentOption
-                    + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Code + "\")"
+                    + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
             });
             var $materialImage = $("<img>", {
                 "src": "assets/layout/material thumbnails/" + gradeSelection + "/" + collection + "/" +
@@ -768,7 +794,8 @@ function changeMaterial(value) {
     var grade = res[2];
     var nOptions = parseInt(res[3]);
     var colorCode = res[4];
-    var partNumber = res[5];
+    var fabricName = res[5]
+    var partNumber = res[6];
 
     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].RelatedLayers.length; nLayers++) {
         for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
@@ -779,7 +806,7 @@ function changeMaterial(value) {
                 if (grade == "none") {
                     var path = "assets/materials/" + dataDB.Name.toLowerCase()
                         + "/fabrics/" + grade.toLowerCase() + "/" + collectionName.toLowerCase() + "/" +
-                        materialName + "_Back";
+                        materialName +"_"+ dataDB.Options[nOptions].RelatedLayers[nLayers];
                 }
 
                 if (path) {
@@ -809,22 +836,18 @@ function changeMaterial(value) {
         else if (!dataDB.Options[nOptions].Values[nValues].Code.includes( "grade"))
             dataDB.Options[nOptions].Values[nValues].Active = false;
 
-        if (dataDB.Options[nOptions].Values[nValues].Name == grade)
-            dataDB.Options[nOptions].Values[nValues].PartNumber = dataDB.Options[nOptions].Values[nValues].Name.replace("Grade ", "") + "-" + partNumber;
+        if (dataDB.Options[nOptions].Values[nValues].Name == grade) {
+            dataDB.FabricName = collectionName + " - " + fabricName;
+            dataDB.FabricPartNumber = partNumber;
+        }       
     }
 }
 
 function optionChangedOnFeature(selection) {
     var res = selection.split(",");
-
     feature = res[0];
     option = res[1]; 
-
-
-
-
-    //$("#" + feature.toLowerCase() + "Name").text(option);
-    if (option.includes("Grade") || option.includes("Color"))
+    if (option.includes("grade") || option.includes("color"))
         materialCollectionCardBuildingAndEdition();
     else
         cardsResponseOnSelection();
@@ -841,7 +864,7 @@ function cardsResponseOnSelection() {
 
             for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {                
                 var nValuesAux = nValues;
-                if (dataDB.Options[nOptions].Values[nValues].Name == option) {
+                if (dataDB.Options[nOptions].Values[nValues].Code == option) {
 
                     dataDB.Options[nOptions].Values[nValues].Active = true;  
 
@@ -903,33 +926,19 @@ function cardsResponseOnSelection() {
                                 doMaterialChange = true;
 
                             }
-                        }
-
-                        
-
-                       /* if (feature == "Back") {
-                            highBackOn = false;
-                            if (dataDB.Options[nOptions].Values[nValues].Name==("High-Back") && feature == "Back") {
-                                highBackOn = true;
-                            }
-                        }
-
-                        if (feature == "Arm") {
-                            loopOn = false;
-                            if (dataDB.Options[nOptions].Values[nValues].Name.includes("loop arms") && feature == "Arm") {
-                                loopOn = true;
-                            }
-                    }*/
-                   // console.log(dataDB.Options[nOptions].Values[nValues].Name);
+                        }    
                     
-                        for (var nMeshes = 0; nMeshes < currentMesh.length; nMeshes++) {
-                           // console.log(dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer, currentMesh[nMeshes.name]);
-                            if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes].name) {
+                        for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
+                            if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes]._material.name) {
                                 //change the material
                                 if (doMaterialChange) {
                                     var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
-                                    currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
-
+                                    if (dataDB.Options[nOptions].Values[nValues].Code.includes("V2")) {
+                                        currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "V2_Base_Color" + ".png", scene);
+                                    }
+                                    else {
+                                        currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
+                                    }
 
 
                                     if (dataDB.Options[nOptions].Values[nValues].Name.includes("Nylon") && currentMesh[nMeshes].material.name == "Base") {
@@ -955,24 +964,8 @@ function cardsResponseOnSelection() {
                                     currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
 
                                 }
+                                if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility != null)
                                 currentMesh[nMeshes].isVisible = dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility;
-                                //console.log(currentMesh[nMeshes],dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility);
-                               /* if (!loopOn && (currentMesh[nMeshes].name == "Arms4" || currentMesh[nMeshes].name == "Arms5")) {
-                                    currentMesh[nMeshes].isVisible = false;
-                                }
-                                if (loopOn) {
-                                    if (highBackOn && (currentMesh[nMeshes].name.includes("BackHolder1") || currentMesh[nMeshes].name.includes("Arms4"))) {
-                                        currentMesh[nMeshes].isVisible = false;
-                                    }
-                                    if (!highBackOn && (currentMesh[nMeshes].name == "BackHolder2" || currentMesh[nMeshes].name == "Arms5")) {
-                                        currentMesh[nMeshes].isVisible = false;
-                                    }
-                                    if (!highBackOn && (currentMesh[nMeshes].name == "Arms4")) {
-                                        currentMesh[nMeshes].isVisible = true;
-                                    }
-
-                                }*/
-
                             }
                         }
 

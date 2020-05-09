@@ -18,5 +18,8 @@ namespace Api.Models
         public List<string> DefaultLayers { get; set; }
         public List<Option> Options { get; set; }
         public string print { get; set; }
+        public string FabricName { get; set; }
+        public string FabricPartNumber { get; set; }
+        public bool SeatPad { get; set; }
     }
 }

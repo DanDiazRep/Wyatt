@@ -28,11 +28,11 @@
                             </tr>
                         </table>
                         <table>
-                            <tr>
+                            <tr class="underline">
                                 <td class="col-50">List Price:</td>
                                 <td class="col-50">$ {TotalPrice}.00</td>
                             </tr>
-                            <tr>
+                            <tr class="underline">
                                 <td>SKU:</td>
                                 <td>{code}</td>
                             </tr>
@@ -54,10 +54,14 @@
                                 <td>ARMS:</td>
                                 <td>{arm}</td>
                             </tr>
-                            <tr class="underline">
-                                <td>SEAT MATERIAL GRADE:</td>
+                            <tr>
+                                <td>FABRIC:</td>
                                 <td>{grade}</td>
                             </tr>
+                            <tr class="underline">
+                                <td>PATTERN:</td>
+                                <td>{fabric}</td>
+                            </tr class="underline">
                         </table>
                         <table>
                             <tr class="underline">
@@ -78,13 +82,15 @@
                 </tr>
             </table>
         </div>
-        <table id="footerRow">
-            <tr>
-                <td id="leftcol">{date}</td>
-                <td id="rightcol" align="right">wyattseating.com</td>
-            </tr>
-            
-        </table>
+        <div id="footerRow">
+            <table id="footerTable">
+                <tr>
+                    <td id="leftcol">{date}</td>
+                    <td id="rightcol" align="right">wyattseating.com</td>
+                </tr>
+
+            </table>
+        </div>
 
     </div>
 

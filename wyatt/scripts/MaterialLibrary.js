@@ -583,7 +583,7 @@ function listOfMaterials(collection) {
         case "Vinyl":
             objCollection = GradeV_Vinyl;
             break;
-        //GARDE 2
+        //GRADE 2
         case "Foundation 10":
             objCollection = Grade2_Foundation_10;
             break;
