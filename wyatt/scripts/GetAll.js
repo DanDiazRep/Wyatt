@@ -260,7 +260,7 @@ var getFreeride = {
                 }, // MID-BACK VINYL
                 {
                     Code: "HighbackVin",
-                    Name: "Vinyl",
+                    Name: "HighbackVin",
                     Active: false,
                     PartNumber: "V",
                     Show: false,
@@ -299,7 +299,7 @@ var getFreeride = {
             Values: [
                 {
                     Code: "Grey-Mesh",
-                    Name: "Grey",
+                    Name: "Grey-Mesh",
                     Active: false,
                     PartNumber: "G",
                     Price: 0,
@@ -308,7 +308,7 @@ var getFreeride = {
                 },
                 {
                     Code: "Black-Mesh",
-                    Name: "Black",
+                    Name: "Black-Mesh",
                     Active: true,
                     PartNumber: "B",
                     Price: 0,
@@ -317,7 +317,7 @@ var getFreeride = {
                 },
                 {
                     Code: "Red-Mesh",
-                    Name: "Red",
+                    Name: "Red-Mesh",
                     Active: false,
                     PartNumber: "R",
                     Price: 0,
@@ -326,7 +326,7 @@ var getFreeride = {
                 },
                 {
                     Code: "Blue-Mesh",
-                    Name: "Blue",
+                    Name: "Blue-Mesh",
                     Active: false,
                     PartNumber: "B",
                     Price: 0,
@@ -335,7 +335,7 @@ var getFreeride = {
                 },
                 {
                     Code: "Cardigan",
-                    Name: "Cardigan",
+                    Name: "I.O.U.- Cardigan",
                     Active: false,
                     PartNumber: "1311",
                     Price: 0,
@@ -344,7 +344,7 @@ var getFreeride = {
                 },
                 {
                     Code: "Billy-4C",
-                    Name: "Billy 4C",
+                    Name: "I.O.U.- Billy 4C",
                     Active: false,
                     PartNumber: "1301",
                     Price: 0,
@@ -997,7 +997,7 @@ var getFreerideStool = {
                 }, // MID-BACK VINYL
                 {
                     Code: "HighbackVin",
-                    Name: "Vinyl",
+                    Name: "HighbackVin",
                     Active: false,
                     PartNumber: "V",
                     Show: false,
@@ -1036,7 +1036,7 @@ var getFreerideStool = {
             Values: [
                 {
                     Code: "Grey-Mesh",
-                    Name: "Grey",
+                    Name: "Grey-Mesh",
                     Active: false,
                     PartNumber: "G",
                     Price: 0,
@@ -1045,7 +1045,7 @@ var getFreerideStool = {
                 },
                 {
                     Code: "Black-Mesh",
-                    Name: "Black",
+                    Name: "Black-Mesh",
                     Active: true,
                     PartNumber: "B",
                     Price: 0,
@@ -1054,7 +1054,7 @@ var getFreerideStool = {
                 },
                 {
                     Code: "Red-Mesh",
-                    Name: "Red",
+                    Name: "Red-Mesh",
                     Active: false,
                     PartNumber: "R",
                     Price: 0,
@@ -1063,7 +1063,7 @@ var getFreerideStool = {
                 },
                 {
                     Code: "Blue-Mesh",
-                    Name: "Blue",
+                    Name: "Blue-Mesh",
                     Active: false,
                     PartNumber: "B",
                     Price: 0,
@@ -1072,7 +1072,7 @@ var getFreerideStool = {
                 },
                 {
                     Code: "Cardigan",
-                    Name: "Cardigan",
+                    Name: "I.O.U.- Cardigan",
                     Active: false,
                     PartNumber: "1311",
                     Price: 0,
@@ -1081,7 +1081,7 @@ var getFreerideStool = {
                 },
                 {
                     Code: "Billy-4C",
-                    Name: "Billy 4C",
+                    Name: "I.O.U.- Billy 4C",
                     Active: false,
                     PartNumber: "1301",
                     Price: 0,
@@ -1505,7 +1505,7 @@ var getFreerideStool = {
 var getG6 = {
     Code: "g6",
     Name: "G6",
-    PartNumber: "711BMG",
+    PartNumber: "711MG",
     LowFile: "g6-low.glb",
     MedFile: null,
     HighFile: "g6-high.glb",
@@ -1617,7 +1617,7 @@ var getG6 = {
             Name: "Arm Style Selection",
             Description: "Arm Style",
             Type: "F",
-            RelatedLayers: ["Arms1", "Arms2"],
+            RelatedLayers: ["Arms", "Arms1"],
             isHighBack: false,
             Values: [
                 {
@@ -1628,13 +1628,13 @@ var getG6 = {
                     Price: -25,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
@@ -1649,13 +1649,13 @@ var getG6 = {
                     Price: 0,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: true
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
@@ -1670,13 +1670,13 @@ var getG6 = {
                     Price: 46,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: true
@@ -1899,13 +1899,13 @@ var getG6Stool = {
                     Price: -25,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
@@ -1920,13 +1920,13 @@ var getG6Stool = {
                     Price: 0,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: true
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
@@ -1941,13 +1941,13 @@ var getG6Stool = {
                     Price: 46,
                     Layers: [
                         {
-                            Layer: "Arms1",
+                            Layer: "Arms",
                             MaterialFile: null,
                             Color: null,
                             Visibility: false
                         },
                         {
-                            Layer: "Arms2",
+                            Layer: "Arms1",
                             MaterialFile: null,
                             Color: null,
                             Visibility: true
@@ -3736,6 +3736,10 @@ var getTether = {
                         {
                             Name: "I.O.U",
                             Active: true
+                        },
+                        {
+                            Name: "Circus Boy Plastics",
+                            Active: false
                         }
                     ],
                     Layers: [

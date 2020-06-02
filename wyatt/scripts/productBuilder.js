@@ -61,11 +61,7 @@ var createScene = function () {
             syncMesh[i].actionManager = new BABYLON.ActionManager(scene); // Pointer behavior on model hover                       
             syncMesh[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (env) {
             }, false));
-            if (dataDB.Name == "Extra") {
-                syncMesh[i].scaling.x = 0.85;
-                syncMesh[i].scaling.y = 0.85;
-                syncMesh[i].scaling.z = 0.85;
-            }
+
             //More & more bump
             if (syncMesh[i].material && syncMesh[i].material.bumpTexture) {
                 syncMesh[i].material.bumpTexture.level = 1.5;
@@ -81,6 +77,7 @@ var createScene = function () {
             if ((size.z) > maxSize.z)
                 maxSize.z = size.z;
 
+
             meshCenter.x += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.x;
             meshCenter.y += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.y;
             meshCenter.z += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.z;
@@ -89,6 +86,8 @@ var createScene = function () {
             syncMesh[i].isVisible = dataDB.DefaultLayers.includes(syncMesh[i].name);
 
         }
+
+  
 
         meshCenter.x = meshCenter.x / syncMesh.length*0;
         meshCenter.y = meshCenter.y / syncMesh.length;
@@ -110,8 +109,6 @@ var createScene = function () {
         var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/royal" + "EnvHDR.dds", scene);
         //var hdrTexture = new BABYLON.HDRCubeTexture("assets/environment/lebombo.hdr", scene);
         hdrTexture.gammaSpace = true;
-        if (dataDB.Code == "lamia")
-            hdrTexture.gammaSpace = false;
         scene.environmentTexture = hdrTexture;
         currentMesh = syncMesh;
 
@@ -174,19 +171,14 @@ function asyncDownload(lod) {
     Promise.all([
 
         BABYLON.SceneLoader.ImportMeshAsync(null, baseUrl, lod, scene).then(function (asyncResult) {
-            
+
             asyncResult = asyncResult.meshes;
             asyncMesh = asyncResult;
-            
 
             for (var i = 1; i < asyncResult.length; i++) {
                 asyncResult[i].receiveShadows = true;
 
-                
-
                 asyncResult[i].actionManager = new BABYLON.ActionManager(scene);
-
-                
 
                 //ON MOUSE ENTER
                 asyncResult[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
@@ -199,7 +191,6 @@ function asyncDownload(lod) {
         }),
         //select the options here
     ]).then(() => {
-        asyncMesh.scaling = currentMesh.scaling;
         for (var i = 1; i < currentMesh.length; i++) {
             if (currentMesh[i].name == "Seat" || (currentMesh[i].name == "Base" && !dataDB.Name.includes("Stool")))
                 asyncMesh[i]._material = currentMesh[i]._material;
@@ -312,7 +303,7 @@ function takePhoto() {
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
-    engine.setSize(580, 1920/2);
+    engine.setSize(540, 1920/2);
 
     scene.render();
     BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.activeCamera, { heigth: 1920, width: 1080, precision: 2 }, function (data) {
@@ -628,11 +619,10 @@ function materialCollectionCardBuildingAndEdition(selection) {
     if (document.getElementById("materialCollections") != null) { //    Edition       
         for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
             if (dataDB.Options[nOptions].Values[nValues].Name == gradeSelection) {
-                if ((dataDB.Name.includes("G6") || dataDB.Name.includes("Freeride"))) {
-                    $("#seatCoverRow")[0].hidden = !(parseInt(gradeSelection[gradeSelection.length - 1]) > 1);
-                    $("#coverCheck")[0].checked = false;
-                    seatCover();
-                }
+                $("#seatCoverRow")[0].hidden = !(parseInt(gradeSelection[gradeSelection.length - 1]) > 1);
+                $("#coverCheck")[0].checked = false;
+                seatCover();
+                
                 dataDB.Options[nOptions].Values[nValues].Active = true;
                 $("#materialGrades").text(dataDB.Options[nOptions].Values[nValues].Name); //Change Grades Button
                 $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[0].Name); //Change Collection button
@@ -664,6 +654,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
         }
         priceCalculation();
 
+
         var Materials = listOfMaterials(collection);
         $("#imagesContainer").empty();
         $(".pagination").empty();
@@ -674,15 +665,13 @@ function materialCollectionCardBuildingAndEdition(selection) {
                 var $materialItem = $("<div>", {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
-                    "data-toggle": "tooltip", "title": Materials.Content[nMaterials].Name,
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")",
-                   
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/" + gradeSelection + "/" +
                         collection + "/" +
-                        Materials.Content[nMaterials].Name + ".jpg"                    
+                        Materials.Content[nMaterials].Name + ".jpg"
                 });
                 $materialItem.append($materialImage);
                 $("#imagesContainer").append($materialItem);
@@ -732,8 +721,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                     "class": "material-item", 
                     "id": Materials.Content[nMaterials].Name + "-material",
                     "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + dataDB.Options[nOptions].Values[0].Name + "," + nOptions
-                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")",
-                    "data-toggle": "tooltip", "title": Materials.Content[nMaterials].Name,
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
                 });
                 var $materialImage = $("<img>", {
                     "src": "assets/layout/material thumbnails/Grade 1/" + collection + "/" +
@@ -806,7 +794,7 @@ function changeMaterial(value) {
     var grade = res[2];
     var nOptions = parseInt(res[3]);
     var colorCode = res[4];
-    var fabricName = res[5];
+    var fabricName = res[5]
     var partNumber = res[6];
 
     for (var nLayers = 0; nLayers < dataDB.Options[nOptions].RelatedLayers.length; nLayers++) {
@@ -943,7 +931,7 @@ function cardsResponseOnSelection() {
                         for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
                             if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes]._material.name) {
                                 //change the material
-                                if (doMaterialChange) { 
+                                if (doMaterialChange) {
                                     var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
                                     if (dataDB.Options[nOptions].Values[nValues].Code.includes("V2")) {
                                         currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "V2_Base_Color" + ".png", scene);
