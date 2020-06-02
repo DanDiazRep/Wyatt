@@ -119,7 +119,18 @@ namespace Api.Controllers
             {
                 myPart = hasGrade.Values.Find(x => x.Active == true);
                 PartCode += "-" + myPart.PartNumber;
-                html = html.Replace("{grade}", myPart.Name + "<br>(Fully Upholstered)");
+
+                if (myPart.Name == "Grade 1" && (configurator.Name.ToLower().Contains("g6") || configurator.Name.ToLower().Contains("freeride")))
+                {
+                    html = html.Replace("{grade}", myPart.Name + "<br>(Removable Seat Cover)");
+                }
+                else
+                {
+                    html = html.Replace("{grade}", myPart.Name + "<br>(Fully Upholstered)");
+                }
+                
+
+                
             }
             else if (hasColorSeat != null)
             {
@@ -127,6 +138,7 @@ namespace Api.Controllers
                 PartCode += myPart.PartNumber;
                 html = html.Replace("FABRIC:", "SEAT COLOR:");
                 html = html.Replace("{grade}", myPart.Name);
+   
             }
             else
             {
