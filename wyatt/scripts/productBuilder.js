@@ -35,7 +35,7 @@ var createScene = function () {
 
     // Model loader
     BABYLON.GLTFFileLoader.IncrementalLoading = false;
-    baseUrl = "/assets/models/";
+    baseUrl = "assets/models/";
     lowFile = dataDB.LowFile;
     BABYLON.SceneLoader.ImportMesh("", baseUrl, lowFile, scene, function (syncMesh) {
 
@@ -192,10 +192,7 @@ function asyncDownload(lod) {
                 asyncResult[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
 
                 }, false));
-
             }
-
-
         }),
         //select the options here
     ]).then(() => {
@@ -308,7 +305,7 @@ function makeMyPDF() {
 function takePhoto() {
     var watermarkImg = new Image;
     
-    watermarkImg.src = '/assets/layout/icons/Wyatt-Seating-Logo.png';
+    watermarkImg.src = 'assets/layout/icons/Wyatt-Seating-Logo.png';
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
@@ -413,15 +410,6 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                         "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
                         "text": dataDB.Options[nOptions].Values[nValues].Name,
                     });
-                    /*if (selectedOption.includes("Backk")) {
-                        $featureOptions.text(selectedOption.replace("Backk", ""));
-                    }
-                    if (selectedOption.includes("Frame")) {
-                        $featureOptions.text(selectedOption.replace("Frame", ""));
-                    }
-                    if (selectedOption.includes("V2")) {
-                        $featureOptions.text(selectedOption.replace("V2", ""));
-                    }*/
                 }
                 
                 else {
@@ -433,16 +421,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                         "text": dataDB.Options[nOptions].Values[nValues].Name
                     });
                     if (!dataDB.Options[nOptions].Values[nValues].Show)
-                        $featureOptions.hide();                   
-                    /*if (nonSelectedOption.includes("Backk")) {
-                        $featureOptions.text(nonSelectedOption.replace("Backk", ""));
-                    }
-                    if (nonSelectedOption.includes("Frame")) {
-                        $featureOptions.text(nonSelectedOption.replace("Frame", ""));
-                    }
-                    if (nonSelectedOption.includes("V2")) {
-                        $featureOptions.text(nonSelectedOption.replace("V2", ""));
-                    }*/
+                        $featureOptions.hide();  
                 }
 
                 if (selectedOption == "HighbackVin" || nonSelectedOption == "HighbackVin") {

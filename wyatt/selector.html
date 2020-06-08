@@ -17,15 +17,15 @@
     <div class="row">
         <div class="col-4">
             <div class="list-group" id="list-tab" role="tablist" style="text-align:center">
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('G6')">G6</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=G6" role="tab" >G6</a>
                 
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('Freeride')">Freeride</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=Freeride" role="tab">Freeride</a>
                 
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('Roswell')">Roswell</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=Roswell" role="tab" >Roswell</a>
                 
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('Lamia')">La Mia</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('Extra')">Extra</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html" role="tab" onclick="productSelector('TetherStool')">Tether Stool</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=LaMia" role="tab">La Mia</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=Extra" role="tab" >Extra</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="index.html?name=Tether" role="tab">Tether</a>
             </div>
         </div>
 
@@ -35,15 +35,6 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
 
-    <script>
- 
-        function productSelector(args) {
-
-            sessionStorage.clear();
-            sessionStorage.setItem('chair', args);
-        }
-
-    </script>
-
+   
 </body>
 </html>
