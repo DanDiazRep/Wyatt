@@ -181,13 +181,7 @@ var GradeV_Vinyl =
             "Name": "Grey",
             "Code": "4002",
             "Active": false
-        },
-        {
-            "Id": 3,
-            "Name": "White",
-            "Code": "4003",
-            "Active": false
-        },
+        },       
 
     ]
 }
@@ -378,9 +372,9 @@ var Grade2_Patio =
 };
 
 
-var Grade3_Habersash =
+var Grade3_Haberdash =
 {
-    "Name": "Habersash",
+    "Name": "Haberdash",
     "Content": [
         {
             "Id": 1,
@@ -447,7 +441,7 @@ var Grade3_Habersash =
 };
 var Grade3_Echo =
 {
-    "Name": "Habersash",
+    "Name": "Haberdash",
     "Content": [
         {
             "Id": 1,
@@ -606,8 +600,8 @@ function listOfMaterials(collection) {
             objCollection = Grade2_Patio;
             break;
         //GRADE 3
-        case "Habersash":
-            objCollection = Grade3_Habersash;
+        case "Haberdash":
+            objCollection = Grade3_Haberdash;
             break;
         case "Echo":
             objCollection = Grade3_Echo;

@@ -591,6 +591,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="wwwroot\logo.png" />
     <Content Include="Views\Home\Content\bootstrap-theme.css" />
     <Content Include="Views\Home\Content\bootstrap-theme.min.css" />
     <Content Include="Views\Home\Content\bootstrap.css" />
@@ -623,7 +624,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="libman.json" />
+    <None Include="Properties\PublishProfiles\api.wyattseating.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\api.wyattseating.com - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\api.wyattseating.com - Web Deploy2.pubxml" />
     <None Include="Properties\PublishProfiles\wyattapi.servexusinc.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\wyattapi.servexusinc.com - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\wyattapi.servexusinc.com - Web Deploy2.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -651,7 +657,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

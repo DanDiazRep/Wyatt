@@ -1,3 +1,6018 @@
-function listOfMaterials(n){var t;switch(n){case"Link":t=Grade1_Link;break;case"I.O.U":t=Grade1_IOU;break;case"Circus Boy Plastics":t=Grade1_Circus;break;case"Vinyl":t=GradeV_Vinyl;break;case"Foundation 10":t=Grade2_Foundation_10;break;case"Key Largo":t=Grade2_Key_Largo;break;case"Patio":t=Grade2_Patio;break;case"Habersash":t=Grade3_Habersash;break;case"Echo":t=Grade3_Echo;break;case"Cosmopolitan":t=Grade3_Cosmopolitan;break;case"TBD":t=Empty_Grade;break;default:t=null}return t}var Grade1_Link={Name:"Link",Content:[{Id:1,Name:"Eclipse",Code:"1001",Active:!0},{Id:2,Name:"Shadow",Code:"1002",Active:!1},{Id:3,Name:"Coast",Code:"1003",Active:!1},{Id:4,Name:"Kiwi",Code:"1004",Active:!1},{Id:5,Name:"Harvest",Code:"1005",Active:!1},{Id:6,Name:"Poppy",Code:"1006",Active:!1}]},Grade1_IOU={Name:"I.O.U.",Content:[{Id:1,Name:"Billy 4C",Code:"1301",Active:!1},{Id:2,Name:"Swammi",Code:"1302",Active:!1},{Id:3,Name:"Jetway",Code:"1303",Active:!1},{Id:4,Name:"Sea Bass",Code:"1304",Active:!1},{Id:5,Name:"Petey",Code:"1305",Active:!1},{Id:6,Name:"Triple Stamp",Code:"1306",Active:!1},{Id:7,Name:"Atomic Pepper",Code:"1307",Active:!1},{Id:8,Name:"Mock Yeah",Code:"1308",Active:!1},{Id:9,Name:"Sheepdog",Code:"1309",Active:!1},{Id:10,Name:"Moon",Code:"1310",Active:!1},{Id:11,Name:"Cardigan",Code:"1311",Active:!1},]},Grade1_Circus={Name:"Circus Boy Plastics",Content:[{Id:1,Name:"Cowtipping",Code:"01",Active:!1},{Id:2,Name:"Sugar Packet",Code:"02",Active:!1},{Id:3,Name:"Rhino",Code:"03",Active:!1},{Id:4,Name:"Dinghy",Code:"04",Active:!1},{Id:5,Name:"Pine Tree",Code:"05",Active:!1},{Id:6,Name:"Ketchup Popsicle",Code:"06",Active:!1},{Id:7,Name:"Bear Claw",Code:"07",Active:!1}]},GradeV_Vinyl={Name:"Vinyl",Content:[{Id:1,Name:"Black",Code:"4001",Active:!1},{Id:2,Name:"Grey",Code:"4002",Active:!1},{Id:3,Name:"White",Code:"4003",Active:!1},]},Grade2_Foundation_10={Name:"Foundation 10",Content:[{Id:1,Name:"Blue Mist",Code:"2024",Active:!1},{Id:2,Name:"Capri",Code:"2044",Active:!1},{Id:3,Name:"Celery",Code:"2013",Active:!1},{Id:4,Name:"Mercury",Code:"2016",Active:!1},{Id:5,Name:"Merlot",Code:"2008",Active:!1},{Id:6,Name:"Mocha",Code:"2030",Active:!1},{Id:7,Name:"Ochre",Code:"2032",Active:!1},{Id:8,Name:"Parade Blue",Code:"2034",Active:!1},{Id:9,Name:"Poppy",Code:"2041",Active:!1},{Id:10,Name:"Terra Cotta",Code:"2019",Active:!1},]},Grade2_Key_Largo={Name:"Key Largo",Content:[{Id:1,Name:"Aegean",Code:"2114",Active:!1},{Id:2,Name:"Crimson",Code:"2101",Active:!1},{Id:3,Name:"Ebony",Code:"2116",Active:!1},{Id:4,Name:"Graphite",Code:"2106",Active:!1},{Id:5,Name:"Jungle",Code:"2103",Active:!1},{Id:6,Name:"Pear",Code:"2133",Active:!1},{Id:7,Name:"Quarry",Code:"2126",Active:!1},{Id:8,Name:"Sandstone",Code:"2120",Active:!1},{Id:9,Name:"Tangerine",Code:"2109",Active:!1},{Id:10,Name:"Ultramarine",Code:"2104",Active:!1}]},Grade2_Patio={Name:"Patio",Content:[{Id:1,Name:"Aquatint",Code:"2224",Active:!1,ColorCode:"#FFFFFF"},{Id:2,Name:"Basket",Code:"2200",Active:!1,ColorCode:"#505050"},{Id:3,Name:"Coral Reef",Code:"2209",Active:!1},{Id:4,Name:"Oceanic",Code:"2204",Active:!1},{Id:5,Name:"Slate",Code:"2206",Active:!1},{Id:6,Name:"Sunshine",Code:"2202",Active:!1},{Id:7,Name:"Vellum",Code:"2207",Active:!1}]},Grade3_Habersash={Name:"Habersash",Content:[{Id:1,Name:"Basil",Code:"3003",Active:!1},{Id:2,Name:"Charcoal",Code:"3006",Active:!1},{Id:3,Name:"Curry",Code:"3009",Active:!1},{Id:4,Name:"Denim",Code:"3004",Active:!1},{Id:5,Name:"Earth",Code:"3010",Active:!1},{Id:6,Name:"Emerald",Code:"3013",Active:!1},{Id:7,Name:"Plum",Code:"3008",Active:!1},{Id:8,Name:"Raspberry",Code:"3001",Active:!1},{Id:9,Name:"Shadow",Code:"3016",Active:!1},{Id:10,Name:"Teal",Code:"3014",Active:!1},]},Grade3_Echo={Name:"Habersash",Content:[{Id:1,Name:"Apple Green",Code:"3113",Active:!1},{Id:2,Name:"Blaze",Code:"3109",Active:!1},{Id:3,Name:"Cerulean",Code:"3114",Active:!1},{Id:4,Name:"Greystone",Code:"3116",Active:!1},{Id:5,Name:"Skylight",Code:"3124",Active:!1},{Id:6,Name:"Smokey Taupe",Code:"3110",Active:!1},{Id:7,Name:"Vermillion",Code:"3101",Active:!1},]},Grade3_Cosmopolitan={Name:"Cosmopolitan",Content:[{Id:1,Name:"Denim",Code:"3204",Active:!1},{Id:2,Name:"Granite",Code:"3210",Active:!1},{Id:3,Name:"Horizon",Code:"3214",Active:!1},{Id:4,Name:"Marigold",Code:"3202",Active:!1},{Id:5,Name:"Mist",Code:"3216",Active:!1},{Id:6,Name:"Oatmeal",Code:"3217",Active:!1},{Id:7,Name:"Opal",Code:"3203",Active:!1},{Id:8,Name:"Saffron",Code:"3219",Active:!1},{Id:9,Name:"Shiitake",Code:"3200",Active:!1},{Id:10,Name:"Tangerine",Code:"3209",Active:!1},]},Empty_Grade={Name:"TBD",Content:[{Id:1,Name:"TBD",Code:"0000",Active:!0}]};
-function asyncDownload(n){Promise.all([BABYLON.SceneLoader.ImportMeshAsync(null,baseUrl,n,scene).then(function(n){n=n.meshes;asyncMesh=n;for(var t=1;t<n.length;t++)n[t].receiveShadows=!0,n[t].actionManager=new BABYLON.ActionManager(scene),n[t].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,function(){},!1))}),]).then(()=>{for(var n=1;n<currentMesh.length;n++)currentMesh[n].name!="Seat"&&(currentMesh[n].name!="Base"||dataDB.Name.includes("Stool"))||(asyncMesh[n]._material=currentMesh[n]._material),asyncMesh[n].isVisible=currentMesh[n].isVisible,currentMesh[n].dispose();currentMesh=asyncMesh})}function detectmob(){return navigator.userAgent.match(/Android/i)||navigator.userAgent.match(/webOS/i)||navigator.userAgent.match(/iPhone/i)||navigator.userAgent.match(/iPod/i)||navigator.userAgent.match(/BlackBerry/i)||navigator.userAgent.match(/Windows Phone/i)?!0:!1}function priceCalculation(){for(var t,n=0;n<dataDB.Options.length;n++){for(t=0;t<dataDB.Options[n].Values.length;t++)dataDB.Options[n].Values[t].Active==!0&&(currentOptionPrice[n]=dataDB.Options[n].Values[t].Price);for(t=0;t<dataDB.Options[n].Values.length;t++)dataDB.Options[n].Values[t].Price-=currentOptionPrice[n];currentOptionsPDF=currentOptionPrice[n];totalPrice+=currentOptionPrice[n]}productPrice.textContent="$ "+totalPrice+".00"}function sendImg(n,t){var i=new XMLHttpRequest;i.open("POST","http://wyattapi.servexusinc.com/api/image",!0);i.setRequestHeader("Content-Type","application/json;charset=UTF-8");i.onreadystatechange=function(){i.readyState===4&&i.status===200&&t(!1,JSON.parse(i.responseText).Message);i.readyState===500&&t(!0,null)};i.send(JSON.stringify({data:n}))}function makeMyPDF(){vPortHeight=engine._gl.drawingBufferHeight;vPortWidth=engine._gl.drawingBufferWidth;var n=dataDB.PartNumber;setTimeout(function(){engine.setSize(1200,1920);scene.render();BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine,photoCamera,{heigth:960,width:600},function(t){sendImg(t,function(t,i){dataDB.print=i;dataDB.totalPrice=totalPrice;dataDB.BackSize&&(dataDB.PartNumber=dataDB.PartNumber+"-"+backPartNumber.join(""));var r=new XMLHttpRequest;r.open("POST","http://wyattapi.servexusinc.com/api/pdf",!0);r.onreadystatechange=function(){r.readyState===4&&r.status===200&&($.LoadingOverlay("hide"),window.open("http://wyattapi.servexusinc.com/wwwroot/"+JSON.parse(r.responseText).Message,"_blank"));r.readyState===500&&$.LoadingOverlay("hide")};r.send(JSON.stringify(dataDB));dataDB.PartNumber=n})});engine.setSize(vPortWidth,vPortHeight)},500)}function takePhoto(){var n=new Image;n.src="/assets/layout/icons/Wyatt-Seating-Logo.png";vPortHeight=engine._gl.drawingBufferHeight;vPortWidth=engine._gl.drawingBufferWidth;engine.setSize(540,960);scene.render();BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine,scene.activeCamera,{heigth:1920,width:1080,precision:2},function(t){watermark([t,n]).image(watermark.image.lowerRight(.5)).then(function(n){var t=document.createElement("a");t.download=dataDB.Name+".png";t.href=n.src;t.click()})});engine.setSize(vPortWidth,vPortHeight)}function seatCover(){seatPadPrice=0;$("#seatCoverRow")[0].hidden?($("#coverCheck")[0].checked=!1,$("#seatCoverRow").css("height","1.6vh")):$("#seatCoverRow").css("height","auto");var n=totalPrice;dataDB.SeatPad=!1;seatPadPrice=0;$("#coverCheck")[0].checked&&!$("#seatCoverRow")[0].hidden&&(seatPadPrice=90,n+=seatPadPrice,dataDB.SeatPad=!0);$("#coverCheck")[0].checked||$("#seatCoverRow")[0].hidden||(seatPadPrice=0,n+=seatPadPrice,dataDB.SeatPad=!1);productPrice.textContent="$ "+n+".00"}function materialStructureBuilding(n){var i,r,u,t,f;for($cardButton.text(dataDB.Options[n].Values[0].Name),i=$("<div>",{"class":"dropdown"}),$("#dropdownColGrades").append(i),r=$("<div>",{"class":"btn btn-info btn-sm dropdown-toggle",type:"button",id:"materialGrades","data-toggle":"dropdown","aria-haspopup":"true","aria-expanded":"false"}),i.append(r),u=$("<div>",{"class":"dropdown-menu",id:"gradesDropdown","aria-labelledby":"dropdownMenuButton"}),i.append(u),t=0;t<dataDB.Options[n].Values.length;t++)f=$("<a>",{"class":"dropdown-item d-block",onClick:'materialCollectionCardBuildingAndEdition("'+n+","+dataDB.Options[n].Values[t].Name+'")',text:dataDB.Options[n].Values[t].Name,href:"#"}),u.append(f),dataDB.Options[n].Values[t].Active&&r.text(dataDB.Options[n].Values[t].Name);materialCollectionCardBuildingAndEdition(n+",")}function materialCollectionCardBuildingAndEdition(n){var v=n.split(","),t=v[0],s=v[1],f,a,c,e,u,h,r,i,o,l;if(document.getElementById("materialCollections")!=null){for(f=0;f<dataDB.Options[t].Values.length;f++)if(dataDB.Options[t].Values[f].Name==s)for($("#seatCoverRow")[0].hidden=!(parseInt(s[s.length-1])>1),$("#coverCheck")[0].checked=!1,seatCover(),dataDB.Options[t].Values[f].Active=!0,$("#materialGrades").text(dataDB.Options[t].Values[f].Name),$("#materialCollections").text(dataDB.Options[t].Values[f].Collections[0].Name),e=$("#collectionDropdown"),e.empty(),u=0;u<dataDB.Options[t].Values[f].Collections.length;u++)h=$("<a>",{"class":"dropdown-item",href:"#",id:dataDB.Options[t].Values[f].Collections[u].Name,text:dataDB.Options[t].Values[f].Collections[u].Name,onClick:'collectionSet("'+dataDB.Options[t].Values[f].Collections[u].Name+'")'}),e.append(h),c=$("#materialCollections"),collection=dataDB.Options[t].Values[f].Collections[0].Name,dataDB.Options[t].Values[f].Collections[u].Active&&($("#materialCollections").text(dataDB.Options[t].Values[f].Collections[u].Name),collection=dataDB.Options[t].Values[f].Collections[u].Name);else dataDB.Options[t].Values[f].Active=!1;for(priceCalculation(),r=listOfMaterials(collection),$("#imagesContainer").empty(),$(".pagination").empty(),i=0;i<r.Content.length;i++)r.Content[i].Name&&(o=$("<div>",{"class":"material-item",id:r.Content[i].Name+"-material","data-toggle":"tooltip",title:r.Content[i].Name,onClick:'changeMaterial("'+collection+","+r.Content[i].Name+","+s+","+t+","+r.Content[i].ColorCode+","+r.Content[i].Name+","+r.Content[i].Code+'")'}),l=$("<img>",{src:"assets/layout/material thumbnails/"+s+"/"+collection+"/"+r.Content[i].Name+".jpg"}),o.append(l),$("#imagesContainer").append(o));$("#imagesContainer").pagify(6,".material-item")}else{for(a=$("<div>",{"class":"dropdown float-right",id:"dropdownCollections"}),$("#dropdownColMats").append(a),c=$("<div>",{"class":"btn btn-secondary dropdown-toggle",type:"button",id:"materialCollections","data-toggle":"dropdown","aria-haspopup":"true","aria-expanded":"false"}),a.append(c),e=$("<div>",{"class":"dropdown-menu",id:"collectionDropdown","aria-labelledby":"dropdownMenuButton"}),a.append(e),u=0;u<dataDB.Options[t].Values[0].Collections.length;u++)h=$("<a>",{"class":"dropdown-item d-block",href:"#",id:dataDB.Options[t].Values[0].Collections[u].Name,text:dataDB.Options[t].Values[0].Collections[u].Name,onClick:'collectionSet("'+dataDB.Options[t].Values[0].Collections[u].Name+'")'}),e.append(h),dataDB.Options[t].Values[0].Collections[u].Active&&(c.text(dataDB.Options[t].Values[0].Collections[u].Name),collection=dataDB.Options[t].Values[0].Collections[u].Name);for(r=listOfMaterials(collection),i=0;i<r.Content.length;i++)r.Content[i].Name&&(o=$("<div>",{"class":"material-item",id:r.Content[i].Name+"-material",onClick:'changeMaterial("'+collection+","+r.Content[i].Name+","+dataDB.Options[t].Values[0].Name+","+t+","+r.Content[i].ColorCode+","+r.Content[i].Name+","+r.Content[i].Code+'")',"data-toggle":"tooltip",title:r.Content[i].Name}),l=$("<img>",{src:"assets/layout/material thumbnails/Grade 1/"+collection+"/"+r.Content[i].Name+".jpg"}),o.append(l),$("#imagesContainer").append(o))}}function collectionSet(n){var s,e,t,i,f,u,r,o,h;for(collection=n,t=0;t<dataDB.Options.length;t++)for(i=0;i<dataDB.Options[t].Values.length;i++)if(dataDB.Options[t].Values[i].Code&&dataDB.Options[t].Values[i].Code.includes("grade"))for(f=0;f<dataDB.Options[t].Values[i].Collections.length;f++)dataDB.Options[t].Values[i].Collections[f].Name==n?(dataDB.Options[t].Values[i].Collections[f].Active=!0,$("#materialCollections").text(dataDB.Options[t].Values[i].Collections[f].Name),e=dataDB.Options[t].Values[i].Name,s=t):dataDB.Options[t].Values[i].Collections[f].Active=!1;for(u=listOfMaterials(collection),$(".pagination").empty(),$("#imagesContainer").empty(),r=0;r<u.Content.length;r++)u.Content[r].Name&&(o=$("<div>",{"class":"material-item",id:u.Content[r].Name+"-material",onClick:'changeMaterial("'+collection+","+u.Content[r].Name+","+e+","+s+","+u.Content[r].ColorCode+","+u.Content[r].Name+","+u.Content[r].Code+'")'}),h=$("<img>",{src:"assets/layout/material thumbnails/"+e+"/"+collection+"/"+u.Content[r].Name+".jpg"}),o.append(h),$("#imagesContainer").append(o)),$("#imagesContainer").pagify(6,".material-item")}function changeMaterial(n){for(var i,s,r,u=n.split(","),h=u[0],e=u[1],o=u[2],t=parseInt(u[3]),c=u[4],l=u[5],a=u[6],f=0;f<dataDB.Options[t].RelatedLayers.length;f++)for(i=1;i<currentMesh.length;i++)dataDB.Options[t].RelatedLayers[f]==currentMesh[i]._material.name&&(s="assets/materials/"+dataDB.Name.toLowerCase()+"/fabrics/"+o.toLowerCase()+"/"+h.toLowerCase()+"/"+e+"_"+dataDB.Options[t].RelatedLayers[f],o=="none"&&(s="assets/materials/"+dataDB.Name.toLowerCase()+"/fabrics/"+o.toLowerCase()+"/"+h.toLowerCase()+"/"+e+"_"+dataDB.Options[t].RelatedLayers[f]),s&&(currentMesh[i]._material._albedoTexture=new BABYLON.Texture(s+"_Base_Color.png",scene),currentMesh[i]._material._alpha=e.includes("Mesh")?.74:1,currentMesh[i]._material._albedoTexture.vAng=-Math.PI,currentMesh[i]._material._albedoTexture.wAng=-Math.PI),c=="null"||c=="undefined"||(currentMesh[i]._material._albedoColor=new BABYLON.Color3.FromHexString(c)));for(r=0;r<dataDB.Options[t].Values.length;r++)dataDB.Options[t].Values[r].Code==e?(dataDB.Options[t].Values[r].Active=!0,backPartNumber[dataDB.Options[t].Depth-1]=dataDB.Options[t].Values[r].PartNumber):dataDB.Options[t].Values[r].Code.includes("grade")||(dataDB.Options[t].Values[r].Active=!1),dataDB.Options[t].Values[r].Name==o&&(dataDB.FabricName=h+" - "+l,dataDB.FabricPartNumber=a)}function optionChangedOnFeature(n){var t=n.split(",");feature=t[0];option=t[1];option.includes("grade")||option.includes("color")?materialCollectionCardBuildingAndEdition():cardsResponseOnSelection();priceCalculation()}function cardsResponseOnSelection(){for(var c,i,s,e,u,f,h,r,o,t,n=0;n<dataDB.Options.length;n++){if(dataDB.Options[n].Name==feature)for(t=0;t<dataDB.Options[n].Values.length;t++)if(c=t,dataDB.Options[n].Values[t].Code==option){if(dataDB.Options[n].Values[t].Active=!0,dataDB.Options[n].Code.includes("back")&&dataDB.Options[n].Depth<dataDB.BackSize+1)for(i=0;i<dataDB.BackSize+1-dataDB.Options[n].Depth;i++){if(s=!0,i>=0)for(e=0;e<dataDB.Options[n+i].Values.length;e++)if(dataDB.Options[n+i].Values[e].Active){t=e;break}for(u=0;u<dataDB.Options[n+i+1].Values.length;u++)$.inArray(dataDB.Options[n+i+1].Values[u].Code,dataDB.Options[n+i].Values[t].Uses)>=0?(s?(dataDB.Options[n+i+1].Values[u].Active=!0,s=!1,$("#list-"+dataDB.Options[n+i+1].Values[u].Code+"-list").click(),$("#"+dataDB.Options[n+i+1].Values[u].Code+"-back-material").click()):dataDB.Options[n+i+1].Values[u].Active=!1,dataDB.Options[n+i+1].Name.includes("Color")?$("#"+dataDB.Options[n+i+1].Values[u].Code+"-back-material").show():$("#list-"+dataDB.Options[n+i+1].Values[u].Code+"-list").show()):(dataDB.Options[n+i+1].Values[u].Active=!1,dataDB.Options[n+i+1].Name.includes("Color")?$("#"+dataDB.Options[n+i+1].Values[u].Code+"-back-material").hide():$("#list-"+dataDB.Options[n+i+1].Values[u].Code+"-list").hide())}for(t=c,f=0;f<dataDB.Options[n].Values[t].Layers.length;f++)for(h=!1,dataDB.Options[n].Values[t].Layers[f].hasOwnProperty("MaterialFile")&&dataDB.Options[n].Values[t].Layers[f].MaterialFile!=null&&(h=!0),r=1;r<currentMesh.length;r++)dataDB.Options[n].Values[t].Layers[f].Layer==currentMesh[r]._material.name&&(h&&(o="assets/materials"+dataDB.Options[n].Values[t].Layers[f].MaterialFile+"_",currentMesh[r]._material._albedoTexture=dataDB.Options[n].Values[t].Code.includes("V2")?new BABYLON.Texture(o+dataDB.Options[n].Values[t].Name+"V2_Base_Color.png",scene):new BABYLON.Texture(o+dataDB.Options[n].Values[t].Name+"_Base_Color.png",scene),dataDB.Options[n].Values[t].Name.includes("Nylon")&&currentMesh[r].material.name=="Base"&&(currentMesh[r]._material._metallicTexture=null,currentMesh[r]._material.roughness=1,currentMesh[r]._material.metallic=0,currentMesh[r]._material._disableBumpMap=!0),dataDB.Options[n].Values[t].Name.includes("Aluminum")&&currentMesh[r].material.name=="Base"&&(currentMesh[r]._material._metallicTexture=new BABYLON.Texture(o+dataDB.Options[n].Values[t].Name+"_Metallic.png",scene),currentMesh[r]._material.roughness=.1,currentMesh[r]._material.metallic=1,currentMesh[r]._material._metallicTexture.vAng=-Math.PI,currentMesh[r]._material._metallicTexture.wAng=-Math.PI,currentMesh[r]._material._disableBumpMap=!0),currentMesh[r]._material._albedoTexture.vAng=-Math.PI,currentMesh[r]._material._albedoTexture.wAng=-Math.PI),dataDB.Options[n].Values[t].Layers[f].Visibility!=null&&(currentMesh[r].isVisible=dataDB.Options[n].Values[t].Layers[f].Visibility))}else dataDB.Options[n].Values[t].Active=!1;if(dataDB.Options[n].Name.includes("Back"))for(t=0;t<dataDB.Options[n].Values.length;t++)dataDB.Options[n].Values[t].Active&&(backPartNumber[dataDB.Options[n].Depth-1]=dataDB.Options[n].Values[t].PartNumber)}}var canvas=document.getElementById("wyattCanvas"),container=document.getElementById("wyattContainer"),loopOn=!1,highBackOn=!1,feature="",option="",collection="",backPartNumber=[" "],baseUrl,asyncMesh,currentMesh,productName,optionsMenu,$accordion,nOptions,$card,cardName,$cardHeader,$dropdownarrow,$cardButton,$accordionInfoContainer,$accordionInfo,$rowDivider,$backWrapper,$backFeature,$backFeatureTitle,$materialItem,$materialImage,$listGroup,nValues,selectedOption,nonSelectedOption,$featureOptions;dataDB.Name.includes("Freeride")&&(backPartNumber=["B","M","G"]);dataDB.Name.includes("Roswell")&&(backPartNumber=["B","G","M",""]);var modelNumberOfOptions=dataDB.Options.length,seatPadPrice=0,engine=new BABYLON.Engine(canvas,!0,{premultipliedAlpha:!1,preserveDrawingBuffer:!0,stencil:!0}),scene=new BABYLON.Scene(engine),camera=new BABYLON.ArcRotateCamera("Camera",0,0,0,new BABYLON.Vector3(0,0,0),scene),photoCamera,photoCameraB;camera.setTarget(BABYLON.Vector3.Zero());scene.clearColor=new BABYLON.Color3(1,1,1);var maxSize=new BABYLON.Vector3(0,0,0),meshCenter=new BABYLON.Vector3(0,0,0),createScene=function(){return BABYLON.GLTFFileLoader.IncrementalLoading=!1,baseUrl="/assets/models/",lowFile=dataDB.LowFile,BABYLON.SceneLoader.ImportMesh("",baseUrl,lowFile,scene,function(n){var f,t,i,e,r,u;for(scene.createDefaultCameraOrLight(!0,!0,!0),scene.activeCamera.panningSensibility=10,scene.activeCamera.wheelPrecision=.25,photoCamera=scene.activeCamera.clone(),photoCameraB=photoCamera.clone(),photoCameraB.alpha=Math.PI/3+Math.PI,scene.lights[0].dispose(),f=new BABYLON.HemisphericLight("light1",new BABYLON.Vector3(0,10,0),scene),f.intensity=.6,t=1;t<n.length;t++)n[t].actionManager=new BABYLON.ActionManager(scene),n[t].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,function(){},!1)),n[t].material&&n[t].material.bumpTexture&&(n[t].material.bumpTexture.level=1.5),n[t].position=new BABYLON.Vector3(0,0,0),i=n[t].getBoundingInfo().boundingBox.maximumWorld,i.x>maxSize.x&&(maxSize.x=i.x),i.y>maxSize.y&&(maxSize.y=i.y),i.z>maxSize.z&&(maxSize.z=i.z),meshCenter.x+=n[t].getBoundingInfo().boundingBox.centerWorld.x,meshCenter.y+=n[t].getBoundingInfo().boundingBox.centerWorld.y,meshCenter.z+=n[t].getBoundingInfo().boundingBox.centerWorld.z,n[t].isVisible=dataDB.DefaultLayers.includes(n[t].name);meshCenter.x=meshCenter.x/n.length*0;meshCenter.y=meshCenter.y/n.length;meshCenter.z=meshCenter.z/n.length;scene.activeCamera.setTarget(meshCenter);e=engine.getAspectRatio(camera);r=(maxSize.y+maxSize.x+maxSize.z)/3;scene.activeCamera.lowerRadiusLimit=r;scene.activeCamera.upperRadiusLimit=r*4;scene.activeCamera.alpha=Math.PI/2.4;scene.activeCamera.beta=7*Math.PI/16;photoCamera=scene.activeCamera.clone();u=new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/royalEnvHDR.dds",scene);u.gammaSpace=!0;scene.environmentTexture=u;currentMesh=n;detectmob()||(dataDB.MedFile&&asyncDownload(dataDB.MedFile),dataDB.HighFile&&asyncDownload(dataDB.HighFile))},function(n){if(n.lengthComputable){var t=(n.loaded*100/n.total).toFixed();$(".progress-bar").css("width",t+"%");$(".progress-bar").text(t+"%");t==100&&$("#LoadingScreen").fadeOut(2e3)}else dlCount=n.loaded/1048576},function(){}),scene},scene=createScene();engine.runRenderLoop(function(){window.addEventListener("resize",function(){engine.resize()});scene.render()});productName=document.getElementById("productName");productName.textContent=dataDB.Name;var totalPrice=dataDB.Price,currentOptionPrice=Array(dataDB.Options.length),productPrice=document.getElementById("productPrice"),currentOptionsPDF=null;for(priceCalculation(),optionsMenu=document.getElementById("optionsMenu"),$accordion=$("<div>",{"class":"accordion",id:"wyattAccordion"}),$("#optionsMenu").append($accordion),nOptions=0;nOptions<dataDB.Options.length;nOptions++){if($card=$("<div>",{"class":"card"}),$accordion.append($card),cardName=dataDB.Options[nOptions].Code,$cardHeader=$("<div>",{"class":"class-header",id:cardName+"Header"}),$card.append($cardHeader),$dropdownarrow=$("<span class=dropdown-menu-arrow><\/span>"),$cardHeader.append($dropdownarrow),$cardButton=$("<div>",{"class":"btn btn-link",type:"button","data-toggle":"collapse","data-target":"#"+cardName,"aria-expanded":"true","aria-controls":cardName,text:cardName,id:cardName+"Name"}),$cardHeader.append($cardButton),$accordionInfoContainer=$("<div>",{id:cardName,"class":"collapse","aria-labelledby":cardName+"Header","data-parent":"#wyattAccordion",heightStyle:"content"}),$card.append($accordionInfoContainer),$accordionInfo=$("<div>",{"class":"card-body"}),$accordionInfoContainer.append($accordionInfo),$rowDivider=$("<div>",{"class":"row no-gutter",id:cardName+"-row"}),$accordionInfo.append($rowDivider),cardName==="back"&&($backWrapper=$("<div>",{id:"backWrapper",style:"width:100%,"}),$rowDivider.append($backWrapper)),cardName.includes("back"))if($cardButton.text(dataDB.Options[nOptions].Name),cardName.includes("color"))for($backFeature=$("<div>",{id:"backFeatureWrapper-"+cardName,style:"margin: 0 1%; width: 100%; display: flow-root"}),$backWrapper.append($backFeature),$backFeatureTitle=$("<h5>",{id:"backFeatureTitle-"+cardName,text:dataDB.Options[nOptions].Description,style:"text-align: center; margin: 1% 0;font-weight: bold;"}),$backFeature.append($backFeatureTitle),nValues=0;nValues<dataDB.Options[nOptions].Values.length;nValues++)$materialItem=$("<div>",{"class":"material-item",id:dataDB.Options[nOptions].Values[nValues].Code+"-back-material",onClick:'changeMaterial("back,'+dataDB.Options[nOptions].Values[nValues].Code+",none,"+nOptions+",null,"+dataDB.Options[nOptions].Values[nValues].PartNumber+'")',style:"float: left; margin: 2% 1%; width:"+90/4+"%;"}),$backFeature.append($materialItem),$materialImage=$("<img>",{src:"assets/layout/material thumbnails/"+dataDB.Name+"/"+dataDB.Options[nOptions].Name+"/"+dataDB.Options[nOptions].Values[nValues].Code+".jpg",style:"width: 90%"}),$materialItem.append($materialImage),dataDB.Options[nOptions].Values[nValues].Show||$materialItem.hide();else for(dataDB.Options[nOptions].Code=="back-headrest"?($backFeature=$("<div>",{id:"backFeatureWrapper-"+cardName,style:"float: left; margin: 0 1%; width: 96%"}),$backWrapper.append($backFeature)):($backFeature=$("<div>",{id:"backFeatureWrapper-"+cardName,style:"float: left; margin: 0 1%; width:"+(100-2*dataDB.BackSize)/dataDB.BackSize+"%"}),$backWrapper.append($backFeature)),$backFeatureTitle=$("<h5>",{id:"backFeatureTitle-"+cardName,text:dataDB.Options[nOptions].Description,style:"text-align: center; margin: 1% 0; font-weight: bold;"}),$backFeature.append($backFeatureTitle),$listGroup=$("<div>",{"class":"list-group list-group-flush",id:"listTab",role:"tablist"}),$backFeature.append($listGroup),nValues=0;nValues<dataDB.Options[nOptions].Values.length;nValues++)dataDB.Options[nOptions].Values[nValues].Active?(selectedOption=dataDB.Options[nOptions].Values[nValues].Code,$featureOptions=$("<a>",{"class":"list-group-item list-group-item-action active",id:"list-"+selectedOption+"-list","data-toggle":"list",href:"#list-"+selectedOption,role:"tab","aria-controls":selectedOption,onClick:'optionChangedOnFeature("'+dataDB.Options[nOptions].Name+","+selectedOption+'")',text:dataDB.Options[nOptions].Values[nValues].Name})):(nonSelectedOption=dataDB.Options[nOptions].Values[nValues].Code,$featureOptions=$("<a>",{"class":"list-group-item list-group-item-action",id:"list-"+nonSelectedOption+"-list","data-toggle":"list",href:"#list-"+nonSelectedOption,role:"tab","aria-controls":nonSelectedOption,onClick:'optionChangedOnFeature("'+dataDB.Options[nOptions].Name+","+nonSelectedOption+'")',text:dataDB.Options[nOptions].Values[nValues].Name}),dataDB.Options[nOptions].Values[nValues].Show||$featureOptions.hide()),(selectedOption=="HighbackVin"||nonSelectedOption=="HighbackVin")&&$featureOptions.text("Vinyl"),$listGroup.append($featureOptions),nValues>0&&$.inArray(dataDB.Options[nOptions].Values[nValues-1].Name,dataDB.Options[nOptions].Values[nValues].Uses);if(cardName.includes("back-"))$("#"+cardName+"Header").parent().remove();else if(cardName.includes("grade")||cardName.includes("back")){if(cardName.includes("grade")){var $baseRow=$("<div>",{"class":"row no-gutter",id:"gradesBaseRow"}),$baseFilterRow=$("<div>",{"class":"row no-gutter",id:"gradesFilterRow"}),$dropdownColGrades=$("<div>",{"class":"col",id:"dropdownColGrades"}),$dropdownColMats=$("<div>",{"class":"col",id:"dropdownColMats"}),$imagesContainer=$("<div>",{"class":"row no-gutter",id:"imagesContainer"}),$SeatCoverRow=$("<div>",{"class":"row no-gutter",id:"seatCoverRow",style:"height: 0vh;"}),$SeatCoverCheckbox=$("<input>",{"class":"form-check-input",type:"checkbox",value:"",id:"coverCheck",onclick:"seatCover()"}),$SeatCoverLabel=$("<label>",{"class":"form-check-label","for":"coverCheck",text:"Removable Seat Cover:"});$rowDivider.append($baseFilterRow);$rowDivider.append($baseRow);$baseFilterRow.append($dropdownColGrades);$baseFilterRow.append($dropdownColMats);$baseRow.append($SeatCoverRow);$SeatCoverRow.append($SeatCoverCheckbox);$SeatCoverRow.append($SeatCoverLabel);$baseRow.append($imagesContainer);materialStructureBuilding(nOptions);$cardButton.text(dataDB.Options[nOptions].Name);$("#seatCoverRow")[0].hidden=!0}}else for($listGroup=$("<div>",{"class":"list-group list-group-flush",id:"listTab",role:"tablist"}),$rowDivider.append($listGroup),nValues=0;nValues<dataDB.Options[nOptions].Values.length;nValues++)dataDB.Options[nOptions].Values[nValues].Active?(selectedOption=dataDB.Options[nOptions].Values[nValues].Code,$featureOptions=$("<a>",{"class":"list-group-item list-group-item-action active",id:"list-"+selectedOption+"-list","data-toggle":"list",href:"#list-"+selectedOption,role:"tab","aria-controls":selectedOption,onClick:'optionChangedOnFeature("'+dataDB.Options[nOptions].Name+","+selectedOption+'")',text:dataDB.Options[nOptions].Values[nValues].Name}),$cardButton.text(dataDB.Options[nOptions].Name)):(nonSelectedOption=dataDB.Options[nOptions].Values[nValues].Code,$featureOptions=$("<a>",{"class":"list-group-item list-group-item-action",id:"list-"+nonSelectedOption+"-list","data-toggle":"list",href:"#list-"+nonSelectedOption,role:"tab","aria-controls":nonSelectedOption,onClick:'optionChangedOnFeature("'+dataDB.Options[nOptions].Name+","+nonSelectedOption+'")',text:dataDB.Options[nOptions].Values[nValues].Name}),$cardButton.text(dataDB.Options[nOptions].Name)),$listGroup.append($featureOptions)}(function(n){var t={items:{},container:null,totalPages:1,perPage:3,currentPage:0,createNavigation:function(){var i,t,r,f,u;for(this.totalPages=Math.ceil(this.items.length/this.perPage),n(".pagination",this.container.parent()).remove(),i=n('<div class="pagination"><\/div>').append('<a class="nav prev disabled" data-next="false"><<\/a>'),t=0;t<this.totalPages;t++)r="page",t||(r="page current"),f='<a class="'+r+'" data-page="'+(t+1)+'">'+(t+1)+"<\/a>",i.append(f);i.append('<a class="nav next" data-next="true">><\/a>');this.container.after(i);u=this;n("body").off("click",".nav");this.navigator=n("body").on("click",".nav",function(){var t=n(this);u.navigate(t.data("next"))});n("body").off("click",".page");this.pageNavigator=n("body").on("click",".page",function(){var t=n(this);u.goToPage(t.data("page"))})},navigate:function(t){(isNaN(t)||t===undefined)&&(t=!0);n(".pagination .nav").removeClass("disabled");t?(this.currentPage++,this.currentPage>this.totalPages-1&&(this.currentPage=this.totalPages-1),this.currentPage==this.totalPages-1&&n(".pagination .nav.next").addClass("disabled")):(this.currentPage--,this.currentPage<0&&(this.currentPage=0),this.currentPage==0&&n(".pagination .nav.prev").addClass("disabled"));this.showItems()},updateNavigation:function(){var t=n(".pagination .page");t.removeClass("current");n('.pagination .page[data-page="'+(this.currentPage+1)+'"]').addClass("current")},goToPage:function(t){this.currentPage=t-1;n(".pagination .nav").removeClass("disabled");this.currentPage==this.totalPages-1&&n(".pagination .nav.next").addClass("disabled");this.currentPage==0&&n(".pagination .nav.prev").addClass("disabled");this.showItems()},showItems:function(){this.items.hide();var n=this.perPage*this.currentPage;this.items.slice(n,n+this.perPage).show();this.updateNavigation()},init:function(n,t,i){this.container=n;this.currentPage=0;this.totalPages=1;this.perPage=i;this.items=t;this.createNavigation();this.showItems()}};n.fn.pagify=function(i,r){var u=n(this),f=n(r,u);if((isNaN(i)||i===undefined)&&(i=3),f.length<=i)return!0;t.init(u,f,i)}})(jQuery);$("#imagesContainer").pagify(6,".material-item");
-var dataDB;let selectedChair=sessionStorage.getItem("chair");console.log(selectedChair);switch(selectedChair){case"G6":dataDB=getG6;$("#stoolSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","G6Stool");location.reload()});break;case"G6Stool":dataDB=getG6Stool;$("#standardSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","G6");location.reload()});break;case"Freeride":dataDB=getFreeride;$("#stoolSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","FreerideStool");location.reload()});break;case"FreerideStool":dataDB=getFreerideStool;$("#standardSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","Freeride");location.reload()});break;case"Roswell":dataDB=getRoswell;$("#stoolSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","RoswellStool");location.reload()});break;case"RoswellStool":dataDB=getRoswellStool;$("#standardSwap").click(function(){sessionStorage.clear();sessionStorage.setItem("chair","Roswell");location.reload()});break;case"Lamia":dataDB=getLamia;$("#stoolStandardSwap").css({visibility:"hidden",height:"1px"});break;case"Extra":dataDB=getExtra;$("#stoolStandardSwap").css({visibility:"hidden",height:"1px"});break;case"TetherStool":dataDB=getTether;$("#stoolStandardSwap").css({visibility:"hidden",height:"1px"});break;default:dataDB=getG6}
+var Grade1_Link =
+    {
+    "Name": "Link",
+        "Content": [
+
+        {
+            "Id": 1,
+            "Name": "Eclipse",
+            "Code": "1001",
+            "Active": true,
+
+        },
+        {
+            "Id": 2,
+            "Name": "Shadow",
+            "Code": "1002",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Coast",
+            "Code": "1003",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Kiwi",
+            "Code": "1004",
+            "Active": false,
+        },
+        {
+            "Id": 5,
+            "Name": "Harvest",
+            "Code": "1005",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Poppy",
+            "Code": "1006",
+            "Active": false,
+        }
+    ]
+};
+var Grade1_IOU =
+{
+    "Name": "I.O.U.",
+    "Content": [    
+        {
+            "Id": 1,
+            "Name": "Billy 4C",
+            "Code": "1301",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Swammi",
+            "Code": "1302",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Jetway",
+            "Code": "1303",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Sea Bass",
+            "Code": "1304",
+            "Active": false
+        },
+        {
+            "Id": 5,
+            "Name": "Petey",
+            "Code": "1305",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Triple Stamp",
+            "Code": "1306",
+            "Active": false
+        },
+        {
+            "Id": 7,
+            "Name": "Atomic Pepper",
+            "Code": "1307",
+            "Active": false
+        },
+        {
+            "Id": 8,
+            "Name": "Mock Yeah",
+            "Code": "1308",
+            "Active": false
+        },
+        {
+            "Id": 9,
+            "Name": "Sheepdog",
+            "Code": "1309",
+            "Active": false
+        },
+        {
+            "Id": 10,
+            "Name": "Moon",
+            "Code": "1310",
+            "Active": false
+        },
+        {
+            "Id": 11,
+            "Name": "Cardigan",
+            "Code": "1311",
+            "Active": false
+        },
+
+        ]
+    };
+var Grade1_Circus =
+{
+    "Name": "Circus Boy Plastics",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Cowtipping",
+            "Code": "01",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Sugar Packet",
+            "Code": "02",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Rhino",
+            "Code": "03",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Dinghy",
+            "Code": "04",
+            "Active": false
+        },
+        {
+            "Id": 5,
+            "Name": "Pine Tree",
+            "Code": "05",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Ketchup Popsicle",
+            "Code": "06",
+            "Active": false
+        },
+        {
+            "Id": 7,
+            "Name": "Bear Claw",
+            "Code": "07",
+            "Active": false
+        }
+    ]
+}
+
+
+var GradeV_Vinyl =
+{
+    "Name": "Vinyl",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Black",
+            "Code": "4001",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Grey",
+            "Code": "4002",
+            "Active": false
+        },       
+
+    ]
+}
+
+var Grade2_Foundation_10 =
+    {
+        "Name": "Foundation 10",
+        "Content": [
+            {
+                "Id": 1,
+                "Name": "Blue Mist",
+                "Code": "2024",
+                "Active": false
+            },
+            {
+                "Id": 2,
+                "Name": "Capri",
+                "Code": "2044",
+                "Active": false
+            },
+            {
+                "Id": 3,
+                "Name": "Celery",
+                "Code": "2013",
+                "Active": false
+            },
+            {
+                "Id": 4,
+                "Name": "Mercury",
+                "Code": "2016",
+                "Active": false
+            },
+            {
+                "Id": 5,
+                "Name": "Merlot",
+                "Code": "2008",
+                "Active": false
+            },
+            {
+                "Id": 6,
+                "Name": "Mocha",
+                "Code": "2030",
+                "Active": false
+            },
+            {
+                "Id": 7,
+                "Name": "Ochre",
+                "Code": "2032",
+                "Active": false
+            },
+            {
+                "Id": 8,
+                "Name": "Parade Blue",
+                "Code": "2034",
+                "Active": false
+            },
+            {
+                "Id": 9,
+                "Name": "Poppy",
+                "Code": "2041",
+                "Active": false
+            },
+            {
+                "Id": 10,
+                "Name": "Terra Cotta",
+                "Code": "2019",
+                "Active": false
+            },
+        ]
+    };
+var Grade2_Key_Largo =
+    {
+        "Name": "Key Largo",
+        "Content": [
+            {
+                "Id": 1,
+                "Name": "Aegean",
+                "Code": "2114",
+                "Active": false,
+            },
+            {
+                "Id": 2,
+                "Name": "Crimson",
+                "Code": "2101",
+                "Active": false,
+            },
+            {
+                "Id": 3,
+                "Name": "Ebony",
+                "Code": "2116",
+                "Active": false,
+            },
+            {
+                "Id": 4,
+                "Name": "Graphite",
+                "Code": "2106",
+                "Active": false,
+            },
+            {
+                "Id": 5,
+                "Name": "Jungle",
+                "Code": "2103",
+                "Active": false,
+            },
+            {
+                "Id": 6,
+                "Name": "Pear",
+                "Code": "2133",
+                "Active": false,
+            },
+            {
+                "Id": 7,
+                "Name": "Quarry",
+                "Code": "2126",
+                "Active": false,
+            },
+            {
+                "Id": 8,
+                "Name": "Sandstone",
+                "Code": "2120",
+                "Active": false,
+            },
+            {
+                "Id": 9,
+                "Name": "Tangerine",
+                "Code": "2109",
+                "Active": false,
+            },
+            {
+                "Id": 10,
+                "Name": "Ultramarine",
+                "Code": "2104",
+                "Active": false,
+            }
+        ]
+};
+var Grade2_Patio =
+{
+    "Name": "Patio",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Aquatint",
+            "Code": "2224",
+            "Active": false,
+            "ColorCode": "#FFFFFF"
+
+        },
+        {
+            "Id": 2,
+            "Name": "Basket",
+            "Code": "2200",
+            "Active": false,
+            "ColorCode": "#505050"
+        },  
+        {
+            "Id": 3,
+            "Name": "Coral Reef",
+            "Code": "2209",
+            "Active": false,
+        }, 
+        {
+            "Id": 4,
+            "Name": "Oceanic",
+            "Code": "2204",
+            "Active": false,
+        }, 
+        {
+            "Id": 5,
+            "Name": "Slate",
+            "Code": "2206",
+            "Active": false,
+        },
+        {
+            "Id": 6,
+            "Name": "Sunshine",
+            "Code": "2202",
+            "Active": false,
+        },
+        {
+            "Id": 7,
+            "Name": "Vellum",
+            "Code": "2207",
+            "Active": false,
+        }
+
+    ]
+};
+
+
+var Grade3_Haberdash =
+{
+    "Name": "Haberdash",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Basil",
+            "Code": "3003",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Charcoal",
+            "Code": "3006",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Curry",
+            "Code": "3009",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Denim",
+            "Code": "3004",
+            "Active": false
+        },
+        {
+            "Id": 5,
+            "Name": "Earth",
+            "Code": "3010",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Emerald",
+            "Code": "3013",
+            "Active": false
+        },
+        {
+            "Id": 7,
+            "Name": "Plum",
+            "Code": "3008",
+            "Active": false
+        },
+        {
+            "Id": 8,
+            "Name": "Raspberry",
+            "Code": "3001",
+            "Active": false
+        },
+        {
+            "Id": 9,
+            "Name": "Shadow",
+            "Code": "3016",
+            "Active": false
+        },
+        {
+            "Id": 10,
+            "Name": "Teal",
+            "Code": "3014",
+            "Active": false
+        },
+
+    ]
+};
+var Grade3_Echo =
+{
+    "Name": "Haberdash",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Apple Green",
+            "Code": "3113",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Blaze",
+            "Code": "3109",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Cerulean",
+            "Code": "3114",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Greystone",
+            "Code": "3116",
+            "Active": false
+        },
+        {
+            "Id": 5,
+            "Name": "Skylight",
+            "Code": "3124",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Smokey Taupe",
+            "Code": "3110",
+            "Active": false
+        },
+        {
+            "Id": 7,
+            "Name": "Vermillion",
+            "Code": "3101",
+            "Active": false
+        },
+
+
+    ]
+};
+var Grade3_Cosmopolitan =
+{
+    "Name": "Cosmopolitan",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "Denim",
+            "Code": "3204",
+            "Active": false
+        },
+        {
+            "Id": 2,
+            "Name": "Granite",
+            "Code": "3210",
+            "Active": false
+        },
+        {
+            "Id": 3,
+            "Name": "Horizon",
+            "Code": "3214",
+            "Active": false
+        },
+        {
+            "Id": 4,
+            "Name": "Marigold",
+            "Code": "3202",
+            "Active": false
+        },
+        {
+            "Id": 5,
+            "Name": "Mist",
+            "Code": "3216",
+            "Active": false
+        },
+        {
+            "Id": 6,
+            "Name": "Oatmeal",
+            "Code": "3217",
+            "Active": false
+        },
+        {
+            "Id": 7,
+            "Name": "Opal",
+            "Code": "3203",
+            "Active": false
+        },
+        {
+            "Id": 8,
+            "Name": "Saffron",
+            "Code": "3219",
+            "Active": false
+        },
+        {
+            "Id": 9,
+            "Name": "Shiitake",
+            "Code": "3200",
+            "Active": false
+        },
+        {
+            "Id": 10,
+            "Name": "Tangerine",
+            "Code": "3209",
+            "Active": false
+        },
+
+
+    ]
+};
+
+var Empty_Grade =
+{
+    "Name": "TBD",
+    "Content": [
+        {
+            "Id": 1,
+            "Name": "TBD",
+            "Code": "0000",
+            "Active": true
+        }
+
+    ]
+};
+
+function listOfMaterials(collection) {
+    var objCollection;
+    switch (collection) {
+        //GRADE 1
+        case "Link":
+            objCollection = Grade1_Link;
+            break;
+        case "I.O.U":
+            objCollection = Grade1_IOU;
+            break;
+        case "Circus Boy Plastics":
+            objCollection = Grade1_Circus;
+            break;
+
+        case "Vinyl":
+            objCollection = GradeV_Vinyl;
+            break;
+        //GRADE 2
+        case "Foundation 10":
+            objCollection = Grade2_Foundation_10;
+            break;
+        case "Key Largo":
+            objCollection = Grade2_Key_Largo;
+            break;
+        case "Patio":
+            objCollection = Grade2_Patio;
+            break;
+        //GRADE 3
+        case "Haberdash":
+            objCollection = Grade3_Haberdash;
+            break;
+        case "Echo":
+            objCollection = Grade3_Echo;
+            break;
+        case "Cosmopolitan":
+            objCollection = Grade3_Cosmopolitan;
+            break;
+        //GRADE 4-5
+        case "TBD":
+            objCollection = Empty_Grade;
+            break;
+
+
+        default:
+            objCollection = null;
+    }
+    return objCollection;
+}
+//console.log("hellothere");
+var allModels = [
+    {
+        Id: 1,
+        Code: "freeride",
+        Name: "Freeride",
+        PartNumber: "411",
+        Price: 649,
+        ImgSrc: "assets/layout/freeride.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 2,
+        Code: "freeride-stool",
+        Name: "Freeride Stool",
+        PartNumber: "411",
+        Price: 849,
+        ImgSrc: "assets/layout/freeride-stool.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 3,
+        Code: "g6",
+        Name: "G6",
+        PartNumber: "711BMG",
+        Price: 449,
+        ImgSrc: "assets/layout/g6.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 4,
+        Code: "g6-stool",
+        Name: "G6 Stool",
+        PartNumber: "711BMG",
+        Price: 649,
+        ImgSrc: "assets/layout/g6-stool.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 5,
+        Code: "roswell",
+        Name: "Roswell",
+        PartNumber: "817",
+        Price: 577,
+        ImgSrc: "assets/layout/roswell.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 6,
+        Code: "extra",
+        Name: "Extra",
+        PartNumber: "5-MS-FA",
+        Price: 339,
+        ImgSrc: "assets/layout/extra.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 7,
+        Code: "la-mia",
+        Name: "La Mia",
+        PartNumber: "LM-MS",
+        Price: 225,
+        ImgSrc: "assets/layout/freeride-stool.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    },
+    {
+        Id: 8,
+        Code: "tether-stool",
+        Name: "Tether Stool",
+        PartNumber: "R05",
+        Price: 350,
+        ImgSrc: "assets/layout/tether-stool.png",
+        Available: true,
+        Layers: null,
+        Options: null,
+        DefaultLayers: null
+    }
+];
+
+
+var getFreeride = {
+    Code: "freeride",
+    Name: "Freeride",
+    PartNumber: "411",
+    LowFile: "freeride-high.glb",
+    LowSize: 7702080,
+    MedFile: null,
+    HighFile: null,
+    Price: 699,
+    ImgSrc: "assets/layout/freeride.png",
+    DefaultLayers: [
+        "Back1",
+        "Casters",
+        "Config2",
+        "Arms2",
+        "Seat",
+        "SeatHolder",
+        "Base",
+        "BackHolder1"
+    ],
+    BackSize: 2,
+    Options: [
+        {
+            Code: "back",
+            Name: "Back Selection",
+            Description: "Height",
+            Type: "F",
+            RelatedLayers: ["BackHolder1", "BackHolder2"],
+            Depth: 1,
+            Values: [
+                {
+                    Code: "Mid-Back",
+                    Name: "Mid-Back",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Uses: ["Mesh", "Fabric", "Vinyl"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "BackHolder2",
+                            Visibility: false
+                        }], 
+                },
+                {
+                    Code: "High-Back",
+                    Name: "High-Back",
+                    Active: false,
+                    PartNumber: "A",
+                    Price: 125,
+                    Show: true,
+                    Uses: ["HighbackVin"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "BackHolder2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }]
+
+                }
+            ],
+            
+        }, // BACK
+        {
+            Code: "b-material",
+            Name: "Back Material Selection",
+            Description: "Material",
+            Type: "F",
+            Depth: 2,
+            RelatedLayers: ["Back1", "Back2", "Back3"],
+            Values: [
+                {
+                    Code: "Mesh",
+                    Name: "Mesh",
+                    Active: true,
+                    PartNumber: "M",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Grey-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }]
+                }, // MID-BACK MESH
+                {
+                    Code: "Fabric",
+                    Name: "Fabric",
+                    Active: false,
+                    PartNumber: "F",
+                    Show: true,
+                    Price: 50,
+                    Uses: ["Cardigan", "Billy-4C"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: true
+                        }],                  
+                }, // MID-BACK FABRIC
+                {
+                    Code: "Vinyl",
+                    Name: "Vinyl",
+                    Active: false,
+                    PartNumber: "V",
+                    Show: true,
+                    Price: 45,
+                    Uses: ["Black-V-Mid", "Grey-V-Mid"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }],                   
+                }, // MID-BACK VINYL
+                {
+                    Code: "HighbackVin",
+                    Name: "Vinyl",
+                    Active: false,
+                    PartNumber: "V",
+                    Show: false,
+                    Price: 0,
+                    Uses: ["Black-V-High", "Grey-V-High"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }],
+                }, // HIGH-BACK VINYL
+
+
+            ]
+        },//BACK MATERIAL
+        {
+            Code: "b-color",
+            Name: "Back Color Selection",
+            Description: "Color",
+            Type: "M",
+            Depth: 3,
+            Price: 0,
+            RelatedLayers: ["Back1", "Back2", "Back3", "Back4"],
+            Values: [
+                {
+                    Code: "Grey-Mesh",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Black-Mesh",
+                    Name: "Black",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },              
+                {
+                    Code: "Cardigan",
+                    Name: "Cardigan",
+                    Active: false,
+                    PartNumber: "1311",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back2"]
+                },
+                {
+                    Code: "Billy-4C",
+                    Name: "Billy 4C",
+                    Active: false,
+                    PartNumber: "1301",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back2"]
+                },
+                {
+                    Code: "Black-V-Mid",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Grey-V-Mid",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Black-V-High",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Grey-V-High",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+
+            ]
+        },//BACK MATERIAL COLOR
+        {
+            Code: "base",
+            Name: "Base Selection",
+            Description: "Base",
+            Type: "M",
+            RelatedLayers: ["Base"],
+            Values: [
+                {
+                    Code: "nylon-base",
+                    Name: "Nylon Base",
+                    Active: true,
+                    PartNumber: "BN",
+                    Price: 0,
+                    Move: true,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/freeride/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "aluminum-base",
+                    Name: "Aluminum Base",
+                    Active: false,
+                    PartNumber: "BA",
+                    Price: 64,
+                    Move: true,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/freeride/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, // BASE
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config1", "Config2"],
+            Values: [
+                {
+                    Code: "3-mechanism",
+                    Name: "3 Position Tilting Locking Synchro Mechanism with Seat Slider",
+                    Active: false,
+                    PartNumber: "M3",
+                    Price: -58,
+                    Layers: [
+                        {
+                            Layer: "Config1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Config2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "5-mechanism",
+                    Name: "5 Position Tilting Locking Synchro Mechanism with Seat Slider",
+                    Active: true,
+                    PartNumber: "M5",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Config2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms1", "Arms2", "Arms3", "Arms4", "Arms5"],
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -59,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms",
+                    Name: "Height adjustable arms",
+                    Active: false,
+                    PartNumber: "A1DB",
+                    Price: -27,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: true,
+                    PartNumber: "A3DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+               /* {
+                    Code: "4D-adjustable-arms-b",
+                    Name: "4D adjustable arms (black)",
+                    Active: false,
+                    PartNumber: "A4DB",
+                    Price: 38,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },*/
+                {
+                    Code: "fixed-aluminum-loop-arms",
+                    Name: "Fixed aluminum loop arms",
+                    Active: false,
+                    PartNumber: "AFA",
+                    Price: 68,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getFreerideStool = {
+    Code: "freerideStool",
+    Name: "Freeride Stool",
+    PartNumber: "411",
+    LowFile: "freerideStool-high.glb",
+    LowSize: 7156016,
+    MedFile: null,
+    HighFile: null,
+    Price: 909,
+    ImgSrc: "assets/layout/freerideStool.png",
+    DefaultLayers: [
+        "Back1",
+        "Casters1",
+        "Config1",
+        "Arms2",
+        "Seat",
+        "SeatHolder",
+        "Base",
+        "BackHolder1",
+        "Casters",
+        "Stool",
+        "Ring"
+    ],
+    BackSize: 2,
+    Options: [
+        {
+            Code: "back",
+            Name: "Back Selection",
+            Description: "Height",
+            Type: "F",
+            RelatedLayers: ["BackHolder1", "BackHolder2"],
+            Depth: 1,
+            Values: [
+                {
+                    Code: "Mid-Back",
+                    Name: "Mid-Back",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Uses: ["Mesh", "Fabric", "Vinyl"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "BackHolder2",
+                            Visibility: false
+                        }],
+                },
+                {
+                    Code: "High-Back",
+                    Name: "High-Back",
+                    Active: false,
+                    PartNumber: "A",
+                    Price: 125,
+                    Show: true,
+                    Uses: ["HighbackVin"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "BackHolder2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }]
+
+                }
+            ],
+
+        }, // BACK
+        {
+            Code: "b-material",
+            Name: "Back Material Selection",
+            Description: "Material",
+            Type: "F",
+            Depth: 2,
+            RelatedLayers: ["Back1", "Back2", "Back3"],
+            Values: [
+                {
+                    Code: "Mesh",
+                    Name: "Mesh",
+                    Active: true,
+                    PartNumber: "M",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Grey-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }]
+                }, // MID-BACK MESH
+                {
+                    Code: "Fabric",
+                    Name: "Fabric",
+                    Active: false,
+                    PartNumber: "F",
+                    Show: true,
+                    Price: 50,
+                    Uses: ["Cardigan", "Billy-4C"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: true
+                        }],
+                }, // MID-BACK FABRIC
+                {
+                    Code: "Vinyl",
+                    Name: "Vinyl",
+                    Active: false,
+                    PartNumber: "V",
+                    Show: true,
+                    Price: 45,
+                    Uses: ["Black-V-Mid", "Grey-V-Mid"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }],
+                }, // MID-BACK VINYL
+                {
+                    Code: "HighbackVin",
+                    Name: "Vinyl",
+                    Active: false,
+                    PartNumber: "V",
+                    Show: false,
+                    Price: 43,
+                    Uses: ["Black-V-High", "Grey-V-High"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back2",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Back3",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Back4",
+                            Visibility: false
+                        }],
+                }, // HIGH-BACK VINYL
+
+
+            ]
+        },//BACK MATERIAL
+        {
+            Code: "b-color",
+            Name: "Back Color Selection",
+            Description: "Color",
+            Type: "M",
+            Depth: 3,
+            Price: 0,
+            RelatedLayers: ["Back1", "Back2", "Back3", "Back4"],
+            Values: [
+                {
+                    Code: "Grey-Mesh",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Black-Mesh",
+                    Name: "Black",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Cardigan",
+                    Name: "Cardigan",
+                    Active: false,
+                    PartNumber: "1311",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back2"]
+                },
+                {
+                    Code: "Billy-4C",
+                    Name: "Billy 4C",
+                    Active: false,
+                    PartNumber: "1301",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back2"]
+                },
+                {
+                    Code: "Black-V-Mid",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Grey-V-Mid",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Black-V-High",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+                {
+                    Code: "Grey-V-High",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back3"]
+                },
+
+            ]
+        },//BACK MATERIAL COLOR
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config"],
+            Values: [
+                {
+                    Code: "sk",
+                    Name: "Stool Kit",
+                    Active: true,
+                    PartNumber: "SK",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms1", "Arms2", "Arms3", "Arms4", "Arms5"],
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -59,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms",
+                    Name: "Height adjustable arms",
+                    Active: false,
+                    PartNumber: "A1DB",
+                    Price: -27,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: true,
+                    PartNumber: "A3DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                /* {
+                     Code: "4D-adjustable-arms-b",
+                     Name: "4D adjustable arms (black)",
+                     Active: false,
+                     PartNumber: "A4DB",
+                     Price: 38,
+                     Layers: [
+                         {
+                             Layer: "Arms1",
+                             MaterialFile: null,
+                             Color: null,
+                             Visibility: false
+                         },
+                         {
+                             Layer: "Arms2",
+                             MaterialFile: null,
+                             Color: null,
+                             Visibility: false
+                         },
+                         {
+                             Layer: "Arms3",
+                             MaterialFile: null,
+                             Color: null,
+                             Visibility: true
+                         },
+                         {
+                             Layer: "Arms4",
+                             MaterialFile: null,
+                             Color: null,
+                             Visibility: false
+                         },
+                         {
+                             Layer: "Arms5",
+                             MaterialFile: null,
+                             Color: null,
+                             Visibility: false
+                         }
+                     ]
+                 },*/
+                {
+                    Code: "fixed-aluminum-loop-arms",
+                    Name: "Fixed aluminum loop arms",
+                    Active: false,
+                    PartNumber: "AFA",
+                    Price: 68,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms3",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms4",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms5",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getG6 = {
+    Code: "g6",
+    Name: "G6",
+    PartNumber: "711BMG",
+    LowFile: "g6-high.glb",
+    LowSize: 4633316,
+    MedFile: null,
+    HighFile: null,
+    Price: 499,
+    ImgSrc: "assets/layout/g6.png",
+    DefaultLayers: [
+        "Arms",
+        "Casters",
+        "Config1",
+        "Back",
+        "BackHolder",
+        "Base",
+        "SeatHolder",
+        "Seat"
+    ],
+    Options: [
+        {
+            Code: "base",
+            Name: "Base Selection",
+            Description: "Base",
+            Type: "M",
+            RelatedLayers: ["Base"],
+            Values: [
+                {
+                    Code: "nylon-base",
+                    Name: "Nylon Base",
+                    Active: true,
+                    PartNumber: "BN",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/g6/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "aluminum-base",
+                    Name: "Aluminum Base",
+                    Active: false,
+                    PartNumber: "BA",
+                    Price: 64,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/g6/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, // BASE
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config1", "Config2"],
+            Values: [
+                {
+                    Code: "3-mechanism",
+                    Name: "3 Position Tilting Locking Synchro Mechanism with Seat Slider",
+                    Active: true,
+                    PartNumber: "M3",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Config1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "5-mechanism",
+                    Name: "5 Position Tilting Locking Synchro Mechanism with Seat Slider",
+                    Active: false,
+                    PartNumber: "M5",
+                    Price: 58,
+                    Layers: [
+                        {
+                            Layer: "Config2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Config1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms1", "Arms2"],
+            isHighBack: false,
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -32,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms",
+                    Name: "Height adjustable arms",
+                    Active: true,
+                    PartNumber: "A1DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3d-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: false,
+                    PartNumber: "A3DB",
+                    Price: 427,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        },
+                        {
+                            Layer: "SeatHolder"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                },
+                {
+                    Layer: "SeatHolder"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getG6Stool = {
+    Code: "g6Stool",
+    Name: "G6 Stool",
+    PartNumber: "711BMG-SK",
+    LowFile: "g6Stool-high.glb",
+    LowSize: 4262260,
+    MedFile: null,
+    HighFile: null,
+    Price: 709,
+    ImgSrc: "assets/layout/g6.png",
+    DefaultLayers: [
+        "Arms1",
+        "Casters",
+        "Config1",
+        "Back",
+        "BackHolder",
+        "Base",
+        "SeatHolder",
+        "Seat",
+        "Stool"
+    ],
+    Options: [
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config"],
+            Values: [
+                {
+                    Code: "sk",
+                    Name: "Stool Kit",
+                    Active: true,
+                    PartNumber: "SK",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms", "Arms1"],
+            isHighBack: false,
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -32,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms",
+                    Name: "Height adjustable arms",
+                    Active: true,
+                    PartNumber: "A1DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3d-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: false,
+                    PartNumber: "A3DB",
+                    Price: 27,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        },
+                        {
+                            Layer: "SeatHolder"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                },
+                {
+                    Layer: "SeatHolder"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getRoswell = {
+    Code: "roswell",
+    Name: "Roswell",
+    PartNumber: "817",
+    LowFile: "roswell-high.glb",
+    LowSize: 6504400,
+    MedFile: null,
+    HighFile: null,
+    Price: 612,
+    ImgSrc: "assets/layout/roswell.png",
+    DefaultLayers: [
+        "Arms2",
+        "Back1",
+        "BackHolder",
+        "Frame",
+        "Base",
+        "Casters",
+        "Config",
+        "Seat",
+        "SeatHolder"
+    ],
+    BackSize: 3,
+    Options: [
+        {
+            Code: "back",
+            Name: "Back Selection",
+            Description: "Color",
+            Type: "M",
+            RelatedLayers: [],
+            Depth: 1,
+            Values: [
+                {
+                    Code: "BlackBack",
+                    Name: "Black",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Uses: ["GreyFrame", "BlackFrame"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder",
+                            MaterialFile: "/roswell/back/BackHolder",
+                            Color: null,
+                            Visibility: true
+                        },
+                    ],
+                }, //BLACK
+                {
+                    Code: "WhiteBack",
+                    Name: "White",
+                    Active: false,
+                    PartNumber: "W",
+                    Price: 36,
+                    Show: true,
+                    Uses: ["GreyV2"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder",
+                            MaterialFile: "/roswell/back/BackHolder",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+
+                } //WHITE
+            ],
+
+        }, // BACK
+        {
+            Code: "b-frame",
+            Name: "Frame Selection",
+            Description: "Color",
+            Type: "F",
+            Depth: 2,
+            RelatedLayers: ["BackHolder1"],
+            Values: [
+                {
+                    Code: "BlackFrame",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Mesh", "Fabric"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                        ]
+                }, // Black Frame
+                {
+                    Code: "GreyFrame",
+                    Name: "Grey",
+                    Active: true,
+                    PartNumber: "G",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["MeshV2"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                    ]
+                }, // Grey Frame
+                {
+                    Code: "GreyV2",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Show: false,
+                    Price: 0,
+                    Uses: ["MeshV2"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                    ]
+                }, // White Back Grey Frame
+
+
+            ]
+        },//BACK FRAME
+        {
+            Code: "b-material",
+            Name: "Back Material Selection",
+            Description: "Material",
+            Type: "F",
+            Depth: 3,
+            RelatedLayers: ["Back1"],
+            Values: [
+                {
+                    Code: "Mesh",
+                    Name: "Mesh",
+                    Active: true,
+                    PartNumber: "M",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Black-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "Back1",                            
+                            Visibility: true
+                        },
+                    ]
+                }, // Mesh
+                {
+                    Code: "Fabric",
+                    Name: "Fabric",
+                    Active: false,
+                    PartNumber: "F",
+                    Show: false,
+                    Price: 50,
+                    Uses: ["Cardigan", "Billy-4C"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: true
+                        },
+                    ]
+                }, // Fabric
+                {
+                    Code: "MeshV2",
+                    Name: "Mesh",
+                    Active: false,
+                    PartNumber: "M",
+                    Show: false,
+                    Price: 0,
+                    Uses: ["Grey-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            Visibility: true
+                        },
+                    ]
+                }, // Black Mesh
+
+
+            ]
+        },//BACK MATERIAL
+        {
+            Code: "b-color",
+            Name: "Back Color Selection",
+            Description: "Color",
+            Type: "M",
+            Depth: 4,
+            Price: 0,
+            RelatedLayers: ["Back1", "Headrest"],
+            Values: [
+                {
+                    Code: "Grey-Mesh",
+                    Name: "Grey",
+                    Active: true,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Black-Mesh",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },               
+                {
+                    Code: "Cardigan",
+                    Name: "I.O.U.- Cardigan",
+                    Active: false,
+                    PartNumber: "1311",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Billy-4C",
+                    Name: "I.O.U.- Billy 4C",
+                    Active: false,
+                    PartNumber: "1301",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },             
+
+            ]
+        },//BACK MATERIAL COLOR
+        {
+            Code: "b-headrest",
+            Name: "Headrest Selection",
+            Description: "Add",
+            Type: "F",
+            Depth: 5,
+            RelatedLayers: ["Headrest"],
+            Values: [
+                {
+                    Code: "woutHeadrest",
+                    Name: "Without Headrest",
+                    Active: true,
+                    PartNumber: "",
+                    Show: true,
+                    Price: 0,
+                    Uses: [""],
+                    Layers: [
+                        {
+                            Layer: "Headrest",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            Visibility: false
+                        },
+                    ]
+                }, // No Headrest
+                {
+                    Code: "wHeadrest",
+                    Name: "With Headrest",
+                    Active: false,
+                    PartNumber: "HR",
+                    Show: true,
+                    Price: 62,
+                    Uses: [""],
+                    Layers: [
+                        {
+                            Layer: "Headrest",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            Visibility: true
+                        },
+                    ]
+                }, // Headrest
+               
+
+
+            ]
+        },//BACK HEADREST
+        {
+            Code: "base",
+            Name: "Base Selection",
+            Description: "Base",
+            Type: "M",
+            RelatedLayers: ["Base"],
+            Values: [
+                {
+                    Code: "nylon-base",
+                    Name: "Nylon Base",
+                    Active: true,
+                    PartNumber: "BN",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/roswell/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "aluminum-base",
+                    Name: "Aluminum Base",
+                    Active: false,
+                    PartNumber: "BA",
+                    Price: 64,
+                    Layers: [
+                        {
+                            Layer: "Base",
+                            MaterialFile: "/roswell/base/base",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, // BASE
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config"],
+            Values: [
+                {
+                    Code: "4-pos",
+                    Name: "4 Position Tilting Locking Synchro Mechanism with Seat Slider",
+                    Active: true,
+                    PartNumber: "M4",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms1", "Arms2"],
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -59,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms-b",
+                    Name: "Height adjustable arms (black)",
+                    Active: false,
+                    PartNumber: "A1DB",
+                    Price: -27,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: "/roswell/arms/arms1",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: true,
+                    PartNumber: "A3DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: "/roswell/arms/arms2",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms-w",
+                    Name: "Height adjustable arms (white)",
+                    Active: false,
+                    PartNumber: "A1DW",
+                    Price: 10,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: "/roswell/arms/arms1",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-w",
+                    Name: "3D adjustable arms (white)",
+                    Active: false,
+                    PartNumber: "A3DW",
+                    Price: 26,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: "/roswell/arms/arms2",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getRoswellStool = {
+    Code: "roswellStool",
+    Name: "Roswell Stool",
+    PartNumber: "817",
+    LowFile: "roswellStool-high.glb",
+    LowSize: 6544184,
+    MedFile: null,
+    HighFile: null,
+    Price: 822,
+    ImgSrc: "assets/layout/roswellStool.png",
+    DefaultLayers: [
+        "Arms2",
+        "Back1",
+        "BackHolder",
+        "Frame",
+        "Base",
+        "Casters",
+        "Config",
+        "Seat",
+        "SeatHolder"
+    ],
+    BackSize: 3,
+    Options: [
+        {
+            Code: "back",
+            Name: "Back Selection",
+            Description: "Color",
+            Type: "M",
+            RelatedLayers: [],
+            Depth: 1,
+            Values: [
+                {
+                    Code: "BlackBack",
+                    Name: "Black",
+                    Active: true,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: true,
+                    Uses: ["GreyFrame", "BlackFrame"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder",
+                            MaterialFile: "/roswell/back/BackHolder",
+                            Color: null,
+                            Visibility: true
+                        },
+                    ],
+                }, //BLACK
+                {
+                    Code: "WhiteBack",
+                    Name: "White",
+                    Active: false,
+                    PartNumber: "W",
+                    Price: 36,
+                    Show: true,
+                    Uses: ["GreyV2"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder",
+                            MaterialFile: "/roswell/back/BackHolder",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+
+                } //WHITE
+            ],
+
+        }, // BACK
+        {
+            Code: "b-frame",
+            Name: "Frame Selection",
+            Description: "Color",
+            Type: "F",
+            Depth: 2,
+            RelatedLayers: ["BackHolder1"],
+            Values: [
+                {
+                    Code: "BlackFrame",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Mesh", "Fabric"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                    ]
+                }, // Black Frame
+                {
+                    Code: "GreyFrame",
+                    Name: "Grey",
+                    Active: true,
+                    PartNumber: "G",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["MeshV2"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                    ]
+                }, // Grey Frame
+                {
+                    Code: "GreyV2",
+                    Name: "Grey",
+                    Active: false,
+                    PartNumber: "G",
+                    Show: false,
+                    Price: 0,
+                    Uses: ["MeshV2"],
+                    Layers: [
+                        {
+                            Layer: "Frame",
+                            MaterialFile: "/roswell/back/Frame",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            MaterialFile: "/roswell/headrest/headrest",
+                            Visibility: null
+                        },
+                    ]
+                }, // White Back Grey Frame
+
+
+            ]
+        },//BACK FRAME
+        {
+            Code: "b-material",
+            Name: "Back Material Selection",
+            Description: "Material",
+            Type: "F",
+            Depth: 3,
+            RelatedLayers: ["Back1"],
+            Values: [
+                {
+                    Code: "Mesh",
+                    Name: "Mesh",
+                    Active: true,
+                    PartNumber: "M",
+                    Show: true,
+                    Price: 0,
+                    Uses: ["Black-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: true
+                        },
+                    ]
+                }, // Mesh
+                {
+                    Code: "Fabric",
+                    Name: "Fabric",
+                    Active: false,
+                    PartNumber: "F",
+                    Show: false,
+                    Price: 50,
+                    Uses: ["Cardigan", "Billy-4C"],
+                    Layers: [
+                        {
+                            Layer: "Back1",
+                            Visibility: true
+                        },
+                    ]
+                }, // Fabric
+                {
+                    Code: "MeshV2",
+                    Name: "Mesh",
+                    Active: false,
+                    PartNumber: "M",
+                    Show: false,
+                    Price: 0,
+                    Uses: ["Grey-Mesh"],
+                    Layers: [
+                        {
+                            Layer: "BackHolder1",
+                            Visibility: true
+                        },
+                    ]
+                }, // Black Mesh
+
+
+            ]
+        },//BACK MATERIAL
+        {
+            Code: "b-color",
+            Name: "Back Color Selection",
+            Description: "Color",
+            Type: "M",
+            Depth: 4,
+            Price: 0,
+            RelatedLayers: ["Back1", "Headrest"],
+            Values: [
+                {
+                    Code: "Grey-Mesh",
+                    Name: "Grey",
+                    Active: true,
+                    PartNumber: "G",
+                    Price: 0,
+                    Show: true,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Black-Mesh",
+                    Name: "Black",
+                    Active: false,
+                    PartNumber: "B",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Cardigan",
+                    Name: "I.O.U.- Cardigan",
+                    Active: false,
+                    PartNumber: "1311",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },
+                {
+                    Code: "Billy-4C",
+                    Name: "I.O.U.- Billy 4C",
+                    Active: false,
+                    PartNumber: "1301",
+                    Price: 0,
+                    Show: false,
+                    Layers: ["Back1"]
+                },
+
+            ]
+        },//BACK MATERIAL COLOR
+        {
+            Code: "b-headrest",
+            Name: "Headrest Selection",
+            Description: "Add",
+            Type: "F",
+            Depth: 5,
+            RelatedLayers: ["Headrest"],
+            Values: [
+                {
+                    Code: "woutHeadrest",
+                    Name: "Without Headrest",
+                    Active: true,
+                    PartNumber: "",
+                    Show: true,
+                    Price: 0,
+                    Uses: [""],
+                    Layers: [
+                        {
+                            Layer: "Headrest",
+                            Visibility: false
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            Visibility: false
+                        },
+                    ]
+                }, // No Headrest
+                {
+                    Code: "wHeadrest",
+                    Name: "With Headrest",
+                    Active: false,
+                    PartNumber: "HR",
+                    Show: true,
+                    Price: 62,
+                    Uses: [""],
+                    Layers: [
+                        {
+                            Layer: "Headrest",
+                            Visibility: true
+                        },
+                        {
+                            Layer: "HeadrestHolder",
+                            Visibility: true
+                        },
+                    ]
+                }, // Headrest
+
+
+
+            ]
+        },//BACK HEADREST
+        {
+            Code: "mechanism",
+            Name: "Mechanism Selection",
+            Description: "Mecha",
+            Type: "F",
+            RelatedLayers: ["Config"],
+            Values: [
+                {
+                    Code: "sk",
+                    Name: "Stool Kit",
+                    Active: true,
+                    PartNumber: "SK",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Config",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //MECHANISM
+        {
+            Code: "arm",
+            Name: "Arm Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Arms1", "Arms2"],
+            Values: [
+                {
+                    Code: "armless",
+                    Name: "Armless option",
+                    Active: false,
+                    PartNumber: "A000",
+                    Price: -59,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms-b",
+                    Name: "Height adjustable arms (black)",
+                    Active: false,
+                    PartNumber: "A1DB",
+                    Price: -27,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: "/roswell/arms/arms1",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-b",
+                    Name: "3D adjustable arms (black)",
+                    Active: true,
+                    PartNumber: "A3DB",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: "/roswell/arms/arms2",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                },
+                {
+                    Code: "height-adjustable-arms-w",
+                    Name: "Height adjustable arms (white)",
+                    Active: false,
+                    PartNumber: "A1DW",
+                    Price: 10,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: "/roswell/arms/arms1",
+                            Color: null,
+                            Visibility: true
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        }
+                    ]
+                },
+                {
+                    Code: "3D-adjustable-arms-w",
+                    Name: "3D adjustable arms (white)",
+                    Active: false,
+                    PartNumber: "A3DW",
+                    Price: 26,
+                    Layers: [
+                        {
+                            Layer: "Arms1",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: false
+                        },
+                        {
+                            Layer: "Arms2",
+                            MaterialFile: "/roswell/arms/arms2",
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getLamia = {
+    Code: "lamia",
+    Name: "La Mia",
+    PartNumber: "LM-MS-",
+    LowFile: "lamia-high.glb",
+    LowSize: 3078880,
+    MedFile: null,
+    HighFile: null,
+    Price: 248,
+    ImgSrc: "assets/layout/lamia.png",
+    DefaultLayers: ["General", "Back", "Seat"],
+    Options: [
+        {
+            Code: "-color-Seat",
+            Name: "Seat Color Selection",
+            Description: "Color",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "cow-tipping",
+                    Name: "Cow Tipping",
+                    Active: false,
+                    PartNumber: "S01",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#000",
+                            Visibility: true
+                        }
+                    ]
+                }, // BLACK
+                {
+                    Code: "sugar-packet",
+                    Name: "Sugar Packet",
+                    Active: false,
+                    PartNumber: "S02",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#FFFFFF",
+                            Visibility: true
+                        }
+                    ]
+                }, //WHITE
+                {
+                    Code: "rhino",
+                    Name: "Rhino",
+                    Active: false,
+                    PartNumber: "S03",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //GREY
+                {
+                    Code: "dinghy",
+                    Name: "Dinghy",
+                    Active: false,
+                    PartNumber: "S04",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //BLUE
+                {
+                    Code: "pine-tree",
+                    Name: "Pine Tree",
+                    Active: false,
+                    PartNumber: "S05",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //GREEN
+                {
+                    Code: "ketchup-popsicle",
+                    Name: "Ketchup Popsicle",
+                    Active: true,
+                    PartNumber: "S06",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //RED
+                {
+                    Code: "bear-claw",
+                    Name: "Bear Claw",
+                    Active: false,
+                    PartNumber: "S07",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Back",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                } //SAND
+            ]
+        }, //SEAT COLOR
+        {
+            Code: "-color-Back",
+            Name: "Back Color Selection",
+            Description: "Color",
+            Type: "G",
+            RelatedLayers: ["Back"],
+            Values: [
+                {
+                    Code: "cow-tipping",
+                    Name: "Cow Tipping",
+                    Active: false,
+                    PartNumber: "S01",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#000",
+                            Visibility: true
+                        }
+                    ]
+                }, // BLACK
+                {
+                    Code: "sugar-packet",
+                    Name: "Sugar Packet",
+                    Active: false,
+                    PartNumber: "S02",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#FFFFFF",
+                            Visibility: true
+                        }
+                    ]
+                }, //WHITE
+                {
+                    Code: "rhino",
+                    Name: "Rhino",
+                    Active: false,
+                    PartNumber: "S03",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //GREY
+                {
+                    Code: "dinghy",
+                    Name: "Dinghy",
+                    Active: false,
+                    PartNumber: "S04",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //BLUE
+                {
+                    Code: "pine-tree",
+                    Name: "Pine Tree",
+                    Active: false,
+                    PartNumber: "S05",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //GREEEN
+                {
+                    Code: "ketchup-popsicle",
+                    Name: "Ketchup Popsicle",
+                    Active: true,
+                    PartNumber: "S06",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                }, //RED
+                {
+                    Code: "bear-claw",
+                    Name: "Bear Claw",
+                    Active: false,
+                    PartNumber: "S07",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "Seat",
+                            MaterialFile: "/lamia/seat/Back", //"/lamia/seat/Seat011_Retopo",
+                            Color: "#101010",
+                            Visibility: true
+                        }
+                    ]
+                } //SAND
+            ]
+        }, //BACK COLOR
+        {
+            Code: "frame",
+            Name: "Frame Selection",
+            Description: "Frame",
+            Type: "F",
+            RelatedLayers: ["General"],
+            Values: [
+                {
+                    Code: "",
+                    Name: "Metallic Silver",
+                    Active: true,
+                    PartNumber: "",
+                    Price: 0,
+                    Layers: [
+                        {
+                            Layer: "General",
+                            MaterialFile: null,
+                            Color: null,
+                            Visibility: true
+                        }
+                    ]
+                }
+            ]
+        }, //FRAME
+
+    ],
+    FabricName : null,
+    FabricPartNumber: null,
+    SeatPad: false,
+};
+var getExtra = {
+    Code: "extra",
+    Name: "Extra",
+    PartNumber: "52-MS-FA",
+    LowFile: "extra-high.glb",
+    LowSize: 1339972,
+    MedFile: null,
+    HighFile: null,
+    Price: 367,
+    ImgSrc: "assets/layout/extra.png",
+    DefaultLayers: ["Back", "Seat", "Plastic"],
+    Options: [
+        {
+            Code: "back",
+            Name: "Back Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Back"],
+            Values: [
+                {
+                    Code: "mesh",
+                    Name: "Mesh",
+                    Active: true,
+                    PartNumber: "",
+                    Price: 0,
+                    Layers: [ ]
+                }          
+            ]
+        }, //BACK
+        {
+            Code: "arm",
+            Name: "Arms Style Selection",
+            Description: "Arms",
+            Type: "F",
+            RelatedLayers: ["Plastic"],
+            Values: [
+                {
+                    Code: "fixedNylon",
+                    Name: "Fixed Nylon (Black)",
+                    Active: true,
+                    PartNumber: "",
+                    Price: 0,
+                    Layers: []
+                }
+            ]
+        }, //ARMS
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat1"
+                },
+                {
+                    Layer: "Seat2"
+                },
+                {
+                    Layer: "Back1"
+                },
+                {
+                    Layer: "Back2"
+                },
+                {
+                    Layer: "Seat1Holder"
+                },
+                {
+                    Layer: "Seat2Holder"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+var getTether = {
+    Code: "tether",
+    Name: "Tether",
+    PartNumber: "R05",
+    LowFile: "tether-high.glb",
+    LowSize: 2502656,
+    MedFile: null,
+    HighFile: null,
+    Price: 375,
+    ImgSrc: "assets/layout/tether.png",
+    DefaultLayers: ["Base", "Seat"],
+    Options: [
+        {
+            Code: "grade",
+            Name: "Seat Fabric Selection",
+            Description: "Material",
+            Type: "G",
+            RelatedLayers: ["Seat"],
+            Values: [
+                {
+                    Code: "grade1",
+                    Name: "Grade 1",
+                    Active: true,
+                    PartNumber: "1",
+                    Price: 0,
+                    Collections: [
+                        {
+                            Name: "Link",
+                            Active: false
+                        },
+                        {
+                            Name: "I.O.U",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "gradev",
+                    Name: "Grade V",
+                    Active: false,
+                    PartNumber: "V",
+                    Price: 43,
+                    Collections: [
+                        {
+                            Name: "Vinyl",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade2",
+                    Name: "Grade 2",
+                    Active: false,
+                    PartNumber: "2",
+                    Price: 150,
+                    Collections: [
+                        {
+                            Name: "Foundation 10",
+                            Active: true
+                        },
+                        {
+                            Name: "Key Largo",
+                            Active: false
+                        },
+                        {
+                            Name: "Patio",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade3",
+                    Name: "Grade 3",
+                    Active: false,
+                    PartNumber: "3",
+                    Price: 175,
+                    Collections: [
+                        {
+                            Name: "Haberdash",
+                            Active: true
+                        },
+                        {
+                            Name: "Echo",
+                            Active: false
+                        },
+                        {
+                            Name: "Cosmopolitan",
+                            Active: false
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade4",
+                    Name: "Grade 4",
+                    Active: false,
+                    PartNumber: "4",
+                    Price: 200,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                },
+                {
+                    Code: "grade5",
+                    Name: "Grade 5",
+                    Active: false,
+                    PartNumber: "5",
+                    Price: 225,
+                    Collections: [
+                        {
+                            Name: "TBD",
+                            Active: true
+                        }
+                    ],
+                    Layers: [
+                        {
+                            Layer: "Seat"
+                        }
+                    ]
+                }
+            ],
+            Layers: [
+                {
+                    Layer: "Seat1"
+                },
+                {
+                    Layer: "Seat2"
+                },
+                {
+                    Layer: "Back1"
+                },
+                {
+                    Layer: "Back2"
+                },
+                {
+                    Layer: "Seat1Holder"
+                },
+                {
+                    Layer: "Seat2Holder"
+                }
+            ]
+        } //GRADES AND FABRICS
+    ],
+    FabricName: "I.O.U - Billy 4C",
+    FabricPartNumber: "1301",
+    SeatPad: false,
+};
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const selectedChair = urlParams.get('name')
+
+//GET DATA
+console.log(location.origin + location.pathname);
+
+switch (selectedChair) {
+    case "G6":
+        var dataDB = getG6;
+        $(".stoolSwap").click(function () {
+            window.location.href = location.origin + location.pathname + "?name=G6Stool";
+        });
+        break;
+
+    case "G6Stool":
+        var dataDB = getG6Stool;
+        $(".standardSwap").click(function () {
+            window.location.href = location.origin + location.pathname + "?name=G6";
+        });
+        break;
+
+    case "Freeride":
+        var dataDB = getFreeride;
+        $(".stoolSwap").click(function () {
+            window.location.href = location.origin + location.pathname + "?name=FreerideStool";
+        });
+        break;
+
+    case "FreerideStool":
+        var dataDB = getFreerideStool;
+        $(".standardSwap").click(function () {
+            window.location.href = location.origin + location.pathname + "?name=Freeride";
+        });
+        break;
+
+    case "Roswell":
+        var dataDB = getRoswell;
+        $(".stoolSwap",).click(function () {
+            window.location.href = location.origin + location.pathname + "?name=RoswellStool";
+        });
+        break;
+
+    case "RoswellStool":
+        var dataDB = getRoswellStool;
+        $(".standardSwap").click(function () {
+            window.location.href = location.origin + location.pathname + "?name=Roswell";
+        });
+        break;
+
+    case "LaMia":
+        var dataDB = getLamia;
+        $(".stoolStandardSwap").css({"visibility":"hidden", "height": "1px"});
+        break;
+
+    case "Extra":
+        var dataDB = getExtra;
+        $(".stoolStandardSwap").css({ "visibility": "hidden", "height": "1px" });
+        break;
+
+    case "Tether":
+        var dataDB = getTether;
+        $(".stoolStandardSwap").css({ "visibility": "hidden", "height": "1px" });
+        break;
+
+    default:
+        var dataDB = getG6;
+}
+
+//Menu building variables
+var canvas = document.getElementById('wyattCanvas');
+var container = document.getElementById('wyattContainer');
+
+var loopOn = false;
+var highBackOn = false;
+var feature = "";
+var option = "";
+var collection = "";
+var backPartNumber = [" "];
+if (dataDB.Name.includes("Freeride"))
+    backPartNumber = ["B", "M", "G"];
+if (dataDB.Name.includes("Roswell"))
+    backPartNumber = ["B", "G", "M",""];
+var modelNumberOfOptions = dataDB.Options.length;
+var seatPadPrice = 0;
+var watermarkImg = new Image;
+watermarkImg.src = 'assets/layout/icons/Wyatt-Seating-Logo.png';
+////**************************************************************************
+//********************* BABYLON ENGINE INITIALIZATION *****************
+////**************************************************************************
+var engine = new BABYLON.Engine(canvas, true, { premultipliedAlpha: false, preserveDrawingBuffer: true, stencil: true });
+var scene = new BABYLON.Scene(engine);
+var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, new BABYLON.Vector3(0, 0, 0), scene);
+var photoCamera;  // Front Camera
+var photoCameraB;  //Back camera
+camera.setTarget(BABYLON.Vector3.Zero());
+var baseUrl;
+var asyncMesh;
+var shadowGenerator
+var HDRhelper
+var currentMesh;
+scene.clearColor = new BABYLON.Color3(1, 1, 1); //Background color
+var maxSize = new BABYLON.Vector3(0, 0, 0);
+var meshCenter = new BABYLON.Vector3(0, 0, 0);
+var pagifyItems = 6;
+
+var createScene = function () {
+
+
+    // Model loader
+    BABYLON.GLTFFileLoader.IncrementalLoading = false;
+    baseUrl = "assets/models/";
+    lowFile = dataDB.LowFile;
+    BABYLON.SceneLoader.ImportMesh("", baseUrl, lowFile, scene, function (syncMesh) {
+
+        // Camera 
+        scene.createDefaultCameraOrLight(true, true, true);
+        scene.activeCamera.pinchDeltaPercentage = 0.02;
+        scene.activeCamera.multiTouchPanning = true;
+        scene.activeCamera.multiTouchPanAndZoom = true;
+        scene.activeCamera.pinchToPanMaxDistance = 70;
+        //scene.activeCamera.pinchPrecision = 100;
+        scene.activeCamera.panningSensibility = 5;
+        scene.activeCamera.wheelPrecision = 0.08;
+        photoCamera = scene.activeCamera.clone();
+        photoCameraB = photoCamera.clone();
+        photoCameraB.alpha = Math.PI / 3 + Math.PI;
+
+
+        //Lightning
+        scene.lights[0].dispose();
+        var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
+        light.intensity = 0.5;
+        var plight = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -11000, 0), scene);
+        plight.direction = new BABYLON.Vector3(0, -1, 0);
+        // Shadows
+        shadowGenerator = new BABYLON.ShadowGenerator(1024, plight);        
+        shadowGenerator.useBlurExponentialShadowMap = true;
+        shadowGenerator.useKernelBlur = true;
+        shadowGenerator.blurKernel = 45;
+        shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
+        shadowGenerator.blurScale = 4;
+        for (var i = 1; i < syncMesh.length; i++) {
+            //
+            syncMesh[i].actionManager = new BABYLON.ActionManager(scene); // Pointer behavior on model hover                       
+            syncMesh[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (env) {
+            }, false));
+            if (dataDB.Name == "Extra") {                
+                /*syncMesh[i].scaling.x = 0.9;
+                syncMesh[i].scaling.y = 0.9;
+                syncMesh[i].scaling.z = 0.9;*/
+                syncMesh[i].position.x = -0.1;
+            }
+            if (dataDB.Name == "Extra" || dataDB.Name == "La Mia")
+            { shadowGenerator.getShadowMap().renderList.push(syncMesh[i]); }
+            //more bump
+            if (syncMesh[i].material && syncMesh[i].material.bumpTexture) {
+                syncMesh[i].material.bumpTexture.level = 1.5;
+            }
+            //syncMesh[i].position = new BABYLON.Vector3(0, 0, 0);
+            var size = syncMesh[i].getBoundingInfo().boundingBox.maximumWorld;
+            if ((size.x) > maxSize.x)
+                maxSize.x = size.x;
+
+            if ((size.y) > maxSize.y)
+                maxSize.y = size.y;
+
+            if ((size.z) > maxSize.z)
+                maxSize.z = size.z;
+
+            meshCenter.x += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.x;
+            meshCenter.y += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.y;
+            meshCenter.z += syncMesh[i].getBoundingInfo().boundingBox.centerWorld.z;
+
+            //Show me the default
+            syncMesh[i].isVisible = dataDB.DefaultLayers.includes(syncMesh[i].name);
+        }
+
+        meshCenter.x = meshCenter.x / syncMesh.length * 0;
+        meshCenter.y = meshCenter.y / syncMesh.length;
+        meshCenter.z = meshCenter.z / syncMesh.length;
+
+        //maxSize.y = maxSize.y / 7;
+
+        scene.activeCamera.setTarget(meshCenter);        
+        var ratio = engine.getAspectRatio(camera);
+        var h = ((maxSize.y + maxSize.x + maxSize.z)/3);
+        scene.activeCamera.lowerRadiusLimit = h;
+        scene.activeCamera.upperRadiusLimit = h * 4;
+        scene.activeCamera.alpha = Math.PI / 2.4;
+        scene.activeCamera.beta = 7 * Math.PI / 16;
+        scene.activeCamera.radius = h*2.8;        
+        photoCamera = scene.activeCamera.clone();
+        photoCamera.radius = h * 3.5;
+
+        if (dataDB.Name.includes("G6")){
+            scene.activeCamera.radius = 3200;
+        }
+
+        if (dataDB.Name.includes("Freeride") || dataDB.Name.includes("Roswell")) {
+            scene.activeCamera.target.y -= 140;
+        }
+
+        if (dataDB.Name == ("Roswell Stool")) {
+            scene.activeCamera.target.y -= 300;
+        }
+
+        //Env texture
+        var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/cathedral" + "EnvHDR.dds", scene);
+        //var hdrTexture = new BABYLON.HDRCubeTexture("assets/environment/lebombo.hdr", scene);
+        hdrTexture.gammaSpace = true;
+        if (dataDB.Code == "lamia")
+            hdrTexture.gammaSpace = false;
+        
+        
+        currentMesh = syncMesh;
+
+
+        if (!detectmob()) {
+            HDRhelper = scene.createDefaultEnvironment({
+                createSkybox: false,
+                enableGroundMirror: false,
+                enableGroundShadow: true,
+                //groundMirrorAmount: 1,
+                //groundMirrorFallOffDistance: 3000,
+                //groundSize: 500,
+                groundColor: new BABYLON.Color3(1, 1, 1),
+                groundOpacity: 1,
+                //environmentTexture: "assets/environment/cathedral" + "EnvHDR.dds"
+            });
+            HDRhelper.skybox = hdrTexture;
+
+            if (dataDB.MedFile) {
+                asyncDownload(dataDB.MedFile);
+            }
+            if (dataDB.HighFile) {
+                asyncDownload(dataDB.HighFile);
+            }
+            $("#selectedFeatureText").css("display", "none");
+        }
+        else {     
+            
+            HDRhelper = scene.createDefaultEnvironment({
+                createSkybox: false,
+                createGround: true,
+                enableGroundShadow: false,
+                groundColor: new BABYLON.Color3(1, 1, 1),
+                groundOpacity: 0.5,
+            });
+            HDRhelper.skybox = hdrTexture;
+
+            scene.activeCamera.radius = h * 3.5;   
+
+            var $carousel = $(".carousel");
+            for (var options = 0; dataDB.Options.length > options; options++) {
+                var $cellElems = ($(`<div><div class="carousel-cell" onclick=$("#${dataDB.Options[options].Code}Name").click()>
+                        <img class="carouselImages"src="assets/layout/icons/${(dataDB.Name).includes("Stool") ? dataDB.Name.replace(" Stool", "") : dataDB.Name}-${dataDB.Options[options].Code}.png"></div>
+                                <h6 class="carouselText">${dataDB.Options[options].Description}</h6></div>`));
+                $carousel.flickity('append', $cellElems);
+            }    
+            $('.accordion').on('shown.bs.collapse', function () { 
+                $("#selectedFeatureText").text($('.accordion').find('.show')[0].previousElementSibling.outerText);                
+                
+                setTimeout(function () {
+                    $("#gcRow").css("height", "12%");
+                    $("#wyattCanvas").css("height", "87%");
+                    $("#wyattCanvas").css("bottom", "13%");
+                    $("#generalContainer").css("height", "50%");
+                    $("#generalContainer").css("bottom", "50%");
+                    $("#selectedFeatureText").css("display", "unset");
+                    engine.resize();
+                    scene.render();
+                }, 100);               
+            });
+            $('.accordion').on('hidden.bs.collapse', function () {
+                setTimeout(function () {
+                    $("#gcRow").css("height", "7%");
+                    $("#wyattCanvas").css("height", "94%");
+                    $("#wyattCanvas").css("bottom", "8%");
+                    $("#generalContainer").css("height", "88%");
+                    $("#generalContainer").css("bottom", "14%");
+                    $("#selectedFeatureText").css("display", "none");
+                    engine.resize();
+                    scene.render();                
+                }, 100);
+            });            
+            $(".desktop").css("visibility", "hidden");            
+            pagifyItems = 4;
+            $("#imagesContainer").pagify(pagifyItems, ".material-item");
+
+            $(window).on("orientationchange", function (event) {
+                
+                if (Math.abs(window.orientation) == 90 ) {
+                    $(".mainContainer").css("display", "none");
+                }
+                else {
+                    $(".mainContainer").css("display", "unset");
+                }
+            });
+           
+            $("#selectedFeatureText").css("top", (window.innerHeight * 0.52) + "px");
+            $(".card-body").css("top", (window.innerHeight * 0.58) + "px"); 
+            $(".card-body").css("max-height", (window.innerHeight * 0.3) + "px"); 
+            $(".card-body").css("height", (window.innerHeight * 0.3) + "px");
+            $(window).resize(function () {           
+                $("#selectedFeatureText").css("top", (window.innerHeight * 0.52) + "px");
+                $(".card-body").css("top", (window.innerHeight * 0.58) + "px");
+                $("#loadingLabel").css("top", (window.innerHeight * 0.90) + "px");
+            });
+
+        }
+
+        if (dataDB.Name.includes("Roswell")) {
+            $("#list-BlackBack-list").click();
+            $("#list-nylon-base-list").click();
+        }
+        if (dataDB.Name.includes("Freeride")) {
+            $("#list-Mid-Back-list").click();           
+        }        
+       
+
+        //retrieveFromUser();
+    }, function (evt) {
+        //On progress function            
+            size = dataDB.LowSize;                            
+            if (size > 0) {               
+                $(".mainContainer").css("display", "none");
+                var percentage = (evt.loaded * 100 / size).toFixed();
+                console.log("Loading, please wait..." + percentage + "%");
+                $("#loadingFilter").css("height", percentage + "vh");
+                $(".progress-bar").css("width", percentage + "%");
+                $("#loadingLabel").text(percentage + "%");
+                if (percentage >= 100) {
+                    
+                    $("#LoadingScreen").fadeOut(2500);
+                    setTimeout(function () {
+                        $(".mainContainer").css("display", "unset");                          
+                        window.scrollTo(0, 1);
+                    }, 2500);
+                    
+                }
+                
+        }
+        else {
+            dlCount = evt.loaded / (1024 * 1024);
+        }
+
+
+    }, function (error) {
+
+    }
+    );
+    return scene;
+}
+
+
+var devMode = 0;
+$("body").keypress(function (event) {
+    if (event.which == 100 && devMode < 21) {
+        devMode++;
+    }
+    if (devMode == 10) {
+        scene.debugLayer.show();
+
+    }
+    if (devMode == 20) {
+        console.log(String.fromCharCode(66, 121, 32, 122, 114, 101, 108, 105, 099, 107, 64, 103, 109, 097,
+            105, 108, 46, 099, 111, 109));
+        $("#inspector-host").css("position", "fixed", "z-index", "500");
+        $("#inspector-host").css("z-index", "500");
+        $("#scene-explorer-host").css("position", "fixed", "z-index", "500");
+        $("#scene-explorer-host").css("z-index", "500");
+    }
+
+});
+
+
+// call the createScene function
+var scene = createScene();
+
+
+// run the render loop
+engine.runRenderLoop(function () {
+    window.addEventListener("resize", function () { engine.resize(); });      
+    scene.render();
+
+});
+
+
+//************************************************************
+//******************** ASYNC DOWNLOAD **************************
+//***********************************************************
+function asyncDownload(lod) {
+    Promise.all([
+
+        BABYLON.SceneLoader.ImportMeshAsync(null, baseUrl, lod, scene).then(function (asyncResult) {
+            asyncMesh = asyncResult.meshes;                     
+
+            /*for (var i = 1; i < asyncResult.length; i++) {
+                
+                asyncResult[i].actionManager = new BABYLON.ActionManager(scene);
+
+                //ON MOUSE ENTER
+                asyncResult[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
+
+                }, false));
+            }*/
+        }),
+        //select the options here
+    ]).then(function(){
+        
+        //asyncMesh.scaling = currentMesh.scaling;
+        for (var i = 1; i < currentMesh.length; i++) {
+            shadowGenerator.getShadowMap().renderList.push(currentMesh[i]);
+            if (!currentMesh[i].name == "Seat" || !(currentMesh[i].name == "Base" && !dataDB.Name.includes("Stool")))
+                currentMesh[i]._material = asyncMesh[i]._material;            
+            
+            //asyncMesh[i].isVisible = currentMesh[i].isVisible;
+            //currentMesh[i].dispose();
+        }
+        asyncMesh.map(function(node) { node.setEnabled(false); })
+        //currentMesh = asyncMesh;
+    });
+}
+
+function detectmob() {
+    if (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+        
+    ) {
+        return true;
+    }    
+    else {
+        return false;
+    }
+}
+
+//MENU BUILDING
+var productName = document.getElementById("productName");
+productName.textContent = dataDB.Name;
+var totalPrice = dataDB.Price;
+var currentOptionPrice = Array(dataDB.Options.length);
+
+//PRICE CALCULATION
+var productPrice = document.getElementById("productPrice");
+var currentOptionsPDF = null;
+function priceCalculation() {
+   
+    for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            if (dataDB.Options[nOptions].Values[nValues].Active == true) {
+                currentOptionPrice[nOptions] = dataDB.Options[nOptions].Values[nValues].Price;
+            }
+        }
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            dataDB.Options[nOptions].Values[nValues].Price -= currentOptionPrice[nOptions];
+        }
+        currentOptionsPDF = currentOptionPrice[nOptions];
+        totalPrice += currentOptionPrice[nOptions];         
+    }   
+   productPrice.textContent = "$" + totalPrice + ".00";
+}
+priceCalculation();
+
+function sendImg(imgToSend, callback) {
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    var theUrl = "https://api.wyattseating.com/api/image";
+
+    xmlhttp.open("POST", theUrl, true);
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            callback(false, JSON.parse(xmlhttp.responseText).Message)
+        }
+        if (xmlhttp.readyState === 500) {
+            callback(true, null)
+        }
+    };    
+    xmlhttp.send(JSON.stringify({ data :imgToSend }));
+}
+
+function makeMyPDF() {
+    //$.LoadingOverlay("show");
+    HDRhelper.ground.isVisible = false;
+    vPortHeight = engine._gl.drawingBufferHeight;
+    vPortWidth = engine._gl.drawingBufferWidth;
+    var pn = dataDB.PartNumber;       
+    setTimeout(function () {        
+        engine.setSize(1200/2, 1920/2);
+        scene.render();
+        BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: 960, width: 600 }, function (data) {
+
+            sendImg(data, function (error, image) {
+                dataDB.print = image;
+                dataDB.totalPrice = totalPrice;
+                if (dataDB.BackSize)
+                    dataDB.PartNumber = dataDB.PartNumber +"-"+ backPartNumber.join("");
+                var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+                var theUrl = "https://api.wyattseating.com/api/pdf";                
+                xmlhttp.open("POST", theUrl, true);
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        $.LoadingOverlay("hide");
+                        window.open("https://api.wyattseating.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                       
+                    }
+                    if (xmlhttp.readyState === 500) {
+                        $.LoadingOverlay("hide");
+                    }
+                };
+                xmlhttp.send(JSON.stringify(dataDB));
+                dataDB.PartNumber = pn;
+            });
+        });
+        engine.setSize(vPortWidth, vPortHeight);
+        HDRhelper.ground.isVisible = true;
+    }, 500);
+
+}
+
+function takePhoto() {    
+    //A portview resize is required to set a fixed image render. Despite the current viewport size.
+    vPortHeight = engine._gl.drawingBufferHeight;
+    vPortWidth = engine._gl.drawingBufferWidth;
+    engine.setSize(580, 1920/2);
+
+    scene.render();
+    BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, scene.activeCamera, { heigth: 1920, width: 1080, precision: 2 }, function (data) {
+        watermark([data, watermarkImg])
+            .image(watermark.image.lowerRight(0.5))
+            .then(function (img) {
+                var link = document.createElement('a');
+                link.download = dataDB.Name + '.png';
+                link.href = img.src;
+                link.click();
+            });        
+    });
+
+    engine.setSize(vPortWidth, vPortHeight);
+
+
+}
+
+
+//OPTIONS BUILDING
+
+var optionsMenu = document.getElementById("optionsMenu");
+
+var $accordion = $("<div>", { "class": "accordion", "id": "wyattAccordion" });
+$("#optionsMenu").append($accordion);
+
+//Build accordions as many features are in the model
+for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+
+    var $card = $("<div>", { "class": "card" });
+    $accordion.append($card);
+    var cardName = dataDB.Options[nOptions].Code;
+
+
+    var $cardHeader = $("<div>", { "class": "class-header", "id": cardName + "Header" });
+    $card.append($cardHeader);
+
+    var $dropdownarrow = $("<span class=dropdown-menu-arrow></span>");    
+    $cardHeader.append($dropdownarrow);
+
+
+    var $cardButton = $("<div>", {
+        "class": "btn btn-link collapsed", 'type': "button",
+        "data-toggle": "collapse", "data-target": "#" + cardName,
+            "aria-expanded": "true", "aria-controls": cardName, "text": cardName,
+            "id": cardName + "Name"
+        });    
+    $cardHeader.append($cardButton);
+   
+
+
+        var $accordionInfoContainer = $("<div>", {
+            "id": cardName, "class": "collapse",
+            "aria-labelledby": cardName + "Header", "data-parent": "#wyattAccordion",
+            "heightStyle": "content"
+        });
+        $card.append($accordionInfoContainer);
+
+        var $accordionInfo = $("<div>", { "class": "card-body" });
+        $accordionInfoContainer.append($accordionInfo);
+
+        //ADD CARD INFO TO $accordionInfo
+        var $rowDivider = $("<div>", { "class": "row no-gutter", "id": cardName + "-row" });
+        $accordionInfo.append($rowDivider);
+    
+
+    if (cardName === "back") {
+        var $backWrapper = $("<div>", { "id": "backWrapper", style: "width:100%"});
+        $rowDivider.append($backWrapper);
+    }
+
+    if (cardName.includes("back")) {
+        $cardButton.text(dataDB.Options[nOptions].Name);
+        
+        if (!cardName.includes("color")) {
+            if (dataDB.Options[nOptions].Code == "back-headrest") {
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; width: 100%" });
+                $backWrapper.append($backFeature);
+            }
+            else {
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, /*"style": "float: left; margin: 0 1%; width:" + (100 - (2 * dataDB.BackSize)) / dataDB.BackSize + "%"*/ });
+                $backWrapper.append($backFeature);
+            }
+
+            /*var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0; font-weight: bold;" });
+            $backFeature.append($backFeatureTitle);*/
+
+            var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
+            $backFeature.append($listGroup);
+
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+                if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
+                    var selectedOption = dataDB.Options[nOptions].Values[nValues].Code;
+                    var $featureOptions = $("<a>", {
+                        "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
+                        "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "," + nOptions + "," + nValues + "\")",
+                        //"text": dataDB.Options[nOptions].Values[nValues].Name,
+                    });
+                    $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                    
+                }
+                
+                else {
+                    var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Code;
+                    var $featureOptions = $("<a>", {
+                        "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
+                        "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "," + nOptions + "," + nOptions + "\")",
+                        //"text": dataDB.Options[nOptions].Values[nValues].Name
+                    });
+                    $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                    if (!dataDB.Options[nOptions].Values[nValues].Show)
+                        $featureOptions.hide();
+                }
+
+                if (selectedOption == "HighbackVin" || nonSelectedOption == "HighbackVin") {
+                    $featureOptions.text("Vinyl");
+                }
+                
+                
+
+                $listGroup.append($featureOptions);
+                if (nValues > 0)
+                    if ($.inArray(dataDB.Options[nOptions].Values[nValues - 1].Name, dataDB.Options[nOptions].Values[nValues].Uses)) {
+                    }
+
+            }            
+        }
+
+        else {
+            var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "margin: 0 1%; width: 100%; display: flow-root" });
+            $backWrapper.append($backFeature);
+
+            var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0;font-weight: bold;" });
+            $backFeature.append($backFeatureTitle);
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+                var $materialItem = $("<div>", {
+                    "class": "material-item", 
+                    "id": dataDB.Options[nOptions].Values[nValues].Code + "-back-material",
+                    "onClick": "changeMaterial(\"" + "back" + "," + dataDB.Options[nOptions].Values[nValues].Code + "," + "none" + "," + nOptions
+                        + "," + "null" + "," + dataDB.Options[nOptions].Values[nValues].PartNumber + "\")",
+                    //"style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
+                });
+               
+                $backFeature.append($materialItem);
+                var $materialImage = $("<img>", {
+                    "src": "assets/layout/material thumbnails/" + dataDB.Name + "/" + dataDB.Options[nOptions].Name + "/" +
+                        dataDB.Options[nOptions].Values[nValues].Code + ".jpg",
+                    "style": "width: 90%"
+                });
+                $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${dataDB.Options[nOptions].Values[nValues].Name}</h7>`);
+                $materialItem.append($materialName);
+                if (!dataDB.Options[nOptions].Values[nValues].Show)
+                    $materialItem.hide();
+            }
+        }
+    }
+    if (cardName.includes("back-")) {
+        $("#" + cardName + "Header").parent().remove();
+    }
+
+    if (cardName.includes("-color")) {
+        var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist", "style": "display: contents;" });
+        $rowDivider.append($listGroup);
+        $cardButton.text(dataDB.Options[nOptions].Name);
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            var $materialItem = $("<div>", {
+                "class": "material-item",
+                "id": dataDB.Options[nOptions].Values[nValues].Code + "-back-material",
+                "onClick": "changeMaterial(\"" + "back" + "," + dataDB.Options[nOptions].Values[nValues].Code + "," + "none" + "," + nOptions
+                    + "," + "null" + "," + dataDB.Options[nOptions].Values[nValues].PartNumber + "\")",
+                //"style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
+            });
+
+            $listGroup.append($materialItem);
+            var $materialImage = $("<img>", {
+                "src": "assets/layout/material thumbnails/" + dataDB.Name + "/" + dataDB.Options[nOptions].Name + "/" +
+                    dataDB.Options[nOptions].Values[nValues].Code + ".jpg",
+                "style": "width: 90%"
+            });
+            $materialItem.append($materialImage);
+            var $materialName = $(`<h7>${dataDB.Options[nOptions].Values[nValues].Name}</h7>`);
+            $materialItem.append($materialName);
+            if (!dataDB.Options[nOptions].Values[nValues].Show)
+                if(dataDB.Name != "La Mia")
+                $materialItem.hide();
+        }
+
+    }
+
+    else if (!cardName.includes("grade") && !cardName.includes("back")) {
+
+        var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
+        $rowDivider.append($listGroup);
+
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            if (dataDB.Options[nOptions].Values[nValues].Active) { //Current active option
+                var selectedOption = dataDB.Options[nOptions].Values[nValues].Code;
+                var $featureOptions = $("<a>", {
+                    "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
+                    "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
+                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "," + nOptions + "," + nOptions + "\")",
+                    //"text": dataDB.Options[nOptions].Values[nValues].Name
+                });                
+                $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                $cardButton.text(dataDB.Options[nOptions].Name);                
+            }
+
+            else {
+                var nonSelectedOption = dataDB.Options[nOptions].Values[nValues].Code;
+                var $featureOptions = $("<a>", {
+                    "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
+                    "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
+                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "," + nOptions + "," + nOptions + "\")",
+                    //"text": dataDB.Options[nOptions].Values[nValues].Name
+                });
+                $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                
+                $cardButton.text(dataDB.Options[nOptions].Name);
+            }
+
+
+            $listGroup.append($featureOptions);
+
+        }
+        
+    }
+
+
+    else if (cardName.includes("grade")) {
+        var $baseRow = $("<div>", { "class": "row no-gutter", "id": "gradesBaseRow" });
+        var $baseFilterRow = $("<div>", { "class": "row no-gutter", "id": "gradesFilterRow" })
+        var $dropdownColGrades = $("<div>", { "class": "col", "id": "dropdownColGrades" });
+        var $dropdownColMats = $("<div>", { "class": "col", "id": "dropdownColMats" });
+        var $imagesContainer = $("<div>", { "class": "row no-gutter", "id": "imagesContainer" });
+        var $SeatCoverRow = $("<div>", { "class": "row no-gutter", "id": "seatCoverRow", "style": "height: 0vh;" });        
+        var $SeatCoverCheckbox = $("<input>", {
+            "class": "form-check-input", "type": "checkbox", "value": "", "id": "coverCheck", 
+            "onclick": "seatCover()"
+            });
+        var $SeatCoverLabel = $("<label>", { "class": "form-check-label", "for": "coverCheck", "text": "Removable Seat Cover:" });
+        $rowDivider.append($baseFilterRow);
+        $rowDivider.append($baseRow);
+        $baseFilterRow.append($dropdownColGrades);
+        $baseFilterRow.append($dropdownColMats);
+        $baseRow.append($SeatCoverRow);
+        $SeatCoverRow.append($SeatCoverCheckbox);
+        $SeatCoverRow.append($SeatCoverLabel);
+
+        $baseRow.append($imagesContainer);
+
+        materialStructureBuilding(nOptions);
+        $cardButton.text(dataDB.Options[nOptions].Name);
+        $("#seatCoverRow")[0].hidden = true;
+    }
+
+
+}
+
+//Seat Cover Function
+function seatCover() {  
+    seatPadPrice = 0; 
+    if ($("#seatCoverRow")[0].hidden) {
+        $("#coverCheck")[0].checked = false;
+        $("#seatCoverRow").css("height", "1.6vh");
+    }
+    else
+        $("#seatCoverRow").css("height", "auto");
+    var auxPrice = totalPrice;
+
+    dataDB.SeatPad = false;
+    seatPadPrice = 0;
+    if ($("#coverCheck")[0].checked && !$("#seatCoverRow")[0].hidden) {
+        seatPadPrice = 90;
+        auxPrice += seatPadPrice;
+        dataDB.SeatPad = true;
+    }
+    if (!$("#coverCheck")[0].checked && !$("#seatCoverRow")[0].hidden) {
+        seatPadPrice = 0;
+        auxPrice += seatPadPrice;
+        dataDB.SeatPad = false;
+    }
+    
+    productPrice.textContent = "$ " + auxPrice + ".00";
+    
+    
+
+}
+
+// Material Grades structure
+function materialStructureBuilding(nOptions) {
+    $cardButton.text(dataDB.Options[nOptions].Values[0].Name);
+
+    var $dropdownGrades = $("<div>", { "class": "dropdown" });
+    $("#dropdownColGrades").append($dropdownGrades);
+    var $dropdownButton = $("<div>", {
+        "class": "btn dropdown-toggle", "type": "button", "id": "materialGrades",
+        "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"
+    });
+
+    $dropdownGrades.append($dropdownButton);
+
+    var $dropdownContent = $("<div>", { "class": "dropdown-menu", "id": "gradesDropdown", "aria-labelledby": "dropdownMenuButton" });
+    $dropdownGrades.append($dropdownContent);
+    for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+        var $dropdownItem = $("<a>", {
+            "class": "dropdown-item d-block", "onClick": "materialCollectionCardBuildingAndEdition(\"" + nOptions + "," +
+                dataDB.Options[nOptions].Values[nValues].Name + "\")",
+            "text": dataDB.Options[nOptions].Values[nValues].Name
+        });
+        $dropdownContent.append($dropdownItem);
+        if (dataDB.Options[nOptions].Values[nValues].Active) {
+           $dropdownButton.text(dataDB.Options[nOptions].Values[nValues].Name);
+        }
+    }
+    materialCollectionCardBuildingAndEdition(nOptions + ",");
+
+}
+
+function materialCollectionCardBuildingAndEdition(selection) {
+    var res = selection.split(",");
+    var nOptions = res[0];
+    var gradeSelection = res[1];
+
+    if (document.getElementById("materialCollections") != null) { //    Edition       
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            if (dataDB.Options[nOptions].Values[nValues].Name == gradeSelection) {
+                if ((dataDB.Name.includes("G6") || dataDB.Name.includes("Freeride"))) {
+                    $("#seatCoverRow")[0].hidden = !(parseInt(gradeSelection[gradeSelection.length - 1]) > 1);
+                    $("#coverCheck")[0].checked = false;
+                    seatCover();
+                }
+                dataDB.Options[nOptions].Values[nValues].Active = true;
+                $("#materialGrades").text(dataDB.Options[nOptions].Values[nValues].Name); //Change Grades Button
+                $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[0].Name); //Change Collection button
+                //$("#gradeName").text(dataDB.Options[nOptions].Values[nValues].Name); //Change title
+                var $dropdownContentCollections = $("#collectionDropdown");
+                $dropdownContentCollections.empty();
+                for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++) {
+
+                    var $dropdownItemCollections = $("<a>", {
+                        "class": "dropdown-item",
+                        "id": dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name,
+                        "text": dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name,
+                        "onClick": "collectionSet(\"" + dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name + "\")"
+                    });
+                    $dropdownContentCollections.append($dropdownItemCollections);
+                    var $dropdownButtonCollections = $("#materialCollections");
+                    collection = dataDB.Options[nOptions].Values[nValues].Collections[0].Name;
+                    if (dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active) {
+                        $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name);
+                        collection = dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name;
+                    }
+
+                }
+
+
+
+            }
+            else dataDB.Options[nOptions].Values[nValues].Active = false;
+        }
+        priceCalculation();
+
+        var Materials = listOfMaterials(collection);
+        $("#imagesContainer").empty();
+        $(".pagination").empty();
+
+        for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
+            if (Materials.Content[nMaterials].Name) {
+
+                var $materialItem = $("<div>", {
+                    "class": "material-item", 
+                    "id": Materials.Content[nMaterials].Name + "-material",
+                    "data-toggle": "tooltip", "title": Materials.Content[nMaterials].Name,
+                    "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + nOptions
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")",
+                   
+                });
+                var $materialImage = $("<img>", {
+                    "src": "assets/layout/material thumbnails/" + gradeSelection + "/" +
+                        collection + "/" +
+                        Materials.Content[nMaterials].Name + ".jpg"                    
+                });
+                $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+                $materialItem.append($materialName);
+                $("#imagesContainer").append($materialItem);
+            }
+        }
+        $("#imagesContainer").pagify(pagifyItems, ".material-item");
+
+    }
+    else {  //Build Collections dropdown list
+
+
+        var $dropdownCollections = $("<div>", { "class": "dropdown float-right", "id": "dropdownCollections" });
+        $("#dropdownColMats").append($dropdownCollections);
+        var $dropdownButtonCollections = $("<div>", {
+            "class": "btn btn-secondary dropdown-toggle", "type": "button", "id": "materialCollections",
+            "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"
+        });
+
+        $dropdownCollections.append($dropdownButtonCollections);
+
+        var $dropdownContentCollections = $("<div>", { "class": "dropdown-menu", "id": "collectionDropdown", "aria-labelledby": "dropdownMenuButton" });
+        $dropdownCollections.append($dropdownContentCollections);
+        for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[0].Collections.length; nCollections++) {
+            var $dropdownItemCollections = $("<a>", {
+                "class": "dropdown-item d-block", 
+                "id": dataDB.Options[nOptions].Values[0].Collections[nCollections].Name,
+                "text": dataDB.Options[nOptions].Values[0].Collections[nCollections].Name,
+                "onClick": "collectionSet(\"" + dataDB.Options[nOptions].Values[0].Collections[nCollections].Name + "\")"
+            });
+
+            $dropdownContentCollections.append($dropdownItemCollections);
+            if (dataDB.Options[nOptions].Values[0].Collections[nCollections].Active) {
+                $dropdownButtonCollections.text(dataDB.Options[nOptions].Values[0].Collections[nCollections].Name);
+                collection = dataDB.Options[nOptions].Values[0].Collections[nCollections].Name;
+            }
+
+
+        }
+
+        //Images Grid creation
+        var Materials = listOfMaterials(collection);
+
+        for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
+            if (Materials.Content[nMaterials].Name) {
+
+                var $materialItem = $("<div>", {
+                    "class": "material-item", 
+                    "id": Materials.Content[nMaterials].Name + "-material",
+                    "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + dataDB.Options[nOptions].Values[0].Name + "," + nOptions
+                        + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")",
+                    "data-toggle": "tooltip", "title": Materials.Content[nMaterials].Name,
+                });
+                var $materialImage = $("<img>", {
+                    "src": "assets/layout/material thumbnails/Grade 1/" + collection + "/" +
+                        Materials.Content[nMaterials].Name + ".jpg"
+                });
+                $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+                $materialItem.append($materialName);
+                $("#imagesContainer").append($materialItem);
+
+            }
+        }
+
+
+    }
+
+}
+
+function collectionSet(collectionSelected) {
+    var currentOption;
+    var gradeSelection;
+    collection = collectionSelected;
+    for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            if (dataDB.Options[nOptions].Values[nValues].Code) {
+                if (dataDB.Options[nOptions].Values[nValues].Code.includes("grade")) {
+                    for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++) {
+                        if (dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name == collectionSelected) {
+                            dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = true;
+                            $("#materialCollections").text(dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name);
+
+                            gradeSelection = dataDB.Options[nOptions].Values[nValues].Name;
+                            currentOption = nOptions;
+                        }
+                        else
+                            dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Active = false;
+                    }
+                }
+            }
+        }
+    }
+
+
+    var Materials = listOfMaterials(collection);
+    $(".pagination").empty();
+    $("#imagesContainer").empty();
+    for (var nMaterials = 0; nMaterials < Materials.Content.length; nMaterials++) {
+        if (Materials.Content[nMaterials].Name) {
+            var $materialItem = $("<div>", {
+                "class": "material-item", 
+                "id": Materials.Content[nMaterials].Name + "-material",
+                "onClick": "changeMaterial(\"" + collection + "," + Materials.Content[nMaterials].Name + "," + gradeSelection + "," + currentOption
+                    + "," + Materials.Content[nMaterials].ColorCode + "," + Materials.Content[nMaterials].Name + "," + Materials.Content[nMaterials].Code + "\")"
+            });
+            var $materialImage = $("<img>", {
+                "src": "assets/layout/material thumbnails/" + gradeSelection + "/" + collection + "/" +
+                    Materials.Content[nMaterials].Name + ".jpg"
+            });
+            $materialItem.append($materialImage);
+            var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+            $materialItem.append($materialName);
+            $("#imagesContainer").append($materialItem);
+
+        }
+        $("#imagesContainer").pagify(pagifyItems, ".material-item");
+    }
+}
+
+function changeMaterial(value) {
+    var res = value.split(",");
+
+    var collectionName = res[0];
+    var materialName = res[1]
+    var grade = res[2];
+    var nOptions = parseInt(res[3]);
+    var colorCode = res[4];
+    var fabricName = res[5];
+    var partNumber = res[6];
+
+    for (var nLayers = 0; nLayers < dataDB.Options[nOptions].RelatedLayers.length; nLayers++) {
+        for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
+            if (dataDB.Options[nOptions].RelatedLayers[nLayers] == currentMesh[nMeshes]._material.name) {
+                var path = "assets/materials/" + dataDB.Name.toLowerCase()
+                    + "/fabrics/" + grade.toLowerCase() + "/" + collectionName.toLowerCase() + "/" +
+                    materialName + "_" + dataDB.Options[nOptions].RelatedLayers[nLayers];
+                if (grade == "none") {
+                    var path = "assets/materials/" + dataDB.Name.toLowerCase()
+                        + "/fabrics/" + grade.toLowerCase() + "/" + collectionName.toLowerCase() + "/" +
+                        materialName +"_"+ dataDB.Options[nOptions].RelatedLayers[nLayers];
+                }
+
+                if (path) {
+                    currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + "_Base_Color.png", scene);
+                    if (materialName.includes("Mesh")) {
+                        currentMesh[nMeshes]._material._alpha = 0.74;
+                    }
+                    else
+                        currentMesh[nMeshes]._material._alpha = 1;
+                    currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
+                    currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
+                }
+
+                if (!(colorCode == "null" || colorCode == "undefined")) {
+                    currentMesh[nMeshes]._material._albedoColor = new BABYLON.Color3.FromHexString(colorCode);
+                }                
+            }
+
+        }
+
+    }
+    for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+        if (dataDB.Options[nOptions].Values[nValues].Code == materialName) {
+            dataDB.Options[nOptions].Values[nValues].Active = true;
+            backPartNumber[dataDB.Options[nOptions].Depth - 1] = dataDB.Options[nOptions].Values[nValues].PartNumber;
+        }
+        else if (!dataDB.Options[nOptions].Values[nValues].Code.includes( "grade"))
+            dataDB.Options[nOptions].Values[nValues].Active = false;
+
+        if (dataDB.Options[nOptions].Values[nValues].Name == grade) {
+            dataDB.FabricName = collectionName + " - " + fabricName;
+            dataDB.FabricPartNumber = partNumber;
+        }       
+    }
+}
+
+function optionChangedOnFeature(selection) {
+    var res = selection.split(",");
+    feature = res[0];
+    option = res[1]; 
+    var vOptions = res[2];
+    var vValues = res[3];
+    if (option.includes("grade") || option.includes("color"))
+        materialCollectionCardBuildingAndEdition();
+    else
+        cardsResponseOnSelection();
+        
+    priceCalculation();
+    changePrice(vOptions);
+
+}
+
+function changePrice(nOptions) {
+
+    dataDB.Options[nOptions].Values.map(function (opt) {  
+        if (parseInt(opt.Price) == 0)
+            $(`#tag-${opt.Code}`).text("");
+        else if (parseInt(opt.Price) >= 0)
+            $(`#tag-${opt.Code}`).text("+$" + parseInt(opt.Price));
+        else 
+            $(`#tag-${opt.Code}`).text("-$" + Math.abs(parseInt(opt.Price)));
+    });
+    
+}
+
+
+function cardsResponseOnSelection() {
+    for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
+
+        if (dataDB.Options[nOptions].Name == feature) {
+
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {                
+                var nValuesAux = nValues;
+                if (dataDB.Options[nOptions].Values[nValues].Code == option) {                      
+
+                    dataDB.Options[nOptions].Values[nValues].Active = true;  
+
+                    if (dataDB.Options[nOptions].Code.includes("b-") || dataDB.Options[nOptions].Code.includes("back")) {                                              
+                        
+                        if (dataDB.Options[nOptions].Depth < dataDB.BackSize + 1) {
+                            for (var dependant = 0; dependant < (dataDB.BackSize + 1) - dataDB.Options[nOptions].Depth; dependant++) {
+                                var check = true;                                
+                                if (dependant >= 0)
+                                    for (var nValuesC = 0; nValuesC < dataDB.Options[nOptions + dependant].Values.length; nValuesC++) {
+                                        if (dataDB.Options[nOptions + dependant].Values[nValuesC].Active) {
+                                            nValues = nValuesC;
+                                            break;
+                                        }
+                                    }
+                                for (var nValuesBeta = 0; nValuesBeta < dataDB.Options[nOptions + dependant + 1].Values.length; nValuesBeta++) {
+
+                                    if ($.inArray(dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code, dataDB.Options[nOptions + dependant].Values[nValues].Uses) >= 0) {
+                                        if (check) {
+                                            dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = true;
+                                            check = false;
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").click();
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").click();
+                                            
+                                        }
+                                        else {
+                                            dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = false;
+                                        }
+                                        if (dataDB.Options[nOptions + dependant + 1].Name.includes("Color")) {
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").show();
+                                        }
+                                        else {
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").show();
+                                        }
+                                    }
+                                    else {
+                                        dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = false;
+                                        if (dataDB.Options[nOptions + dependant + 1].Name.includes("Color")) {
+                                            $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").hide();
+
+                                        }
+                                        else {
+                                            $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").hide();
+                                        }
+                                    }
+                                }  
+                            }
+                            
+                        }
+
+                    }
+                    nValues = nValuesAux;
+
+                    for (var nLayers = 0; nLayers < dataDB.Options[nOptions].Values[nValues].Layers.length; nLayers++) {
+
+                        //change material
+                        var doMaterialChange = false;
+                        if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].hasOwnProperty("MaterialFile")) {
+                            if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile != null) {
+                                doMaterialChange = true;
+
+                            }
+                        }    
+                    
+                        for (var nMeshes = 1; nMeshes < currentMesh.length; nMeshes++) {
+                            if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Layer == currentMesh[nMeshes]._material.name) {
+                                //change the material
+                                if (doMaterialChange) { 
+                                    var path = "assets/materials" + dataDB.Options[nOptions].Values[nValues].Layers[nLayers].MaterialFile + "_";
+                                    if (dataDB.Options[nOptions].Values[nValues].Code.includes("V2")) {
+                                        currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "V2_Base_Color" + ".png", scene);
+                                    }
+                                    else {
+                                        currentMesh[nMeshes]._material._albedoTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Base_Color" + ".png", scene);
+                                    }
+
+
+                                    if (dataDB.Options[nOptions].Values[nValues].Name.includes("Nylon") && currentMesh[nMeshes].material.name == "Base") {
+                                        currentMesh[nMeshes]._material._metallicTexture = null;
+                                        currentMesh[nMeshes]._material.roughness = 1;
+                                        currentMesh[nMeshes]._material.metallic = 0;
+                                        currentMesh[nMeshes]._material._disableBumpMap = true;
+                                    }
+                                    if (dataDB.Options[nOptions].Values[nValues].Name.includes("Aluminum") && currentMesh[nMeshes].material.name == "Base") {
+                                        currentMesh[nMeshes]._material._metallicTexture = new BABYLON.Texture(path + dataDB.Options[nOptions].Values[nValues].Name + "_Metallic" + ".png", scene);
+
+                                        currentMesh[nMeshes]._material.roughness = 0.1;
+                                        currentMesh[nMeshes]._material.metallic = 1;
+
+                                        currentMesh[nMeshes]._material._metallicTexture.vAng = -Math.PI;
+                                        currentMesh[nMeshes]._material._metallicTexture.wAng = -Math.PI;
+
+                                        currentMesh[nMeshes]._material._disableBumpMap = true;
+                                    }
+
+
+                                    currentMesh[nMeshes]._material._albedoTexture.vAng = -Math.PI;
+                                    currentMesh[nMeshes]._material._albedoTexture.wAng = -Math.PI;
+
+                                }
+                                if (dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility != null)
+                                currentMesh[nMeshes].isVisible = dataDB.Options[nOptions].Values[nValues].Layers[nLayers].Visibility;
+                            }
+                        }
+
+                    }                    
+                }
+                else {
+                    dataDB.Options[nOptions].Values[nValues].Active = false;
+                }
+            }
+        }
+
+        if (dataDB.Options[nOptions].Name.includes("Back")) {            
+            for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++)
+                if (dataDB.Options[nOptions].Values[nValues].Active) {
+                    backPartNumber[dataDB.Options[nOptions].Depth - 1] = dataDB.Options[nOptions].Values[nValues].PartNumber;
+                }
+        }
+
+    }
+    
+}
+if (dataDB.Name.includes("Roswell")) {
+    $("#backHeader").click(function () { backAnimation("BackHolder"); });
+    $("#b-frameHeader").click(function () { backAnimation("Frame"); });
+}
+
+var backMesh;
+var isPlaying = false;
+var anim1;
+var anim2;
+function backAnimation(meshName) {   
+    var token = false;
+    if (meshName == "BackHolder") 
+        if ($("#backName").hasClass("collapsed")) 
+            token = true;
+    if (meshName == "Frame")
+        if ($("#b-frameName").hasClass("collapsed"))
+            token = true;        
+    
+    if ( token && !isPlaying) {
+        isPlaying = true;
+        anim1 = BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.x', 30, 30, scene.activeCamera.target.x, -59.56, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.y', 30, 30, scene.activeCamera.target.y, 1973.60, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.z', 30, 30, scene.activeCamera.target.z, -106.25, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'alpha', 30, 30, scene.activeCamera.alpha, -1.55, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'beta', 30, 30, scene.activeCamera.beta, 1.36, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'radius', 30, 30, scene.activeCamera.radius, 3457.438, 2);
+        for (var mesh = 0; mesh < currentMesh.length; mesh++) {
+            if (currentMesh[mesh].name == meshName) {
+                backMesh = currentMesh[mesh];
+                setTimeout(function () {
+                    anim2 = BABYLON.Animation.CreateAndStartAnimation(
+                        'animation', // anim name
+                        backMesh, // mesh
+                        'material.emissiveColor', // animatable property
+                        30, // yep, speed
+                        30, // across how many frames
+                        new BABYLON.Color3(0, 0, 0), // starting at this color
+                        new BABYLON.Color3(0, 1, 0), // finish at this color
+                        2 // No loop
+                    );
+                    anim2.onAnimationEnd = function () {
+                        var anim3 = BABYLON.Animation.CreateAndStartAnimation(
+                            'animation2', // anim name
+                            backMesh, // mesh
+                            'material.emissiveColor', // animatable property
+                            30, // yep, speed
+                            30, // across how many frames
+                            new BABYLON.Color3(0, 0.95, 0), // starting at this color
+                            new BABYLON.Color3(0, 0, 0), // finish at this color
+                            2 // 
+                        );
+                        anim3.onAnimationEnd = function () { isPlaying = false; }
+                        
+                    }
+                }, 500);
+                break;
+            }
+        }
+        
+        
+    }
+    
+}
+
+(function ($) {
+    var pagify = {
+        items: {},
+        container: null,
+        totalPages: 1,
+        perPage: 3,
+        currentPage: 0,
+        createNavigation: function () {
+            this.totalPages = Math.ceil(this.items.length / this.perPage);
+
+            $('.pagination', this.container.parent()).remove();
+            var pagination = $('<div class="pagination"></div>').append('<a class="nav prev disabled" data-next="false"><</a>');
+
+            for (var i = 0; i < this.totalPages; i++) {
+                var pageElClass = "page";
+                if (!i)
+                    pageElClass = "page current";
+                var pageEl = '<a class="' + pageElClass + '" data-page="' + (
+                    i + 1) + '">' + (
+                        i + 1) + "</a>";
+                pagination.append(pageEl);
+            }
+            pagination.append('<a class="nav next" data-next="true">></a>');
+
+            this.container.after(pagination);
+
+            var that = this;
+            $("body").off("click", ".nav");
+            this.navigator = $("body").on("click", ".nav", function () {
+                var el = $(this);
+                that.navigate(el.data("next"));
+            });
+
+            $("body").off("click", ".page");
+            this.pageNavigator = $("body").on("click", ".page", function () {
+                var el = $(this);
+                that.goToPage(el.data("page"));
+            });
+        },
+        navigate: function (next) {
+            // default perPage to 5
+            if (isNaN(next) || next === undefined) {
+                next = true;
+            }
+            $(".pagination .nav").removeClass("disabled");
+            if (next) {
+                this.currentPage++;
+                if (this.currentPage > (this.totalPages - 1))
+                    this.currentPage = (this.totalPages - 1);
+                if (this.currentPage == (this.totalPages - 1))
+                    $(".pagination .nav.next").addClass("disabled");
+            }
+            else {
+                this.currentPage--;
+                if (this.currentPage < 0)
+                    this.currentPage = 0;
+                if (this.currentPage == 0)
+                    $(".pagination .nav.prev").addClass("disabled");
+            }
+
+            this.showItems();
+        },
+        updateNavigation: function () {
+
+            var pages = $(".pagination .page");
+            pages.removeClass("current");
+            $('.pagination .page[data-page="' + (
+                this.currentPage + 1) + '"]').addClass("current");
+        },
+        goToPage: function (page) {
+
+            this.currentPage = page - 1;
+
+            $(".pagination .nav").removeClass("disabled");
+            if (this.currentPage == (this.totalPages - 1))
+                $(".pagination .nav.next").addClass("disabled");
+
+            if (this.currentPage == 0)
+                $(".pagination .nav.prev").addClass("disabled");
+            this.showItems();
+        },
+        showItems: function () {
+            this.items.hide();
+            var base = this.perPage * this.currentPage;
+            this.items.slice(base, base + this.perPage).show();
+
+            this.updateNavigation();
+        },
+        init: function (container, items, perPage) {
+            this.container = container;
+            this.currentPage = 0;
+            this.totalPages = 1;
+            this.perPage = perPage;
+            this.items = items;
+            this.createNavigation();
+            this.showItems();
+        }
+    };
+
+    // stuff it all into a jQuery method!
+    $.fn.pagify = function (perPage, itemSelector) {
+        var el = $(this);
+        var items = $(itemSelector, el);
+
+        // default perPage to 5
+        if (isNaN(perPage) || perPage === undefined) {
+            perPage = 3;
+        }
+
+        // don't fire if fewer items than perPage
+        if (items.length <= perPage) {
+            return true;
+        }
+
+        pagify.init(el, items, perPage);
+    };
+})(jQuery);
+
+pagifyItems = 6;
+$("#imagesContainer").pagify(pagifyItems, ".material-item");

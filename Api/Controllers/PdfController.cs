@@ -11,13 +11,13 @@ using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using PdfSharp;
 using System.Diagnostics;
+using System.Web.Http.Cors;
 
 namespace Api.Controllers
 {
 
     public class PdfController : ApiController
     {
-
         // api/pdf
         [Route("api/pdf")]
         [HttpPost]
@@ -34,16 +34,17 @@ namespace Api.Controllers
             Value partBackFrame = null;
             Value partBackHeadrest = null;
             Option hasBack = configurator.Options.Find(x => x.Code == "back");
-            Option hasBackFrame = configurator.Options.Find(x => x.Code == "back-frame");
-            Option hasBackMaterial = configurator.Options.Find(x => x.Code == "back-material");
-            Option hasBackColor = configurator.Options.Find(x => x.Code == "back-color");
-            Option hasBackHeadrest = configurator.Options.Find(x => x.Code == "back-headrest");
+            Option hasBackFrame = configurator.Options.Find(x => x.Code == "b-frame");
+            Option hasBackMaterial = configurator.Options.Find(x => x.Code == "b-material");
+            Option hasBackColor = configurator.Options.Find(x => x.Code == "b-color");
+            Option hasBackHeadrest = configurator.Options.Find(x => x.Code == "b-headrest");
             Option hasBase = configurator.Options.Find(x => x.Code == "base");            
             Option hasMecha = configurator.Options.Find(x => x.Code == "mechanism");
             Option hasArm = configurator.Options.Find(x => x.Code == "arm");
             Option hasGrade = configurator.Options.Find(x => x.Code == "grade");
-            Option hasColorSeat = configurator.Options.Find(x => x.Code == "colorSeat");
-            Option hasColorBack = configurator.Options.Find(x => x.Code == "colorBack");
+            Option hasColorSeat = configurator.Options.Find(x => x.Code == "-color-Seat");
+            Option hasColorBack = configurator.Options.Find(x => x.Code == "-color-Back");
+            Option hasFrame = configurator.Options.Find(x => x.Code == "frame");
             string currentFabricName = configurator.FabricName;
             string currentFabricPartNumber = configurator.FabricPartNumber;
             bool hasSeatPad = configurator.SeatPad;
@@ -83,7 +84,7 @@ namespace Api.Controllers
                 html = html.Replace("{back}", myPart.Name);
             }
             else {
-                html = html.Replace("{back}", "N/A");
+                html = html.Replace("<tr class=\"underline\"><td class=\"col-50\">BACK:</td><td class=\"col-50\">{back}</td></tr>", "");
             }
 
             if (hasBase != null) {
@@ -92,7 +93,14 @@ namespace Api.Controllers
                 html = html.Replace("{base}", myPart.Name);
             }else
             {
-                html = html.Replace("{base}", "N/A");
+                html = html.Replace("<tr class=\"underline\"><td>BASE:</td><td>{base}</td></tr>", "");
+            }
+
+            if (hasFrame != null)
+            {
+                myPart = hasFrame.Values.Find(x => x.Active == true);
+                html = html.Replace("{base}", myPart.Name);
+                html = html.Replace("BASE:", "FRAME:");
             }
 
             if (hasMecha != null)
@@ -102,17 +110,20 @@ namespace Api.Controllers
                 html = html.Replace("{mechanism}", myPart.Name);
             }else
             {
-                html = html.Replace("{mechanism}", "N/A");
+                html = html.Replace("<tr class=\"underline\"><td>MECHANISM:</td><td>{mechanism}</td></tr>", "");
             }
 
             if (hasArm != null)
             {
                 myPart = hasArm.Values.Find(x => x.Active == true);
-                PartCode += "-" + myPart.PartNumber;
+                if (myPart.Name != "Fixed Nylon (Black)")
+                {
+                    PartCode += "-" + myPart.PartNumber;
+                }
                 html = html.Replace("{arm}", myPart.Name);
             }else
             {
-                html = html.Replace("{arm}", "N/A");
+                html = html.Replace("<tr class=\"underline\"><td>ARMS:</td><td>{arm}</td></tr>", "");
             }
 
             if (hasGrade != null)
@@ -142,8 +153,9 @@ namespace Api.Controllers
             }
             else
             {
-                html = html.Replace("{grade}", "N/A");
-            }           
+                html = html.Replace("<tr><td>FABRIC:</td><td>{grade}</td></tr>", "");
+            }   
+            
             if (currentFabricName != null)
             {
                 PartCode += "-" + currentFabricPartNumber;
@@ -156,7 +168,7 @@ namespace Api.Controllers
                 html = html.Replace("{fabric}", myPart.Name);
             }
             else {
-                html = html.Replace("{fabric}", "N/A");
+                html = html.Replace("<tr class=\"underline\"><td class=\"col-50\">PATTERN:</td><td class=\"col-50\">{fabric}</td></tr>", "");
             }
 
             if (hasSeatPad)
@@ -164,10 +176,8 @@ namespace Api.Controllers
                 configurator.TotalPrice += 90;
                 
                 html = html.Replace("(Fully Upholstered)", "(Removable Seat Cover)");
-            }
+            }           
 
-            
-            
 
 
 
@@ -224,24 +234,32 @@ true);
 
         }
 
-        public string Get()
-        {
-            return @"WORKING WITH CORS";
-        }
 
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/image")]
         [HttpPost]
         public HttpResponseMessage UploadImage(PdfImage postedFile)
         {
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-            
-            byte[] bytes = Convert.FromBase64String(postedFile.data.Replace("data:image/png;base64,", ""));
+            //Dictionary<string, object> dict = new Dictionary<string, object>();
+            try {
+                if (postedFile.data.Length > 0) { 
+                    byte[] bytes = Convert.FromBase64String(postedFile.data.Replace("data:image/png;base64,", ""));
+                
+                    string filename = Guid.NewGuid() + ".png";
+                    var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
+                    File.WriteAllBytes(filePath, bytes);
 
-            string filename = Guid.NewGuid() + ".png";
-            var filePath = Path.Combine(HttpContext.Current.Server.MapPath("~"), @"wwwroot\" + filename);
-            File.WriteAllBytes(filePath, bytes);
-
-            return Request.CreateErrorResponse(HttpStatusCode.OK, filename);
+                    return Request.CreateErrorResponse(HttpStatusCode.OK, filename);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "");
+                }
+            }
+            catch (Exception ex)
+            {                
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
         }
     }
 }

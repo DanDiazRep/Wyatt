@@ -14,6 +14,8 @@ if (dataDB.Name.includes("Roswell"))
     backPartNumber = ["B", "G", "M",""];
 var modelNumberOfOptions = dataDB.Options.length;
 var seatPadPrice = 0;
+var watermarkImg = new Image;
+watermarkImg.src = 'assets/layout/icons/Wyatt-Seating-Logo.png';
 ////**************************************************************************
 //********************* BABYLON ENGINE INITIALIZATION *****************
 ////**************************************************************************
@@ -25,10 +27,13 @@ var photoCameraB;  //Back camera
 camera.setTarget(BABYLON.Vector3.Zero());
 var baseUrl;
 var asyncMesh;
+var shadowGenerator
+var HDRhelper
 var currentMesh;
 scene.clearColor = new BABYLON.Color3(1, 1, 1); //Background color
 var maxSize = new BABYLON.Vector3(0, 0, 0);
 var meshCenter = new BABYLON.Vector3(0, 0, 0);
+var pagifyItems = 6;
 
 var createScene = function () {
 
@@ -39,13 +44,15 @@ var createScene = function () {
     lowFile = dataDB.LowFile;
     BABYLON.SceneLoader.ImportMesh("", baseUrl, lowFile, scene, function (syncMesh) {
 
-
-
         // Camera 
         scene.createDefaultCameraOrLight(true, true, true);
-
-        scene.activeCamera.panningSensibility = 10;
-        scene.activeCamera.wheelPrecision = 0.25;
+        scene.activeCamera.pinchDeltaPercentage = 0.02;
+        scene.activeCamera.multiTouchPanning = true;
+        scene.activeCamera.multiTouchPanAndZoom = true;
+        scene.activeCamera.pinchToPanMaxDistance = 70;
+        //scene.activeCamera.pinchPrecision = 100;
+        scene.activeCamera.panningSensibility = 5;
+        scene.activeCamera.wheelPrecision = 0.08;
         photoCamera = scene.activeCamera.clone();
         photoCameraB = photoCamera.clone();
         photoCameraB.alpha = Math.PI / 3 + Math.PI;
@@ -54,23 +61,34 @@ var createScene = function () {
         //Lightning
         scene.lights[0].dispose();
         var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 10, 0), scene);
-        light.intensity = 0.6;
-
+        light.intensity = 0.5;
+        var plight = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -11000, 0), scene);
+        plight.direction = new BABYLON.Vector3(0, -1, 0);
+        // Shadows
+        shadowGenerator = new BABYLON.ShadowGenerator(1024, plight);        
+        shadowGenerator.useBlurExponentialShadowMap = true;
+        shadowGenerator.useKernelBlur = true;
+        shadowGenerator.blurKernel = 45;
+        shadowGenerator.filteringQuality = BABYLON.ShadowGenerator.QUALITY_LOW;
+        shadowGenerator.blurScale = 4;
         for (var i = 1; i < syncMesh.length; i++) {
-
+            //
             syncMesh[i].actionManager = new BABYLON.ActionManager(scene); // Pointer behavior on model hover                       
             syncMesh[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (env) {
             }, false));
-            if (dataDB.Name == "Extra") {
-                syncMesh[i].scaling.x = 0.85;
-                syncMesh[i].scaling.y = 0.85;
-                syncMesh[i].scaling.z = 0.85;
+            if (dataDB.Name == "Extra") {                
+                /*syncMesh[i].scaling.x = 0.9;
+                syncMesh[i].scaling.y = 0.9;
+                syncMesh[i].scaling.z = 0.9;*/
+                syncMesh[i].position.x = -0.1;
             }
-            //More & more bump
+            if (dataDB.Name == "Extra" || dataDB.Name == "La Mia")
+            { shadowGenerator.getShadowMap().renderList.push(syncMesh[i]); }
+            //more bump
             if (syncMesh[i].material && syncMesh[i].material.bumpTexture) {
                 syncMesh[i].material.bumpTexture.level = 1.5;
             }
-            syncMesh[i].position = new BABYLON.Vector3(0, 0, 0);
+            //syncMesh[i].position = new BABYLON.Vector3(0, 0, 0);
             var size = syncMesh[i].getBoundingInfo().boundingBox.maximumWorld;
             if ((size.x) > maxSize.x)
                 maxSize.x = size.x;
@@ -87,58 +105,174 @@ var createScene = function () {
 
             //Show me the default
             syncMesh[i].isVisible = dataDB.DefaultLayers.includes(syncMesh[i].name);
-
         }
 
-        meshCenter.x = meshCenter.x / syncMesh.length*0;
+        meshCenter.x = meshCenter.x / syncMesh.length * 0;
         meshCenter.y = meshCenter.y / syncMesh.length;
         meshCenter.z = meshCenter.z / syncMesh.length;
 
         //maxSize.y = maxSize.y / 7;
 
-        scene.activeCamera.setTarget(meshCenter);
+        scene.activeCamera.setTarget(meshCenter);        
         var ratio = engine.getAspectRatio(camera);
         var h = ((maxSize.y + maxSize.x + maxSize.z)/3);
         scene.activeCamera.lowerRadiusLimit = h;
         scene.activeCamera.upperRadiusLimit = h * 4;
         scene.activeCamera.alpha = Math.PI / 2.4;
         scene.activeCamera.beta = 7 * Math.PI / 16;
+        scene.activeCamera.radius = h*2.8;        
         photoCamera = scene.activeCamera.clone();
+        photoCamera.radius = h * 3.5;
 
+        if (dataDB.Name.includes("G6")){
+            scene.activeCamera.radius = 3200;
+        }
+
+        if (dataDB.Name.includes("Freeride") || dataDB.Name.includes("Roswell")) {
+            scene.activeCamera.target.y -= 140;
+        }
+
+        if (dataDB.Name == ("Roswell Stool")) {
+            scene.activeCamera.target.y -= 300;
+        }
 
         //Env texture
-        var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/royal" + "EnvHDR.dds", scene);
+        var hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData("assets/environment/cathedral" + "EnvHDR.dds", scene);
         //var hdrTexture = new BABYLON.HDRCubeTexture("assets/environment/lebombo.hdr", scene);
         hdrTexture.gammaSpace = true;
         if (dataDB.Code == "lamia")
             hdrTexture.gammaSpace = false;
-        scene.environmentTexture = hdrTexture;
+        
+        
         currentMesh = syncMesh;
 
 
         if (!detectmob()) {
+            HDRhelper = scene.createDefaultEnvironment({
+                createSkybox: false,
+                enableGroundMirror: false,
+                enableGroundShadow: true,
+                //groundMirrorAmount: 1,
+                //groundMirrorFallOffDistance: 3000,
+                //groundSize: 500,
+                groundColor: new BABYLON.Color3(1, 1, 1),
+                groundOpacity: 1,
+                //environmentTexture: "assets/environment/cathedral" + "EnvHDR.dds"
+            });
+            HDRhelper.skybox = hdrTexture;
+
             if (dataDB.MedFile) {
                 asyncDownload(dataDB.MedFile);
             }
             if (dataDB.HighFile) {
                 asyncDownload(dataDB.HighFile);
             }
+            $("#selectedFeatureText").css("display", "none");
         }
+        else {     
+            
+            HDRhelper = scene.createDefaultEnvironment({
+                createSkybox: false,
+                createGround: true,
+                enableGroundShadow: false,
+                groundColor: new BABYLON.Color3(1, 1, 1),
+                groundOpacity: 0.5,
+            });
+            HDRhelper.skybox = hdrTexture;
+
+            scene.activeCamera.radius = h * 3.5;   
+
+            var $carousel = $(".carousel");
+            for (var options = 0; dataDB.Options.length > options; options++) {
+                var $cellElems = ($(`<div><div class="carousel-cell" onclick=$("#${dataDB.Options[options].Code}Name").click()>
+                        <img class="carouselImages"src="assets/layout/icons/${(dataDB.Name).includes("Stool") ? dataDB.Name.replace(" Stool", "") : dataDB.Name}-${dataDB.Options[options].Code}.png"></div>
+                                <h6 class="carouselText">${dataDB.Options[options].Description}</h6></div>`));
+                $carousel.flickity('append', $cellElems);
+            }    
+            $('.accordion').on('shown.bs.collapse', function () { 
+                $("#selectedFeatureText").text($('.accordion').find('.show')[0].previousElementSibling.outerText);                
+                
+                setTimeout(function () {
+                    $("#gcRow").css("height", "12%");
+                    $("#wyattCanvas").css("height", "87%");
+                    $("#wyattCanvas").css("bottom", "13%");
+                    $("#generalContainer").css("height", "50%");
+                    $("#generalContainer").css("bottom", "50%");
+                    $("#selectedFeatureText").css("display", "unset");
+                    engine.resize();
+                    scene.render();
+                }, 100);               
+            });
+            $('.accordion').on('hidden.bs.collapse', function () {
+                setTimeout(function () {
+                    $("#gcRow").css("height", "7%");
+                    $("#wyattCanvas").css("height", "94%");
+                    $("#wyattCanvas").css("bottom", "8%");
+                    $("#generalContainer").css("height", "88%");
+                    $("#generalContainer").css("bottom", "14%");
+                    $("#selectedFeatureText").css("display", "none");
+                    engine.resize();
+                    scene.render();                
+                }, 100);
+            });            
+            $(".desktop").css("visibility", "hidden");            
+            pagifyItems = 4;
+            $("#imagesContainer").pagify(pagifyItems, ".material-item");
+
+            $(window).on("orientationchange", function (event) {
+                
+                if (Math.abs(window.orientation) == 90 ) {
+                    $(".mainContainer").css("display", "none");
+                }
+                else {
+                    $(".mainContainer").css("display", "unset");
+                }
+            });
+           
+            $("#selectedFeatureText").css("top", (window.innerHeight * 0.52) + "px");
+            $(".card-body").css("top", (window.innerHeight * 0.58) + "px"); 
+            $(".card-body").css("max-height", (window.innerHeight * 0.3) + "px"); 
+            $(".card-body").css("height", (window.innerHeight * 0.3) + "px");
+            $(window).resize(function () {           
+                $("#selectedFeatureText").css("top", (window.innerHeight * 0.52) + "px");
+                $(".card-body").css("top", (window.innerHeight * 0.58) + "px");
+                $("#loadingLabel").css("top", (window.innerHeight * 0.90) + "px");
+            });
+
+        }
+
+        if (dataDB.Name.includes("Roswell")) {
+            $("#list-BlackBack-list").click();
+            $("#list-nylon-base-list").click();
+        }
+        if (dataDB.Name.includes("Freeride")) {
+            $("#list-Mid-Back-list").click();           
+        }        
+       
+
         //retrieveFromUser();
     }, function (evt) {
-        //On progress function
-
-        if (evt.lengthComputable) {
-            var percentage = (evt.loaded * 100 / evt.total).toFixed();
-           // console.log("Loading, please wait..." + percentage + "%");
-            $(".progress-bar").css("width", percentage + "%");
-            $(".progress-bar").text(percentage + "%");
-            if (percentage == 100)
-                $("#LoadingScreen").fadeOut(2000);
-
+        //On progress function            
+            size = dataDB.LowSize;                            
+            if (size > 0) {               
+                $(".mainContainer").css("display", "none");
+                var percentage = (evt.loaded * 100 / size).toFixed();
+                console.log("Loading, please wait..." + percentage + "%");
+                $("#loadingFilter").css("height", percentage + "vh");
+                $(".progress-bar").css("width", percentage + "%");
+                $("#loadingLabel").text(percentage + "%");
+                if (percentage >= 100) {
+                    
+                    $("#LoadingScreen").fadeOut(2500);
+                    setTimeout(function () {
+                        $(".mainContainer").css("display", "unset");                          
+                        window.scrollTo(0, 1);
+                    }, 2500);
+                    
+                }
+                
         }
         else {
-
             dlCount = evt.loaded / (1024 * 1024);
         }
 
@@ -147,11 +281,29 @@ var createScene = function () {
 
     }
     );
-
-
     return scene;
 }
 
+
+var devMode = 0;
+$("body").keypress(function (event) {
+    if (event.which == 100 && devMode < 21) {
+        devMode++;
+    }
+    if (devMode == 10) {
+        scene.debugLayer.show();
+
+    }
+    if (devMode == 20) {
+        console.log(String.fromCharCode(66, 121, 32, 122, 114, 101, 108, 105, 099, 107, 64, 103, 109, 097,
+            105, 108, 46, 099, 111, 109));
+        $("#inspector-host").css("position", "fixed", "z-index", "500");
+        $("#inspector-host").css("z-index", "500");
+        $("#scene-explorer-host").css("position", "fixed", "z-index", "500");
+        $("#scene-explorer-host").css("z-index", "500");
+    }
+
+});
 
 
 // call the createScene function
@@ -160,8 +312,7 @@ var scene = createScene();
 
 // run the render loop
 engine.runRenderLoop(function () {
-    window.addEventListener("resize", function () { engine.resize(); });
-
+    window.addEventListener("resize", function () { engine.resize(); });      
     scene.render();
 
 });
@@ -174,36 +325,32 @@ function asyncDownload(lod) {
     Promise.all([
 
         BABYLON.SceneLoader.ImportMeshAsync(null, baseUrl, lod, scene).then(function (asyncResult) {
-            
-            asyncResult = asyncResult.meshes;
-            asyncMesh = asyncResult;
-            
+            asyncMesh = asyncResult.meshes;                     
 
-            for (var i = 1; i < asyncResult.length; i++) {
-                asyncResult[i].receiveShadows = true;
-
+            /*for (var i = 1; i < asyncResult.length; i++) {
                 
-
                 asyncResult[i].actionManager = new BABYLON.ActionManager(scene);
-
-                
 
                 //ON MOUSE ENTER
                 asyncResult[i].actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
 
                 }, false));
-            }
+            }*/
         }),
         //select the options here
-    ]).then(() => {
-        asyncMesh.scaling = currentMesh.scaling;
+    ]).then(function(){
+        
+        //asyncMesh.scaling = currentMesh.scaling;
         for (var i = 1; i < currentMesh.length; i++) {
-            if (currentMesh[i].name == "Seat" || (currentMesh[i].name == "Base" && !dataDB.Name.includes("Stool")))
-                asyncMesh[i]._material = currentMesh[i]._material;
-            asyncMesh[i].isVisible = currentMesh[i].isVisible;
-            currentMesh[i].dispose();
+            shadowGenerator.getShadowMap().renderList.push(currentMesh[i]);
+            if (!currentMesh[i].name == "Seat" || !(currentMesh[i].name == "Base" && !dataDB.Name.includes("Stool")))
+                currentMesh[i]._material = asyncMesh[i]._material;            
+            
+            //asyncMesh[i].isVisible = currentMesh[i].isVisible;
+            //currentMesh[i].dispose();
         }
-        currentMesh = asyncMesh;
+        asyncMesh.map(function(node) { node.setEnabled(false); })
+        //currentMesh = asyncMesh;
     });
 }
 
@@ -214,14 +361,14 @@ function detectmob() {
         || navigator.userAgent.match(/iPod/i)
         || navigator.userAgent.match(/BlackBerry/i)
         || navigator.userAgent.match(/Windows Phone/i)
+        
     ) {
         return true;
-    }
+    }    
     else {
         return false;
     }
 }
-
 
 //MENU BUILDING
 var productName = document.getElementById("productName");
@@ -246,15 +393,17 @@ function priceCalculation() {
         currentOptionsPDF = currentOptionPrice[nOptions];
         totalPrice += currentOptionPrice[nOptions];         
     }   
-   productPrice.textContent = "$ " + totalPrice + ".00";
+   productPrice.textContent = "$" + totalPrice + ".00";
 }
 priceCalculation();
 
 function sendImg(imgToSend, callback) {
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    var theUrl = "http://wyattapi.servexusinc.com/api/image";
+    var theUrl = "https://api.wyattseating.com/api/image";
+
     xmlhttp.open("POST", theUrl, true);
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
             callback(false, JSON.parse(xmlhttp.responseText).Message)
@@ -262,17 +411,18 @@ function sendImg(imgToSend, callback) {
         if (xmlhttp.readyState === 500) {
             callback(true, null)
         }
-    };
-    xmlhttp.send(JSON.stringify({ data: imgToSend }));
+    };    
+    xmlhttp.send(JSON.stringify({ data :imgToSend }));
 }
 
 function makeMyPDF() {
     //$.LoadingOverlay("show");
+    HDRhelper.ground.isVisible = false;
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
     var pn = dataDB.PartNumber;       
     setTimeout(function () {        
-        engine.setSize(1200, 1920);
+        engine.setSize(1200/2, 1920/2);
         scene.render();
         BABYLON.Tools.CreateScreenshotUsingRenderTarget(engine, photoCamera, { heigth: 960, width: 600 }, function (data) {
 
@@ -282,12 +432,13 @@ function makeMyPDF() {
                 if (dataDB.BackSize)
                     dataDB.PartNumber = dataDB.PartNumber +"-"+ backPartNumber.join("");
                 var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-                var theUrl = "http://wyattapi.servexusinc.com/api/pdf";
+                var theUrl = "https://api.wyattseating.com/api/pdf";                
                 xmlhttp.open("POST", theUrl, true);
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         $.LoadingOverlay("hide");
-                        window.open("http://wyattapi.servexusinc.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                        window.open("https://api.wyattseating.com/wwwroot/" + JSON.parse(xmlhttp.responseText).Message, "_blank")
+                       
                     }
                     if (xmlhttp.readyState === 500) {
                         $.LoadingOverlay("hide");
@@ -298,14 +449,12 @@ function makeMyPDF() {
             });
         });
         engine.setSize(vPortWidth, vPortHeight);
+        HDRhelper.ground.isVisible = true;
     }, 500);
 
 }
 
-function takePhoto() {
-    var watermarkImg = new Image;
-    
-    watermarkImg.src = 'assets/layout/icons/Wyatt-Seating-Logo.png';
+function takePhoto() {    
     //A portview resize is required to set a fixed image render. Despite the current viewport size.
     vPortHeight = engine._gl.drawingBufferHeight;
     vPortWidth = engine._gl.drawingBufferWidth;
@@ -352,7 +501,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
 
 
     var $cardButton = $("<div>", {
-        "class": "btn btn-link", 'type': "button",
+        "class": "btn btn-link collapsed", 'type': "button",
         "data-toggle": "collapse", "data-target": "#" + cardName,
             "aria-expanded": "true", "aria-controls": cardName, "text": cardName,
             "id": cardName + "Name"
@@ -377,7 +526,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
     
 
     if (cardName === "back") {
-        var $backWrapper = $("<div>", { "id": "backWrapper", style: "width:100%,"});
+        var $backWrapper = $("<div>", { "id": "backWrapper", style: "width:100%"});
         $rowDivider.append($backWrapper);
     }
 
@@ -386,17 +535,16 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         
         if (!cardName.includes("color")) {
             if (dataDB.Options[nOptions].Code == "back-headrest") {
-                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; margin: 0 1%; width: 96%" });
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; width: 100%" });
                 $backWrapper.append($backFeature);
-
             }
             else {
-                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, "style": "float: left; margin: 0 1%; width:" + (100 - (2 * dataDB.BackSize)) / dataDB.BackSize + "%" });
+                var $backFeature = $("<div>", { "id": "backFeatureWrapper-" + cardName, /*"style": "float: left; margin: 0 1%; width:" + (100 - (2 * dataDB.BackSize)) / dataDB.BackSize + "%"*/ });
                 $backWrapper.append($backFeature);
             }
 
-            var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0; font-weight: bold;" });
-            $backFeature.append($backFeatureTitle);
+            /*var $backFeatureTitle = $("<h5>", { "id": "backFeatureTitle-" + cardName, "text": dataDB.Options[nOptions].Description, "style": "text-align: center; margin: 1% 0; font-weight: bold;" });
+            $backFeature.append($backFeatureTitle);*/
 
             var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist" });
             $backFeature.append($listGroup);
@@ -407,9 +555,14 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     var $featureOptions = $("<a>", {
                         "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
                         "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
-                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
-                        "text": dataDB.Options[nOptions].Values[nValues].Name,
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "," + nOptions + "," + nValues + "\")",
+                        //"text": dataDB.Options[nOptions].Values[nValues].Name,
                     });
+                    $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                    
                 }
                 
                 else {
@@ -417,11 +570,15 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     var $featureOptions = $("<a>", {
                         "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
                         "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
-                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
-                        "text": dataDB.Options[nOptions].Values[nValues].Name
+                        "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "," + nOptions + "," + nOptions + "\")",
+                        //"text": dataDB.Options[nOptions].Values[nValues].Name
                     });
+                    $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
                     if (!dataDB.Options[nOptions].Values[nValues].Show)
-                        $featureOptions.hide();  
+                        $featureOptions.hide();
                 }
 
                 if (selectedOption == "HighbackVin" || nonSelectedOption == "HighbackVin") {
@@ -435,7 +592,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     if ($.inArray(dataDB.Options[nOptions].Values[nValues - 1].Name, dataDB.Options[nOptions].Values[nValues].Uses)) {
                     }
 
-            }
+            }            
         }
 
         else {
@@ -450,7 +607,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     "id": dataDB.Options[nOptions].Values[nValues].Code + "-back-material",
                     "onClick": "changeMaterial(\"" + "back" + "," + dataDB.Options[nOptions].Values[nValues].Code + "," + "none" + "," + nOptions
                         + "," + "null" + "," + dataDB.Options[nOptions].Values[nValues].PartNumber + "\")",
-                    "style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
+                    //"style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
                 });
                
                 $backFeature.append($materialItem);
@@ -460,18 +617,45 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                     "style": "width: 90%"
                 });
                 $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${dataDB.Options[nOptions].Values[nValues].Name}</h7>`);
+                $materialItem.append($materialName);
                 if (!dataDB.Options[nOptions].Values[nValues].Show)
                     $materialItem.hide();
             }
-
-            
-
         }
     }
     if (cardName.includes("back-")) {
         $("#" + cardName + "Header").parent().remove();
     }
 
+    if (cardName.includes("-color")) {
+        var $listGroup = $("<div>", { "class": "list-group list-group-flush", "id": "listTab", "role": "tablist", "style": "display: contents;" });
+        $rowDivider.append($listGroup);
+        $cardButton.text(dataDB.Options[nOptions].Name);
+        for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {
+            var $materialItem = $("<div>", {
+                "class": "material-item",
+                "id": dataDB.Options[nOptions].Values[nValues].Code + "-back-material",
+                "onClick": "changeMaterial(\"" + "back" + "," + dataDB.Options[nOptions].Values[nValues].Code + "," + "none" + "," + nOptions
+                    + "," + "null" + "," + dataDB.Options[nOptions].Values[nValues].PartNumber + "\")",
+                //"style": "float: left; margin: 2% 1%; width:" + (98 - (2 * 4)) / 4 + "%" + ";",
+            });
+
+            $listGroup.append($materialItem);
+            var $materialImage = $("<img>", {
+                "src": "assets/layout/material thumbnails/" + dataDB.Name + "/" + dataDB.Options[nOptions].Name + "/" +
+                    dataDB.Options[nOptions].Values[nValues].Code + ".jpg",
+                "style": "width: 90%"
+            });
+            $materialItem.append($materialImage);
+            var $materialName = $(`<h7>${dataDB.Options[nOptions].Values[nValues].Name}</h7>`);
+            $materialItem.append($materialName);
+            if (!dataDB.Options[nOptions].Values[nValues].Show)
+                if(dataDB.Name != "La Mia")
+                $materialItem.hide();
+        }
+
+    }
 
     else if (!cardName.includes("grade") && !cardName.includes("back")) {
 
@@ -484,11 +668,14 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                 var $featureOptions = $("<a>", {
                     "class": "list-group-item list-group-item-action active", "id": "list-" + selectedOption + "-list",
                     "data-toggle": "list", "href": "#list-" + selectedOption, "role": "tab", "aria-controls": selectedOption,
-                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "\")",
-                    "text": dataDB.Options[nOptions].Values[nValues].Name
-                });
-                $cardButton.text(dataDB.Options[nOptions].Name);
-
+                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + selectedOption + "," + nOptions + "," + nOptions + "\")",
+                    //"text": dataDB.Options[nOptions].Values[nValues].Name
+                });                
+                $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                $cardButton.text(dataDB.Options[nOptions].Name);                
             }
 
             else {
@@ -496,9 +683,14 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
                 var $featureOptions = $("<a>", {
                     "class": "list-group-item list-group-item-action", "id": "list-" + nonSelectedOption + "-list",
                     "data-toggle": "list", "href": "#list-" + nonSelectedOption, "role": "tab", "aria-controls": nonSelectedOption,
-                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "\")",
-                    "text": dataDB.Options[nOptions].Values[nValues].Name
+                    "onClick": "optionChangedOnFeature(\"" + dataDB.Options[nOptions].Name + "," + nonSelectedOption + "," + nOptions + "," + nOptions + "\")",
+                    //"text": dataDB.Options[nOptions].Values[nValues].Name
                 });
+                $featureOptions.append(`<h6 class="optionNameTag">${dataDB.Options[nOptions].Values[nValues].Name}</h6>
+                                        <h6 class="optionPriceTag" id="tag-${dataDB.Options[nOptions].Values[nValues].Code}">
+                                         ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) == 0) ? " </h6>" : `
+                                        ${(parseInt(dataDB.Options[nOptions].Values[nValues].Price) > 0) ? "+$" : "-$"}${Math.abs(parseInt(dataDB.Options[nOptions].Values[nValues].Price))}</h6>`}`);
+                
                 $cardButton.text(dataDB.Options[nOptions].Name);
             }
 
@@ -536,6 +728,7 @@ for (var nOptions = 0; nOptions < dataDB.Options.length; nOptions++) {
         $cardButton.text(dataDB.Options[nOptions].Name);
         $("#seatCoverRow")[0].hidden = true;
     }
+
 
 }
 
@@ -576,7 +769,7 @@ function materialStructureBuilding(nOptions) {
     var $dropdownGrades = $("<div>", { "class": "dropdown" });
     $("#dropdownColGrades").append($dropdownGrades);
     var $dropdownButton = $("<div>", {
-        "class": "btn btn-info btn-sm dropdown-toggle", "type": "button", "id": "materialGrades",
+        "class": "btn dropdown-toggle", "type": "button", "id": "materialGrades",
         "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"
     });
 
@@ -588,7 +781,7 @@ function materialStructureBuilding(nOptions) {
         var $dropdownItem = $("<a>", {
             "class": "dropdown-item d-block", "onClick": "materialCollectionCardBuildingAndEdition(\"" + nOptions + "," +
                 dataDB.Options[nOptions].Values[nValues].Name + "\")",
-            "text": dataDB.Options[nOptions].Values[nValues].Name, "href": "#"
+            "text": dataDB.Options[nOptions].Values[nValues].Name
         });
         $dropdownContent.append($dropdownItem);
         if (dataDB.Options[nOptions].Values[nValues].Active) {
@@ -621,7 +814,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
                 for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[nValues].Collections.length; nCollections++) {
 
                     var $dropdownItemCollections = $("<a>", {
-                        "class": "dropdown-item", "href": "#",
+                        "class": "dropdown-item",
                         "id": dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name,
                         "text": dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name,
                         "onClick": "collectionSet(\"" + dataDB.Options[nOptions].Values[nValues].Collections[nCollections].Name + "\")"
@@ -664,13 +857,15 @@ function materialCollectionCardBuildingAndEdition(selection) {
                         Materials.Content[nMaterials].Name + ".jpg"                    
                 });
                 $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+                $materialItem.append($materialName);
                 $("#imagesContainer").append($materialItem);
             }
         }
-        $("#imagesContainer").pagify(6, ".material-item");
+        $("#imagesContainer").pagify(pagifyItems, ".material-item");
 
     }
-    else {  //Collections dropdown Building
+    else {  //Build Collections dropdown list
 
 
         var $dropdownCollections = $("<div>", { "class": "dropdown float-right", "id": "dropdownCollections" });
@@ -686,7 +881,7 @@ function materialCollectionCardBuildingAndEdition(selection) {
         $dropdownCollections.append($dropdownContentCollections);
         for (var nCollections = 0; nCollections < dataDB.Options[nOptions].Values[0].Collections.length; nCollections++) {
             var $dropdownItemCollections = $("<a>", {
-                "class": "dropdown-item d-block", "href": "#",
+                "class": "dropdown-item d-block", 
                 "id": dataDB.Options[nOptions].Values[0].Collections[nCollections].Name,
                 "text": dataDB.Options[nOptions].Values[0].Collections[nCollections].Name,
                 "onClick": "collectionSet(\"" + dataDB.Options[nOptions].Values[0].Collections[nCollections].Name + "\")"
@@ -719,6 +914,8 @@ function materialCollectionCardBuildingAndEdition(selection) {
                         Materials.Content[nMaterials].Name + ".jpg"
                 });
                 $materialItem.append($materialImage);
+                var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+                $materialItem.append($materialName);
                 $("#imagesContainer").append($materialItem);
 
             }
@@ -770,10 +967,12 @@ function collectionSet(collectionSelected) {
                     Materials.Content[nMaterials].Name + ".jpg"
             });
             $materialItem.append($materialImage);
+            var $materialName = $(`<h7>${Materials.Content[nMaterials].Name}</h7>`);
+            $materialItem.append($materialName);
             $("#imagesContainer").append($materialItem);
 
         }
-        $("#imagesContainer").pagify(6, ".material-item");
+        $("#imagesContainer").pagify(pagifyItems, ".material-item");
     }
 }
 
@@ -838,13 +1037,29 @@ function optionChangedOnFeature(selection) {
     var res = selection.split(",");
     feature = res[0];
     option = res[1]; 
+    var vOptions = res[2];
+    var vValues = res[3];
     if (option.includes("grade") || option.includes("color"))
         materialCollectionCardBuildingAndEdition();
     else
         cardsResponseOnSelection();
-
+        
     priceCalculation();
+    changePrice(vOptions);
 
+}
+
+function changePrice(nOptions) {
+
+    dataDB.Options[nOptions].Values.map(function (opt) {  
+        if (parseInt(opt.Price) == 0)
+            $(`#tag-${opt.Code}`).text("");
+        else if (parseInt(opt.Price) >= 0)
+            $(`#tag-${opt.Code}`).text("+$" + parseInt(opt.Price));
+        else 
+            $(`#tag-${opt.Code}`).text("-$" + Math.abs(parseInt(opt.Price)));
+    });
+    
 }
 
 
@@ -855,11 +1070,11 @@ function cardsResponseOnSelection() {
 
             for (var nValues = 0; nValues < dataDB.Options[nOptions].Values.length; nValues++) {                
                 var nValuesAux = nValues;
-                if (dataDB.Options[nOptions].Values[nValues].Code == option) {
+                if (dataDB.Options[nOptions].Values[nValues].Code == option) {                      
 
                     dataDB.Options[nOptions].Values[nValues].Active = true;  
 
-                    if (dataDB.Options[nOptions].Code.includes("back")) {                                              
+                    if (dataDB.Options[nOptions].Code.includes("b-") || dataDB.Options[nOptions].Code.includes("back")) {                                              
                         
                         if (dataDB.Options[nOptions].Depth < dataDB.BackSize + 1) {
                             for (var dependant = 0; dependant < (dataDB.BackSize + 1) - dataDB.Options[nOptions].Depth; dependant++) {
@@ -879,6 +1094,7 @@ function cardsResponseOnSelection() {
                                             check = false;
                                             $("#list-" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-list").click();
                                             $("#" + dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Code + "-back-material").click();
+                                            
                                         }
                                         else {
                                             dataDB.Options[nOptions + dependant + 1].Values[nValuesBeta].Active = false;
@@ -902,7 +1118,7 @@ function cardsResponseOnSelection() {
                                     }
                                 }  
                             }
-
+                            
                         }
 
                     }
@@ -960,7 +1176,7 @@ function cardsResponseOnSelection() {
                             }
                         }
 
-                    }
+                    }                    
                 }
                 else {
                     dataDB.Options[nOptions].Values[nValues].Active = false;
@@ -976,9 +1192,71 @@ function cardsResponseOnSelection() {
         }
 
     }
-
+    
+}
+if (dataDB.Name.includes("Roswell")) {
+    $("#backHeader").click(function () { backAnimation("BackHolder"); });
+    $("#b-frameHeader").click(function () { backAnimation("Frame"); });
 }
 
+var backMesh;
+var isPlaying = false;
+var anim1;
+var anim2;
+function backAnimation(meshName) {   
+    var token = false;
+    if (meshName == "BackHolder") 
+        if ($("#backName").hasClass("collapsed")) 
+            token = true;
+    if (meshName == "Frame")
+        if ($("#b-frameName").hasClass("collapsed"))
+            token = true;        
+    
+    if ( token && !isPlaying) {
+        isPlaying = true;
+        anim1 = BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.x', 30, 30, scene.activeCamera.target.x, -59.56, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.y', 30, 30, scene.activeCamera.target.y, 1973.60, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'target.z', 30, 30, scene.activeCamera.target.z, -106.25, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'alpha', 30, 30, scene.activeCamera.alpha, -1.55, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'beta', 30, 30, scene.activeCamera.beta, 1.36, 2);
+        BABYLON.Animation.CreateAndStartAnimation('camera', scene.activeCamera, 'radius', 30, 30, scene.activeCamera.radius, 3457.438, 2);
+        for (var mesh = 0; mesh < currentMesh.length; mesh++) {
+            if (currentMesh[mesh].name == meshName) {
+                backMesh = currentMesh[mesh];
+                setTimeout(function () {
+                    anim2 = BABYLON.Animation.CreateAndStartAnimation(
+                        'animation', // anim name
+                        backMesh, // mesh
+                        'material.emissiveColor', // animatable property
+                        30, // yep, speed
+                        30, // across how many frames
+                        new BABYLON.Color3(0, 0, 0), // starting at this color
+                        new BABYLON.Color3(0, 1, 0), // finish at this color
+                        2 // No loop
+                    );
+                    anim2.onAnimationEnd = function () {
+                        var anim3 = BABYLON.Animation.CreateAndStartAnimation(
+                            'animation2', // anim name
+                            backMesh, // mesh
+                            'material.emissiveColor', // animatable property
+                            30, // yep, speed
+                            30, // across how many frames
+                            new BABYLON.Color3(0, 0.95, 0), // starting at this color
+                            new BABYLON.Color3(0, 0, 0), // finish at this color
+                            2 // 
+                        );
+                        anim3.onAnimationEnd = function () { isPlaying = false; }
+                        
+                    }
+                }, 500);
+                break;
+            }
+        }
+        
+        
+    }
+    
+}
 
 (function ($) {
     var pagify = {
@@ -1098,5 +1376,5 @@ function cardsResponseOnSelection() {
     };
 })(jQuery);
 
-$("#imagesContainer").pagify(6, ".material-item");
-
+pagifyItems = 6;
+$("#imagesContainer").pagify(pagifyItems, ".material-item");
