@@ -44,6 +44,7 @@ namespace Api.Controllers
             Option hasGrade = configurator.Options.Find(x => x.Code == "grade");
             Option hasColorSeat = configurator.Options.Find(x => x.Code == "colorSeat");
             Option hasColorBack = configurator.Options.Find(x => x.Code == "colorBack");
+            Option hasHeadRest = configurator.Options.Find(x => x.Code == "back-headrest");
             string currentFabricName = configurator.FabricName;
             string currentFabricPartNumber = configurator.FabricPartNumber;
             bool hasSeatPad = configurator.SeatPad;
@@ -113,6 +114,17 @@ namespace Api.Controllers
             }else
             {
                 html = html.Replace("{arm}", "N/A");
+            }
+
+            if (hasHeadRest != null)
+            {
+                myPart = hasHeadRest.Values.Find(x => x.Active == true);
+                PartCode += "-" + myPart.PartNumber;
+                html = html.Replace("{head_rest}", myPart.Name);
+            }
+            else
+            {
+                html = html.Replace("{head_rest}", "Without Headrest");
             }
 
             if (hasGrade != null)
